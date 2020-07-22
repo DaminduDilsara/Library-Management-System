@@ -1,0 +1,258 @@
+
+h1{
+	text-align:left;
+	color:black;
+	background-color:brown;
+}
+h2{
+	text-align:center;
+	font-family:Arial;
+	font-size: 150;
+}
+.footer-section {
+	bottom:0;
+    padding:0.5%;
+    color:#ffffff;
+    font-size:13px;
+    background-color: #8B0000;
+    border-top:4px solid #C46A15;
+	border-bottom: 2px solid #C46A15;
+}
+
+.footer-section a, .footer-section a:hover {
+	color:#ffffff;
+}
+
+.quote-text{
+	font-size:15px;
+	font-family: 'Shadows Into Light', cursive;
+}
+
+.left-allign {
+	text-align:right;
+}
+
+.header-section {
+    padding:10px 50px 100px 10px;
+    color:#ffffff;
+    font-size:30px;
+    background-color: #8B0000;
+    text-align:left;
+    border-top:5px solid #C46A15;
+	border-bottom: 2px solid #C46A15;
+
+}
+
+
+div.header-1 {
+	position: absolute;
+	left: 40px;
+}
+div.header-2 {
+	position: absolute;
+	left: 180px;
+	top : 35px;
+}
+div.header-3 {
+	position: absolute;
+	right: 40px;
+}
+div.header-4 {
+	position: absolute;
+	right: 170px;
+	top : 30px;
+}
+
+
+.small-text{
+	font-size:15px;
+	font-family: 'Shadows Into Light', cursive;
+}
+.medium-text{
+	font-size:30px;
+	font-family: 'Shadows Into Light', cursive;
+}
+.icon-bar {
+	width: 100%; /* Full-width */
+	background-color: #990000; 
+	overflow: auto; /* Overflow due to float */
+  }
+  
+  .icon-bar a {
+	float: left; /* Float links side by side */
+	text-align: center; /* Center-align text */
+	width: 20%; /* Equal width (5 icons with 20% width each = 100%) */
+	padding: 12px 0; /* Some top and bottom padding */
+	transition: all 0.3s ease; /* Add transition for hover effects */
+	color: white; /* White text color */
+	font-size: 36px; /* Increased font size */
+  }
+  
+  .icon-bar a:hover {
+	background-color: #000; /* Add a hover color */
+  }
+  
+  .active {
+	background-color: #330000; /* Add an active/current color */
+  }
+
+
+
+
+image{
+	float:none;
+}
+.column.buttons{
+	background-image: url("https://images.unsplash.com/photo-1536411396596-afed9fa3c1b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");
+	  background-size: cover;
+	  width: 1000px;
+	  height: 750px;
+	  display: inline-block;
+	  position: relative;
+}
+.btn{
+border: none;
+font-family: 'Lato';
+font-size: inherit;
+color: inherit;
+background: none;
+cursor: pointer;
+padding: 75px 80px;
+display: inline-block;
+margin: 15px 30px;
+text-transform: uppercase;
+letter-spacing: 1px;
+font-weight: 700;
+outline: none;
+position: relative;
+-webkit-transition: all 0.3s;
+-moz-transition: all 0.3s;
+transition: all 0.3s;
+}
+.btn:before {
+font-family: 'FontAwesome';
+
+font-style: normal;
+font-weight: normal;
+font-variant: normal;
+text-transform: none;
+line-height: 1;
+position: relative;
+-webkit-font-smoothing: antialiased;
+}
+
+
+/* Icon separator */
+.btn-sep {
+padding: 25px 60px 50px 120px;
+}
+
+.btn-sep:before {
+background: rgba(0,0,0,0.15);
+}
+.btn-1 {
+background: #4d0000;
+color: #fff;
+float:left;
+border:2px solid #330000;
+}
+
+.btn-1:hover {
+background: #330000;
+}
+
+.btn-1:active {
+background: #1a0000;
+top: 2px;
+}
+
+.btn-1:before {
+position: absolute;
+height: 100%;
+left: 0;
+top: 0;
+line-height: 3;
+font-size: 140%;
+width: 60px;
+}
+.btn-2 {
+background: #4d0000;
+color: #fff;
+float:right;
+border:2px solid #330000;
+}
+
+.btn-2:hover {
+background: #330000;
+}
+
+.btn-2:active {
+background: #1a0000;
+top: 2px;
+}
+
+.btn-2:before {
+position: absolute;
+height: 100%;
+left: 0;
+top: 0;
+line-height: 3;
+font-size: 140%;
+width: 60px;
+}
+.btn-3 {
+background: #4d0000;
+color: #fff;
+float:none;
+border:2px solid #330000;
+}
+
+.btn-3:hover {
+background: #330000;
+}
+
+.btn-3:active {
+background: #1a0000;
+top: 2px;
+}
+
+.btn-3:before {
+position: absolute;
+height: 100%;
+left: 0;
+top: 0;
+line-height: 3;
+font-size: 140%;
+width: 60px;
+}
+
+/* Create three unequal columns that floats next to each other */
+.column {
+float: left;
+padding: 10px;
+}
+
+/* Left and right column */
+.column.side {
+width: 15%;
+}
+
+/* Middle column */
+.column.button {
+width: 70%;
+
+}
+
+/* Clear floats after the columns */
+.row:after {
+content: "";
+display: table;
+clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+.column.side, .column.button {
+width: 100%;
+}
+}

@@ -1,0 +1,146 @@
+h1 {
+	font-weight: bold;
+	margin: 0;
+}
+
+h2 {
+	text-align: center;
+}
+.footer-section {
+    padding:0.5%;
+    color:#ffffff;
+    font-size:13px;
+    background-color: #8B0000;
+    border-top:4px solid #C46A15;
+	border-bottom: 2px solid #C46A15;
+	bottom:0;
+}
+
+.footer-section a, .footer-section a:hover {
+	color:#ffffff;
+}
+
+.quote-text{
+	font-size:15px;
+	font-family: 'Shadows Into Light', cursive;
+}
+
+.left-allign {
+	text-align:right;
+}
+
+.header-section {
+    padding:10px 50px 100px 10px;
+    color:Black;
+    font-size:30px;
+    background-color: #8B0000;
+    text-align:left;
+    border-top:5px solid #C46A15;
+	border-bottom: 2px solid #C46A15;
+
+}
+
+
+div.header-1 {
+	position: absolute;
+	left: 40px;
+}
+div.header-2 {
+	position: absolute;
+	left: 180px;
+	top : 35px;
+}
+div.header-3 {
+	position: absolute;
+	right: 40px;
+}
+div.header-4 {
+	position: absolute;
+	right: 170px;
+	top : 30px;
+}
+
+
+.small-text{
+	font-size:15px;
+	font-family: 'Shadows Into Light', cursive;
+}
+.medium-text{
+	font-size:30px;
+	font-family: 'Shadows Into Light', cursive;
+}
+body{
+	display:flex;
+	flex-direction:column;
+}
+
+
+	.tab{
+		overflow: hidden;
+		border: 1px solid #ccc;
+		background-color: #f1f1f1;
+	}
+	.tab button{
+		background-color:inherit;
+		color:black;
+		float:left;
+		border:none;
+		outline: none;
+		curser:pointer;
+		padding:14px 16px;
+		transition:0.3s;
+	}
+	.tab button:hover{
+		background-color:#ddd;
+	}
+	.tab button.active{
+		background-color:#ccc;
+	}
+	.content{
+		display:none;
+		padding:6px 12px;
+		border:1px solid #ccc;
+		border-top:none;
+	}
+	form {
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+	}
+	input {
+	background-color: #eee;
+	border: none;
+	padding: 15px 0;
+	margin: 8px 0;
+	width: 100%;
+	}
+	button {
+	border-radius: 20px;
+	border: 1px solid #FF4B2B;
+	background-color: #FF4B2B;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	
+	transition: transform 80ms ease-in;
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
+button:focus {
+	outline: none;
+}
+
+button.button {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
