@@ -200,31 +200,7 @@ line-height: 3;
 font-size: 140%;
 width: 60px;
 }
-.btn-3 {
-background: #4d0000;
-color: #fff;
-float:none;
-border:2px solid #330000;
-}
 
-.btn-3:hover {
-background: #330000;
-}
-
-.btn-3:active {
-background: #1a0000;
-top: 2px;
-}
-
-.btn-3:before {
-position: absolute;
-height: 100%;
-left: 0;
-top: 0;
-line-height: 3;
-font-size: 140%;
-width: 60px;
-}
 
 /* Create three unequal columns that floats next to each other */
 .column {

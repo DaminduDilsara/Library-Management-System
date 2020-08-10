@@ -1,3 +1,49 @@
+<?php
+	include "config.php";
+	if(strlen($_SESSION['memNo'])==0){   
+		header('location:index.php');
+	}else{ 
+		if(isset($_POST['add'])){
+			
+			$barcode=$_POST['barcode'];
+			$isbn=$_POST['isbn'];
+			$subject=$_POST['subject'];
+			$title=$_POST['title'];
+			$sub=$_POST['sub'];
+			$author=$_POST['author'];
+			$editor=$_POST['editor'];
+			$publisher=$_POST['publisher'];
+			$section=$_POST['section'];
+			$place=$_POST['place'];
+			$date=$_POST['date'];
+			$pages=$_POST['pages'];
+			$price=$_POST['price'];
+			$dim=$_POST['dim'];
+			$cd=$_POST['cd'];
+			$id=$_POST['id'];
+			$name=$_POST['name'];
+			$time=$_POST['time'];
+			$_SESSION[msg]="Successfully Added";
+
+			$table1=new Table();
+			$book=new Book($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd);
+			$table1->setBehaviour($book);
+			$nrows=$table1.insert();
+			
+
+			$table2=new Table();
+			$newspaper=new Newspaper($id,$name,$time);
+			$table2->setBehaviour($newspaper);
+			$nrows=$table2.insert();
+		}else{
+			$_SESSION[errorMsg]="Something went wrong!";
+		}
+	}
+
+
+?>
+
+
 <!doctype html>
 
 
@@ -21,14 +67,14 @@ include "header.php";
 <h2>Adding Page</h2>
 <div class="container" id="container">
 	<div class="form-container newspaper-container">
-		<form action="insertNewspaper.php" method="post">
+		<form method="post" onsubmit="return success();">
 			</br></br></br>
 			<h1>Add Newspaper</h1>
 			
 			<input type="text" name="id"placeholder="ID"required />
 			<input type="text" name="name"placeholder="Name" required/>
 			<input type="day" name="time"placeholder="Time Period"required />
-			<button type="submit">Add</button>
+			<button name="add" type="submit">Add</button>
 			</br></br></br></br></br>
 			</br></br></br></br></br>
 			</br></br></br></br></br>
@@ -38,7 +84,7 @@ include "header.php";
 		</form>
 	</div>
 	<div class="form-container book-container">
-		<form action="insertBook.php"method="post">
+		<form method="post"onsubmit="return success();">
 			<h1>Add Book</h1>
 			<input type="number" name="barcode"placeholder="Barcode No" required/>
 			<input type="text" name="isbn"placeholder="ISBN" required/>
@@ -104,6 +150,13 @@ NewspaperButton.addEventListener('click', () => {
 BookButton.addEventListener('click', () => {
 	container.classList.remove("right-panel-active");
 });
+function success(table1->$nrows){
+	if $nrows==NULL{
+		alert("Error!")
+	}else{
+		alert("Successfully Added")
+	}
+}
 </script>
 </body>
 <footer>
@@ -114,4 +167,4 @@ BookButton.addEventListener('click', () => {
 
 
 
-</html> 
+</html>

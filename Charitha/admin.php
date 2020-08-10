@@ -1,3 +1,7 @@
+<?php
+session_start();
+error_reporting(0);
+?>
 <!doctype html>
 
 <html lang="en">
@@ -46,7 +50,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<div class="icon-bar">
-  		<a class="active" href="#"><i class="fa fa-home"></i></a>
+  		<a class="active" href="Github/Library-Management-System/index.php"><i class="fa fa-home"></i></a>
   		<a href="#"><i class="fa fa-search"></i></a>
   		<a href="#"><i class="fa fa-envelope"></i></a>
   		<a href="#"><i class="fa fa-info-circle"></i></a>
@@ -96,7 +100,8 @@
 	<button class="fas fa-handshake-o btn btn-sep btn-1" onclick="document.location='default.asp'">Donations</button>
 	<button class="fa fa-file btn btn-sep btn-2"onclick="document.location='default.asp'">Creations</button>
 	<br><br><br><br><br><br><br>
-	<button class="fa fa-user btn btn-sep btn-3" onclick="document.location='default.asp'">Staff Information</button>
+	<button class="fa fa-user btn btn-sep btn-1" onclick="document.location='staff-member.php'">Staff Information</button>
+	<button class="fa fa-list-alt btn btn-sep btn-2" onclick="document.location='categary.php'">Edit Categary</button>
 </div>
 <div class="column side">
 </div>

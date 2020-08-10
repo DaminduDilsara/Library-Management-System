@@ -13,7 +13,7 @@
         if($rows==1){
 			session_start();
 			$_SESSION['memNo'] = $memNo;
-			header("Location: view/whole.view.php");
+			header("Location: Charitha/admin.php");
         }else{
 			echo "<div class='login_Messages'><h3>Username/password is incorrect.</h3>Click here to <a href='index.php'>Login Again</a></div>";
 			$run = true;
