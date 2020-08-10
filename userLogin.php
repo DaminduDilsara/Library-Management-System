@@ -12,8 +12,8 @@
 		$rows = mysqli_num_rows($result);
         if($rows==1){
 			session_start();
-			$_SESSION1['memNo'] = $memNo;
-			header("Location: Charitha/admin.php");
+			$_SESSION['memNo'] = $memNo;
+			header("Location: view/whole.view.php");
         }else{
 			echo "<div class='login_Messages'><h3>Username/password is incorrect.</h3>Click here to <a href='index.php'>Login Again</a></div>";
 			$run = true;
