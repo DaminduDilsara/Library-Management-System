@@ -4,7 +4,7 @@
     <title>Online Library Management System | </title>
 
     <!-- CUSTOM STYLE  -->
-    <link href="style/style-Damindu.css" rel="stylesheet" />
+    <link href="../style/style-Damindu.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -13,7 +13,7 @@
 			Team Error
 		</div>
 		<div class="header-1">
-			<img src="images/team.png" style="float:left;width:100px;height:90px;"/>
+			<img src="../images/team.png" style="float:left;width:100px;height:90px;"/>
 		</div>
 		
 	</section>
@@ -22,7 +22,7 @@
 	<div class="row">
 	  <div class="column">
 		<div class="card4">
-		  <img src="images/Damindu.jpg" alt="Damindu" style="width:100%">
+		  <img src="../images/Damindu.jpg" alt="Damindu" style="width:100%">
 		  <div class="container">
 			<h2>Damindu Dilsara Hettiarachchi</h2>
 			<p class="title">University of Moratuwa - Department of CSE</p>
@@ -34,7 +34,7 @@
 
 	  <div class="column">
 		<div class="card4">
-		  <img src="images/Uthpala.jpeg" alt="Uthpala" style="width:100%">
+		  <img src="../images/Uthpala.jpeg" alt="Uthpala" style="width:100%">
 		  <div class="container">
 			<h2>Uthpala Nethmini</h2>
 			<p class="title">University of Moratuwa - Department of CSE</p>
@@ -46,7 +46,7 @@
 
 	  <div class="column">
 		<div class="card4">
-		  <img src="images/Charitha.jpeg" alt="Charitha" style="width:100%">
+		  <img src="../images/Charitha.jpeg" alt="Charitha" style="width:100%">
 		  <div class="container">
 			<h2>Charitha Sewwandi</h2>
 			<p class="title">University of Moratuwa - Department of CSE</p>
@@ -58,7 +58,7 @@
 	  
 	  <div class="column">
 		<div class="card4">
-		  <img src="images/Ridmi.jpeg" alt="Ridmi" style="width:100%">
+		  <img src="../images/Ridmi.jpeg" alt="Ridmi" style="width:100%">
 		  <div class="container">
 			<h2>Ridmi Sameera Thilakarathna</h2>
 			<p class="title">University of Moratuwa - Department of CSE</p>

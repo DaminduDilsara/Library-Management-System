@@ -1,4 +1,3 @@
-
 <?php
 include('../model/usermodel.model.php');
 
@@ -149,9 +148,20 @@ class UserController extends User {
 			return 2;
 		}
 		
-	}	
+	}
 
 
+	public function UserLogin($memNo, $password){
+	    $rows = $this->getUserLoginInfo($memNo, $password);
+        if($rows)
+        {
+            return true;
+        }
+        else
+        {
+            $this->error = "Wrong Data";
+        }
+    }
 
 }
 ?>

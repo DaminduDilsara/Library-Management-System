@@ -7,10 +7,10 @@
 			<div class="small-text">Management System</div>
 		</div>
 		<div class="header-1">
-			<img src="images/emblem.png" style="float:left;width:100px;height:90px;"/>
+			<img src="../images/emblem.png" style="float:left;width:100px;height:90px;"/>
 		</div>
 		<div class="header-3">
-			<img src="images/management.png" style="float:left;width:130px;height:90px;"/>
+			<img src="../images/management.png" style="float:left;width:130px;height:90px;"/>
 		</div>
 </section>
 

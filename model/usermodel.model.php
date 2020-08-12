@@ -17,6 +17,13 @@ class User extends dbConnection {
 		$stmt = $this->connect()->prepare($sql);
 		$stmt->execute([$memNo]); 
 	 }
+
+	 public function getUserLoginInfo($memNo, $password){
+         $sql = "SELECT * FROM member WHERE MembershipNo= '$memNo' and Password = '$password'";
+         $result = mysqli_query($this -> connectInDifferentWay(),$sql) or die(mysql_error());
+         $rows = mysqli_num_rows($result);
+         return $rows;
+     }
 	
 }
 ?>

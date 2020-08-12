@@ -1,6 +1,6 @@
 	<section class="footer-section">
 		<div class="col-md-12">
-		<img src="images/book.gif" style="float:left;width:100px;height:70px;"/>
+		<img src="../images/book.gif" style="float:left;width:100px;height:70px;"/>
 		
 		<div class="quote-text">
 		“Think before you speak. Read before you think.”<br>-------- Fran Lebowitz --------
