@@ -26,7 +26,6 @@
     <img src="../images/slide6.jpg" style="width:275px; height:275px;">
   </div>
 </div>
-<br>
 
 
 

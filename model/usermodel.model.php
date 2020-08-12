@@ -19,7 +19,7 @@ class User extends dbConnection {
 	 }
 
 	 public function getUserLoginInfo($memNo, $password){
-         $sql = "SELECT * FROM member WHERE MembershipNo= '$memNo' and Password = '$password'";
+         $sql = "SELECT * FROM member WHERE MembershipNo= '$memNo' and Password = '".md5($password)."'";  //'".md5($psw)."' decrypting
          $result = mysqli_query($this -> connectInDifferentWay(),$sql) or die(mysql_error());
          $rows = mysqli_num_rows($result);
          return $rows;

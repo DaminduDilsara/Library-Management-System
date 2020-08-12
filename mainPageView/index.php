@@ -20,7 +20,7 @@
 	
 		<div class="leftcolumn">
 			<div class="card1">
-				
+
 			</div>
 			<div class="card2">
 				
