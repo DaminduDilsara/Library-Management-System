@@ -170,6 +170,24 @@ class UserController extends User {
         }
     }
 
+    public function userRegister($email,$psw,$memNo){
+        $rows = $this->checkExist($memNo);
+        $exist = $this -> CheckNull($memNo);
+        if (!$exist){
+            return "noSuch";
+        }
+        while ($rows){
+            $notRegistered = $rows["Password"];
+            if($notRegistered!=''){
+                return "false";
+            }else{
+                if($this->saveUserRegisterInfo($email,$psw,$memNo)){
+                    return "true";
+                }
+        }
+        };
+    }
+
     public function addCreation($me,$fileName,$fileTmpName)
     {
     	$str='0';
