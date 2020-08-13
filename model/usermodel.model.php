@@ -2,6 +2,7 @@
 include_once('../controller/usercontroller.controller.php');
 include_once('../include/dbconnection.inc.php');
 
+
 class User extends dbConnection {
 
 	 public function getInfo($memNo){
@@ -24,6 +25,12 @@ class User extends dbConnection {
          $rows = mysqli_num_rows($result);
          return $rows;
      }
+
+     public function addCreationalInfo($me,$fileName,$fileTmpName,$str){
+	 	$sql = 'INSERT INTO creation(MembershipNo,Title,Creation,Approved) VALUES (?,?,?,?)';
+		$stmt = $this->connect()->prepare($sql);
+		$stmt->execute([$me,$fileName,$fileTmpName,$str]); 
+	 }
 	
 }
 ?>

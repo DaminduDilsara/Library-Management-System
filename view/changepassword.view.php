@@ -10,7 +10,7 @@ $psw=isset(($_POST['psw']))? $_POST['psw']:"";
 $repsw=isset(($_POST['confirmpassword']))? $_POST['confirmpassword']:"";
 $memNo=$_SESSION['memNo'];
 
-$obuser=new UserController();
+$obuser=UserController::getInstance();
 $result=$obuser->checkPassword($memNo,$psw,$newpassword,$repsw);
 }
 ?>

@@ -2,7 +2,7 @@
 include_once('../include/dbconnection.inc.php');
 include_once('../controller/usercontroller.controller.php');
 
-    $cont = new UserController();
+    $cont = UserController::getInstance();
     if (isset($_POST['login'])){
 
 		$memNo = $_POST['memNo']; // removes backslashes

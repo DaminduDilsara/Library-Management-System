@@ -17,9 +17,16 @@ class UserController extends User {
 	private $email;
 
 
-	public function _construct(){
-
-	}
+	private static $instance;
+    private function __construct(){}
+    
+    public static function getInstance()
+    {
+        if(!isset(self::$instance)){
+            self::$instance = new UserController();
+        }
+        return self::$instance;
+    }
 
 	public function getName(){
 		return $this->name;
@@ -161,6 +168,12 @@ class UserController extends User {
         {
             $this->error = "Wrong Data";
         }
+    }
+
+    public function addCreation($me,$fileName,$fileTmpName)
+    {
+    	$str='0';
+    	$this->addCreationalInfo($me,$fileName,$fileTmpName,$str);
     }
 
 }

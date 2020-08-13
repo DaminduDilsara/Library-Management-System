@@ -1,10 +1,10 @@
 <?php 
 session_start();
 include('../include/dbconnection.inc.php');
-//include('../controller/usercontroller.controller.php');
-error_reporting(0);
-?>
 
+error_reporting(0);
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -40,17 +40,30 @@ error_reporting(0);
 
         <div class="medium-text" style="font-size: 30px; text-align: center;">Drop file to upload</div>
     
+        <?php 
+        
+
+          if(isset($_GET['msg'])){
+               ?><div class="small-text" style="font-size: 20px;"><?php echo ($_GET['msg']); ?></div><?php
+        }?>
+      <div class="dropzone" style="height: 100px; ">
+        <img src="../images/Capture29.png" style="width: 20%; height: 20%;">
+        <form action="../include/uploadcreation.inc.php" method="POST" enctype="multipart/form-data">
+          <input type="file" name="file">
+          
+          <button class="button" style="background-color: #4C5A64; color: white; width: 100%;" type="submit" name="submit">UPLOAD</button>
+        </form>
        
-      <div class="dropzone">
-        <span class="filename"></span>
-        <input type="file" class="input">
-      </div>   
+
+ 
+      </div> 
+       
+        
+            
 </div>
 
 
 
       </div>
   </div>
-
-
 
