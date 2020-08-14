@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 error_reporting(0);
 ?>
 <!doctype html>
@@ -8,7 +8,7 @@ error_reporting(0);
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title> Admin Homepage </title>
-	<link rel="stylesheet" href="style/admin.css"type="text/css"/>
+	<link rel="stylesheet" href="../style/admin.charitha.css"type="text/css"/>
 	<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
 	
 	
@@ -17,7 +17,7 @@ error_reporting(0);
 	<header>
 		
 		<?php
-		include "header.php";
+		include "../include/header.inc.php";
 		?>
 		 
 		<h2 id="demo">Admin Homepage</h2>
@@ -29,12 +29,12 @@ error_reporting(0);
 	<div class="slideshow-container">
 		<div class="mySlides fade">
 			
-			<img src="images/library.jpg"style="width:100%">
+			<img src="../images/library.jpg"style="width:100%">
 				
 		</div>
 		<div class="mySlides fade">
 			
-			<img src="images/library2.jpg"style="width:100%">
+			<img src="../images/library2.jpg"style="width:100%">
 				
 		</div>
 	</div>
@@ -50,7 +50,7 @@ error_reporting(0);
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<div class="icon-bar">
-  		<a class="active" href="Github/Library-Management-System/index.php"><i class="fa fa-home"></i></a>
+  		<a class="active" href="../index.php"><i class="fa fa-home"></i></a>
   		<a href="#"><i class="fa fa-search"></i></a>
   		<a href="#"><i class="fa fa-envelope"></i></a>
   		<a href="#"><i class="fa fa-info-circle"></i></a>
@@ -88,20 +88,20 @@ error_reporting(0);
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 	<br><br><br><br>
-	<button class="fa fa-plus btn btn-sep btn-1" onclick="document.location='add.php'" >Adding Area</button>
-	<button class="fa fa-minus btn btn-sep btn-2" onclick="document.location='remove.php'">Removing Area</button>
+	<button class="fa fa-plus btn btn-sep btn-1" onclick="document.location='add.view.php'" >Adding Area</button>
+	<button class="fa fa-minus btn btn-sep btn-2" onclick="document.location='../Charitha/remove.php'">Removing Area</button>
 	<br><br><br><br><br><br><br>
-	<button class="fa fa-users btn btn-sep btn-1" onclick="document.location='MembersArea.php'">Members Area</button>
-	<button class="fa fa-book btn btn-sep btn-2"onclick="document.location='Lend.php'">Lending Session</button>
+	<button class="fa fa-users btn btn-sep btn-1" onclick="document.location='../Charitha/MembersArea.php'">Members Area</button>
+	<button class="fa fa-book btn btn-sep btn-2"onclick="document.location='../Charitha/Lend.php'">Lending Session</button>
 	<br><br><br><br><br><br><br>
-	<button class="fa fa-male btn btn-sep btn-1"onclick="document.location='author.php'">Authors Area</button>
-	<button class="fa fa-check btn btn-sep btn-2"onclick="document.location='checkbox.php'">Newspapers Register</button>
+	<button class="fa fa-male btn btn-sep btn-1"onclick="document.location='../Charitha/author.php'">Authors Area</button>
+	<button class="fa fa-check btn btn-sep btn-2"onclick="document.location='../Charitha/checkbox.php'">Newspapers Register</button>
 	<br><br><br><br><br><br><br>
 	<button class="fas fa-handshake-o btn btn-sep btn-1" onclick="document.location='default.asp'">Donations</button>
 	<button class="fa fa-file btn btn-sep btn-2"onclick="document.location='default.asp'">Creations</button>
 	<br><br><br><br><br><br><br>
-	<button class="fa fa-user btn btn-sep btn-1" onclick="document.location='staff-member.php'">Staff Information</button>
-	<button class="fa fa-list-alt btn btn-sep btn-2" onclick="document.location='categary.php'">Edit Categary</button>
+	<button class="fa fa-user btn btn-sep btn-1" onclick="document.location='../Charitha/staff-member.php'">Staff Information</button>
+	
 </div>
 <div class="column side">
 </div>
@@ -290,7 +290,7 @@ function showSlides() {
 <div>
 <footer>
 	<?php
-	include "footer.php";
+	include "../include/footer.inc.php";
 	?>
 </footer>
 </div>

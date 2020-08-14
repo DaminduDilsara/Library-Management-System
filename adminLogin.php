@@ -12,7 +12,7 @@
 		$rows = mysqli_num_rows($result);
         if($rows==1){
 			session_start();
-			$_SESSION2['userName'] = $userName;
+			$_SESSION['userName'] = $userName;
 			header("Location: Charitha/admin.php");
         }else{
 			echo "<div class='login_Messages'><h3>Username/password is incorrect.</h3>Click here to <a href='index.php'>Login Again</a></div>";

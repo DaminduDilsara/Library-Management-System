@@ -1,13 +1,15 @@
 <?php
-include "";
-Class AdminModel{
+include "../model/adminModel.model.php";
+Class Admincontroller extends Admin {
 	private $editable;
 
-	public function setBehaviour($editable){
+	
+	public function insert($editable){
+		
 		$this->editable=$editable;
-	}
-	public function insert(){
-		$editable->insertData();
+		
+		$msg=$this->editable->insertData();
+		return($msg);
 	}
 }
 Interface Editable{
@@ -30,8 +32,10 @@ Class Book implements Editable{
 	private $price;
 	private $dim;
 	private $cd;
+	private $categary;
 	
-	public function _constructor($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd){
+	public function Book($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary){
+		
 		$this->barcode=$barcode;
 		$this->isbn=$isbn;
 		$this->subject=$subject;
@@ -47,10 +51,24 @@ Class Book implements Editable{
 		$this->price=$price;
 		$this->dim=$dim;
 		$this->cd=$cd;
+		$this->categary=$categary;
+		
 	}
 	public function insertData(){
 		
+		
+		$adminModel=new Admin();
+		$success=$adminModel->insertbook($this->barcode,$this->isbn,$this->subject,$this->title,$this->sub,$this->author,$this->editor,$this->publisher,$this->section,$this->place,$this->date,$this->pages,$this->price,$this->dim,$this->cd,$this->categary);
+		
+		if($success==1){
+			$msg="Success";
+		}else{
+			$msg="Error";
+		}
+		$success=0;
+		return($msg);
 	}
+
 	
 }
 Class Newspaper implements Editable{
@@ -58,20 +76,24 @@ Class Newspaper implements Editable{
 	private $name;
 	private $time;
 
-	public function _constructor($id,$name,$time){
+	public function Newspaper($id,$name,$time){
 		$this->id=$id;
 		$this->name=$name;
 		$this->time=$time;
+		
 	}
 	public function insertData(){
-		$sql = "INSERT INTO `newspaper` (`NewspaperID`, `NewspaperName`, `TimePeriod`) VALUES ('$id', '$name', '$time')";
-		$query = $dbh->prepare($sql);
-		$query->bindParam(':id',$id,PDO::PARAM_STR);
-		$query->bindParam(':name',$name,PDO::PARAM_STR);
-		$query->bindParam(':time',$time,PDO::PARAM_STR);
+		$adminModel=new Admin();
+		$success=$adminModel->insertnewspaper($this->id,$this->name,$this->time);
 		
-		$nrows =$pdo->exec();
-		return $nrows;
+		if($success==1){
+			$msg="Success";
+		}else{
+			$msg="Error";
+		}
+		$success=0;
+		return($msg);
+		
 	}
 }
 Class Author implements Editable{
@@ -157,13 +179,79 @@ Class Staff implements Editable{
 	}
 }
 Class Deposite implements editable{
+	private $staffID;
+	private $name;
+	private $post;
+	private $address;
+	private $contactNo;
+	private $userName;
+	private $password;
 
+	public function _constructor($staffID,$name,$post,$address,$contactNo,$userName,$password){
+		$this->staffID=$staffID;
+		$this->name=$name;
+		$this->post=$post;
+		$this->address=$address;
+		$this->contactNo=$contactNo;
+		$this->userName=$userName;
+		$this->password=$password;
+	}
+	public function insertData(){
+		$query = "INSERT INTO `staff` (`StaffID`, `Name`, `Post`,'Address','ContactNo','UserName','Password') VALUES ('$staffID', '$name', '$post','$address','$contactNo','$userName','$password')";
+		$nrows =$pdo->exec("INSERT INTO `author` (`FirstName`, `LastName`) VALUES ('$first', '$last')");
+		return $nrows;
+		
+	}
 }
 Class BorrowSession implements editable{
+	private $staffID;
+	private $name;
+	private $post;
+	private $address;
+	private $contactNo;
+	private $userName;
+	private $password;
 
+	public function _constructor($staffID,$name,$post,$address,$contactNo,$userName,$password){
+		$this->staffID=$staffID;
+		$this->name=$name;
+		$this->post=$post;
+		$this->address=$address;
+		$this->contactNo=$contactNo;
+		$this->userName=$userName;
+		$this->password=$password;
+	}
+	public function insertData(){
+		$query = "INSERT INTO `staff` (`StaffID`, `Name`, `Post`,'Address','ContactNo','UserName','Password') VALUES ('$staffID', '$name', '$post','$address','$contactNo','$userName','$password')";
+		$nrows =$pdo->exec("INSERT INTO `author` (`FirstName`, `LastName`) VALUES ('$first', '$last')");
+		return $nrows;
+		
+	}
 }
 Class Category implements editable{
-	
+	private $staffID;
+	private $name;
+	private $post;
+	private $address;
+	private $contactNo;
+	private $userName;
+	private $password;
+
+	public function _constructor($staffID,$name,$post,$address,$contactNo,$userName,$password){
+		$this->staffID=$staffID;
+		$this->name=$name;
+		$this->post=$post;
+		$this->address=$address;
+		$this->contactNo=$contactNo;
+		$this->userName=$userName;
+		$this->password=$password;
+	}
+	public function insertData(){
+		$query = "INSERT INTO `staff` (`StaffID`, `Name`, `Post`,'Address','ContactNo','UserName','Password') VALUES ('$staffID', '$name', '$post','$address','$contactNo','$userName','$password')";
+		$nrows =$pdo->exec("INSERT INTO `author` (`FirstName`, `LastName`) VALUES ('$first', '$last')");
+		return $nrows;
+		
+	}
 }
 
 
