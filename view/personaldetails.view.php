@@ -10,7 +10,7 @@ error_reporting(0);
 $memNo=$_SESSION['memNo'];
 
 
-$obuser=new UserController();
+$obuser=UserController::getInstance();
 $result=$obuser->assignInfo($memNo);
           
   ?> 

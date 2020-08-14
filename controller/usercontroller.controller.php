@@ -1,4 +1,3 @@
-
 <?php
 include('../model/usermodel.model.php');
 
@@ -18,9 +17,16 @@ class UserController extends User {
 	private $email;
 
 
-	public function _construct(){
-
-	}
+	private static $instance;
+    private function __construct(){}
+    
+    public static function getInstance()
+    {
+        if(!isset(self::$instance)){
+            self::$instance = new UserController();
+        }
+        return self::$instance;
+    }
 
 	public function getName(){
 		return $this->name;
@@ -149,9 +155,44 @@ class UserController extends User {
 			return 2;
 		}
 		
-	}	
+	}
 
 
+	public function UserLogin($memNo, $password){
+	    $rows = $this->getUserLoginInfo($memNo, $password);
+        if($rows)
+        {
+            return true;
+        }
+        else
+        {
+            $this->error = "Wrong Data";
+        }
+    }
+
+    public function userRegister($email,$psw,$memNo){
+        $rows = $this->checkExist($memNo);
+        $exist = $this -> CheckNull($memNo);
+        if (!$exist){
+            return "noSuch";
+        }
+        while ($rows){
+            $notRegistered = $rows["Password"];
+            if($notRegistered!=''){
+                return "false";
+            }else{
+                if($this->saveUserRegisterInfo($email,$psw,$memNo)){
+                    return "true";
+                }
+        }
+        };
+    }
+
+    public function addCreation($me,$fileName,$fileTmpName)
+    {
+    	$str='0';
+    	$this->addCreationalInfo($me,$fileName,$fileTmpName,$str);
+    }
 
 }
 ?>

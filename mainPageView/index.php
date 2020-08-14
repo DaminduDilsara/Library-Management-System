@@ -4,7 +4,7 @@
     <title>Online Library Management System | </title>
 
     <!-- CUSTOM STYLE  -->
-    <link href="style/style-Damindu.css" rel="stylesheet" />
+    <link href="../style/style-Damindu.css" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
 
 
@@ -19,9 +19,11 @@
 	<div class="row">
 	
 		<div class="leftcolumn">
-			
+			<div class="card1">
+
+			</div>
 			<div class="card2">
-				Creation page
+				
 			</div>
 		</div>
 	  
@@ -36,8 +38,8 @@
 			</div>
 			
 			<div class="card3">
-				<p><img src="images/phone.png" style="width:30px;height:25px;"/><sup> +94 76 549 1495</sup></p>
-				<p><img src="images/email.png" style="width:30px;height:30px;"/><a href="https://google.com/" target="_blank" style="text-decoration:none"><sup> lib.justinwige@gmail.com</sup></a> </p>
+				<p><img src="../images/phone.png" style="width:30px;height:25px;"/><sup> +94 76 549 1495</sup></p>
+				<p><img src="../images/email.png" style="width:30px;height:30px;"/><a href="https://google.com/" target="_blank" style="text-decoration:none"><sup> lib.justinwige@gmail.com</sup></a> </p>
 			</div>
 			
 			<div class="card">

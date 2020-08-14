@@ -3,30 +3,29 @@
 
   <!-- Full-width images with number and caption text -->
   <div class="mySlides fade">
-    <img src="images/slide1.jpg" style="width:275px; height:275px;">
+    <img src="../images/slide1.jpg" style="width:275px; height:275px;">
   </div>
 
   <div class="mySlides fade">
-    <img src="images/slide2.jpg" style="width:275px; height:275px;">
+    <img src="../images/slide2.jpg" style="width:275px; height:275px;">
   </div>
 
   <div class="mySlides fade">
-    <img src="images/slide3.jpg" style="width:275px; height:275px;">
+    <img src="../images/slide3.jpg" style="width:275px; height:275px;">
   </div>
   
   <div class="mySlides fade">
-    <img src="images/slide4.jpg" style="width:275px; height:275px;">
+    <img src="../images/slide4.jpg" style="width:275px; height:275px;">
   </div>
   
   <div class="mySlides fade">
-    <img src="images/slide5.jpg" style="width:275px; height:275px;">
+    <img src="../images/slide5.jpg" style="width:275px; height:275px;">
   </div>
   
   <div class="mySlides fade">
-    <img src="images/slide6.jpg" style="width:275px; height:275px;">
+    <img src="../images/slide6.jpg" style="width:275px; height:275px;">
   </div>
 </div>
-<br>
 
 
 

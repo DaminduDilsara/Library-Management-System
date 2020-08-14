@@ -4,7 +4,7 @@
     <title>Online Library Management System | </title>
 
     <!-- CUSTOM STYLE  -->
-    <link href="style/style-Damindu.css" rel="stylesheet" />
+    <link href="../style/style-Damindu.css" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
 
 
