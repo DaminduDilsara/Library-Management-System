@@ -5,7 +5,7 @@
 	if(strlen($_SESSION['memNo'])==0){   
 		header('../index.php');
 	}else{
-		$controller=new AdminController(); 
+		$controller=AdminController::getinstance(); 
 		if(isset($_POST['addbook'])){
 			
 			$barcode=$_POST['barcode'];
@@ -13,7 +13,8 @@
 			$subject=$_POST['subject'];
 			$title=$_POST['title'];
 			$sub=$_POST['sub'];
-			$author=$_POST['author'];
+			$author1=$_POST['author1'];
+			$author2=$_POST['author2'];
 			$editor=$_POST['editor'];
 			$publisher=$_POST['publisher'];
 			$section=$_POST['section'];
@@ -26,7 +27,7 @@
 			$categary=$_POST['categary'];
 		
 			
-			$book=new Book($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary);
+			$book=Book::getInstance($barcode,$isbn,$subject,$title,$sub,$author1,$author2,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary);
 			$msg=$controller->insert($book);
 			$_SESSION['msg']=$msg;
 		}elseif(isset($_POST['addnewspaper'])){ 
@@ -37,7 +38,7 @@
 			$time=$_POST['time'];
 			
 			
-			$newspaper=new Newspaper($id,$name,$time);
+			$newspaper=Newspaper::getInstance($id,$name,$time);
 			$msg=$controller->insert($newspaper);
 			$_SESSION['msg']=$msg;
 		
@@ -92,7 +93,7 @@ include "../include/header.inc.php";
 	</div>
 	<div class="form-container book-container">
 		<form method="post">
-			</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+			</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
 			<h1>Add Book</h1>
 			</br></br></br>
 			<input type="number" name="barcode"placeholder="Barcode No" required/>
@@ -100,7 +101,8 @@ include "../include/header.inc.php";
 			<input type="text" name="subject"placeholder="Subject" required/>
 			<input type="text" name="title"placeholder="Title"required />
 			<input type="text" name="sub"placeholder="Subtitle" />
-			<input type="text" name="author"placeholder="Author's First Name" />
+			<input type="text" name="author1"placeholder="Author's First Name" />
+			<input type="text" name="author2"placeholder="Author's Last Name" />
 			<input type="text" name="editor"placeholder="Editor" />
 			<input type="text" name="publisher"placeholder="Publisher"required />
 			<input type="text" name="section"placeholder="Section" required/>

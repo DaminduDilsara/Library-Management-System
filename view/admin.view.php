@@ -94,7 +94,7 @@ error_reporting(0);
 	<button class="fa fa-users btn btn-sep btn-1" onclick="document.location='../Charitha/MembersArea.php'">Members Area</button>
 	<button class="fa fa-book btn btn-sep btn-2"onclick="document.location='../Charitha/Lend.php'">Lending Session</button>
 	<br><br><br><br><br><br><br>
-	<button class="fa fa-male btn btn-sep btn-1"onclick="document.location='../Charitha/author.php'">Authors Area</button>
+	<button class="fa fa-male btn btn-sep btn-1"onclick="document.location='author.view.php'">Authors Area</button>
 	<button class="fa fa-check btn btn-sep btn-2"onclick="document.location='../Charitha/checkbox.php'">Newspapers Register</button>
 	<br><br><br><br><br><br><br>
 	<button class="fas fa-handshake-o btn btn-sep btn-1" onclick="document.location='default.asp'">Donations</button>
