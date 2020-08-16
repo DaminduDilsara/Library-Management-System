@@ -80,7 +80,7 @@
 			
 		}
 		public function insertStaff(){
-			$sql = "INSERT INTO `member`(`MembershipNo`, `RegistrationDate`, `Name`, `Address`,'Birthday','School','Telephone','email','DepositeReceiptNo','ExpirationDate','Guarantor','Password','Deleted') VALUES ('$memNo','$date','$name',$address','$birthday','$school','$tele','$email',SELECT ,'$expirationDate','$guarantor','$password','0')";
+			$sql = "INSERT INTO `staff`(`StaffID`,  `Name`,'Post', `Address`,'ContactNo','Username','Password','Deleted') VALUES ('$id','$name','$post','$address','$contNo','$username','$password','0')";
 				$query=$this->connectInDifferentWay();
 				$result=mysqli_query($query,$sql) or die(mysqli_error($query));
 				
@@ -98,7 +98,7 @@
 			try{
 				 
 			
-				$sql = "INSERT INTO `newspaper`(`NewspaperID`, `NewspaperName`, `TimeDuration`, `Availability`) VALUES ('$id','$name',$time,'0')";
+				$sql = "INSERT INTO `borrowsession`(`BarcodeNo','MembershipNo', `Date`, `ExpirationDate`,'Ended','StaffID','ReceiptNo') VALUES ('$barcode','$memNo','$date','$expirationDate','No','$id',(SELECT MembershipNo FROM  ))";
 				$query=$this->connectInDifferentWay();
 				$result=mysqli_query($query,$sql) or die(mysqli_error($query));
 				
@@ -116,14 +116,5 @@
 				return false;
 			}
 		}
-
-
-		public function getAdminInfo($staffID){
-	 		$sql = "SELECT * FROM staff WHERE StaffID= ?";
-			$query = $this->connect()->prepare($sql);
-			$query->execute([$staffID]);
-			$query = $query->fetchAll();
-			return $query;
-	 }
 
 	}
