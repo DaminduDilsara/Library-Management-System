@@ -117,4 +117,12 @@
 			}
 		}
 
+		public function getAdminInfo($staffID){
+	 		$sql = "SELECT * FROM staff WHERE StaffID= ?";
+			$query = $this->connect()->prepare($sql);
+			$query->execute([$staffID]);
+			$query = $query->fetchAll();
+			return $query;
+	 }
+
 	}
