@@ -1,8 +1,11 @@
 <?php 
 session_start();
 include('../include/dbconnection.inc.php');
-include('../controller/usercontroller.controller.php');
+
+include('../controller/bookController.controller.php');
 error_reporting(0);
+
+ $obuser=new BookController();
 ?>
 
 
@@ -29,7 +32,7 @@ error_reporting(0);
   </div>
   <div class="row" >
   
-    <div class="card" style="height: 400px; ">
+    <div class="card" style="height: 500px; ">
       
       <div class="fakeimg" style="height:400px;">
       	<h3>Managed Issued Books</h3>
@@ -39,16 +42,29 @@ error_reporting(0);
     <th>ISBN</th>
     <th>Issued Date</th>
     <th>Expiration Date</th>
-    <th>Return Date</th>
+    <th>Returned Date</th>
     <th>Fine in (Rs.)</th>
   </tr>
   <tr>
-  	<td></td>
-  	<td></td>
-  	<td></td>
-  	<td></td>
-  	<td></td>
-    <td></td>
+  	<td>
+      <?php $obuser->getBookName(); ?> 
+    </td>
+  	<td>
+     <?php $obuser->getISBN(); ?>  
+    </td>
+  	<td>
+      <?php $obuser->getIssuedDate(); ?>
+      
+    </td>
+  	<td>
+     <?php $obuser->getExpirationDate(); ?> 
+    </td>
+  	<td>
+     <?php $obuser->getReturnedDate(); ?> 
+    </td>
+    <td>
+      <?php $obuser->getFine(); ?>
+    </td>
   </tr>
       </div>
       </div>

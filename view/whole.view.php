@@ -33,7 +33,7 @@ $result=$obuser->assignInfo($memNo);
 
 	
   <div class="navbar">
-    <a class="active" href="testing/Library.php"><i class="fa fa-fw fa-home"></i> Home</a>
+    <a class="active" href="../mainPageView/index.php"><i class="fa fa-fw fa-home"></i> Home</a>
     <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact Us</a>
     <a href="#"> Advanced search</a> 
   </div>

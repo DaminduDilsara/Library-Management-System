@@ -71,45 +71,65 @@ div.header-4 {
 .left-allign {
 	text-align:right;
 }
-div.middle{
-	width:100%;
-	height: 550px;
-}
+
 div.left{
-	height: 550px;
-	width: 30%;
-	background-color: #F9BDB4 ;
+	width: 70%;
+	height: 98%;
+	align-content: center;
+	font: small-caps;
+	font-size: 20px;
+	background-color: #F9BDB4;
+	padding: 2%;
+	margin-top: 0.5%;
+	margin-bottom: 0.5%;
+	color:#8B0000;
 	float: left;
 }
-div.left-middle{
-	height: 300px;
-	width: 50%;
-	background-color: white;
-	align-self: center;
-	align-content: center;
-	margin-top: 10%;
-	margin-left: 50%
-	margin-right:25%;
-}
-div.right{
-	float: right;
-	width: 60%;
-	height: 550px;
-	align-content: center;
-}
-form{
-	width: 80%;
-	height: 80%;
-	background-color: #F9BDB4 ;
-	align-self: center;
-	margin-top: 5%;
-	align-content: center;
-	padding-left: 10%;
-	padding-top: 5%;
 
+
+
+ input[type=text]{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
 }
-input {
-	width: 80%;
-	padding:1%;
+
+input[type=submit]{
+  background-color: #8B0000;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 30%;
+  opacity: 0.9;
+  float: right;
 }
-/*end of donationreq */
+
+input[type=submit]:hover {
+  opacity:1;
+}
+* {box-sizing: border-box}
+div.middle{
+	width: 100%;
+	height: 850px;
+}
+div.right-up{
+	width: 29%;
+	height:20%;
+	background-color: #F9BDB4;
+	float: right;
+	margin-top: 0.5%;
+	margin-left: 0.5%;
+}
+div.right-down{
+	width: 29%;
+	height:77%;
+	background-color: #F9BDB4;
+	float: right;
+	margin-top: 0.5%;
+	margin-left: 0.5%;
+}

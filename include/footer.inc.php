@@ -1,4 +1,5 @@
-	<section class="footer-section">
+	
+	<section class="footer-section" >
 		<div class="col-md-12">
 		<img src="../images/book.gif" style="float:left;width:100px;height:70px;"/>
 		

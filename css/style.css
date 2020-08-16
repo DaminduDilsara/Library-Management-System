@@ -6,9 +6,9 @@
     border-top:4px solid #C46A15;
     border-bottom: 2px solid #C46A15;
     bottom:0;
-    position:fixed;
-    width:99%;
-
+    position:absolute;
+    width:100%;
+   
     
     
 
@@ -85,6 +85,7 @@ body, html {
   background-position: center;
   min-height: 100%
   overflow:scroll;
+  position: relative;
 
 }
 

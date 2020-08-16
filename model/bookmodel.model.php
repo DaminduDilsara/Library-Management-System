@@ -4,22 +4,24 @@ include_once('../include/dbconnection.inc.php');
 
 class BookModel extends dbConnection {
 
-	 public function getBookInfo($barcodememNo){
+	 public function getBookInfo($barcodeNo){
 	 	$sql = "SELECT * FROM book WHERE BarcodeNo= ?";
 		$query = $this->connect()->prepare($sql);
-		$query->execute([$barcodememNo]);
+		$query->execute([$barcodeNo]);
 		$query = $query->fetchAll();
 		return $query;
 	 }
 
-	 public function getBorrowInfo($barcodememNo){
-	 	$sql = "SELECT * FROM borrowsession WHERE BarcodeNo= ?";
+	 public function getBorrowInfo(){
+	 	$sql = "SELECT * FROM borrowsession";
 		$query = $this->connect()->prepare($sql);
-		$query->execute([$barcodememNo]);
+		$query->execute();
 		$query = $query->fetchAll();
 		return $query;
 	 }
 
 	
 }
+
+
 ?>
