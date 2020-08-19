@@ -29,12 +29,9 @@
 	  
 		<div class="rightcolumn">
 			<div class="card">
-				
+                <?php include('adminLogin.php');?>
 				<?php include('userLogin.php');?>
-				<?php include('userRegister.php');?>
-				<?php include('adminLogin.php');?>
-				
-				
+                <?php include('userRegister.php');?>
 			</div>
 			
 			<div class="card3">

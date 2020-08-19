@@ -27,11 +27,8 @@ include_once('../controller/usercontroller.controller.php');
         }
     }else{
 ?>
-
-<!-- Button to open the modal -->
-<button onclick="document.getElementById('id02').style.display='block'">User Register</button>
-<!-- The Modal (contains the Sign Up form) -->
-<div id="id02" class="modal">
+<button onclick="document.getElementById('id02').style.display='block'">Member Register</button> <!-- Button to open the modal -->
+<div id="id02" class="modal"> <!-- The Modal (contains the Sign Up form) -->
     <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
     <form class="modal-content animate" action="" method="post">
 		<div class="container">
@@ -40,10 +37,10 @@ include_once('../controller/usercontroller.controller.php');
 				<p>Please fill in this form to create an account. (You must have a Membership number received from the library)</p>
 				<hr>
 			</div>
-		  
+
 		    <label for="email"><b>Email</b></label>
 		    <input type="text" placeholder="Enter Email" name="email" required>
-		  
+
 		    <label for="memNo"><b>Membership No:</b></label>
 		    <input type="text" placeholder="Enter Membership Number" name="memNo" required>
 

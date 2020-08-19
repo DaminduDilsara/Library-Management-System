@@ -1,29 +1,28 @@
 <?php
-	$run = false;
+include_once('../include/dbconnection.inc.php');
+include_once('../controller/adminController.controller.php');
 
-	require('db.php');
-    if (isset($_POST['userName'])){
-		
-		$userName = $_POST['userName']; // removes backslashes
-		$psw = $_POST['psw'];
+$cont = AdminLogin::getInstance();
+if (isset($_POST['adminLogin'])) {
 
-        $query = "SELECT * FROM `staff` WHERE UserName='$userName' and Password='".md5($psw)."'";
-		$result = mysqli_query($con,$query) or die(mysql_error());
-		$rows = mysqli_num_rows($result);
-        if($rows==1){
-			session_start();
-			$_SESSION['userName'] = $userName;
-			header("Location: Charitha/admin.php");
-        }else{
-			echo "<div class='login_Messages'><h3>Username/password is incorrect.</h3>Click here to <a href='index.php'>Login Again</a></div>";
-			$run = true;
-		}
+    $userName = $_POST['userName']; // removes backslashes
+    $psw = $_POST['psw'];
+
+    $rows = $cont->LogAdmin($userName, $psw);
+    if ($rows) {
+        session_start();
+        $_SESSION['userName'] = $userName;
+        header("Location: ../view/admin.view.php");
+    } else {
+        echo "<div class='login_Messages'><h3>Username/password is incorrect.</h3>Click here to <a href='index.php'>Login Again</a></div>";
+        $run = true;
+    }
     }else{
 ?>
 
 
 <!-- Button to open the modal login form -->
-<button onclick="document.getElementById('id03').style.display='block'" class="">Admin Login</button>
+<button onclick="document.getElementById('id03').style.display='block'" class="">Staff Login</button>
 
 <!-- The Modal -->
 <div id="id03" class="modal">
@@ -42,7 +41,7 @@
 		    <label for="psw"><b>Password</b></label>
 		    <input type="password" placeholder="Enter Password" name="psw" required>
 
-		    <button type="submit">Login</button>
+            <button type="submit" name="adminLogin" value="Login">Login</button>
 		    <label>
 				<input type="checkbox" checked="checked" name="remember"> Remember me
 		    </label>

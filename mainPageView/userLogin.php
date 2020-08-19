@@ -23,7 +23,7 @@ include_once('../controller/usercontroller.controller.php');
 
 
 <!-- Button to open the modal login form -->
-<button onclick="document.getElementById('id01').style.display='block'" class="">User Login</button>
+<button onclick="document.getElementById('id01').style.display='block'" class="">Member Login</button>
 
 <!-- The Modal -->
 <div id="id01" class="modal">

@@ -27,10 +27,10 @@
 	  
 		<div class="rightcolumn">
 			<div class="card">
-				
-				<?php include('userLogin.php');?>
-				<?php include('userRegister.php');?>
-				<?php include('adminLogin.php');?>
+
+                <?php include('adminLogin.php');?>
+                <?php include('userLogin.php');?>
+                <?php include('userRegister.php');?>
 				
 				
 			</div>

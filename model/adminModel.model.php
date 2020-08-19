@@ -125,4 +125,11 @@
 			return $query;
 	 }
 
+        public function getAdminLoginInfo($userName, $password){
+            $sql = "SELECT * FROM staff WHERE UserName= '$userName' and Password = '".md5($password)."'";  //'".md5($password)."' decrypting
+            $result = mysqli_query($this -> connectInDifferentWay(),$sql) or die(mysql_error());
+            $rows = mysqli_num_rows($result);
+            return $rows;
+        }
+
 	}

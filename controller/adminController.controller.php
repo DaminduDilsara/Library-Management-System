@@ -24,6 +24,33 @@ Interface Editable{
 	public function insertData($adminModel);
 }
 
+Class AdminLogin extends Admin{
+
+    private static $instance;
+    private function __construct(){}
+
+    public static function getInstance()
+    {
+        if(!isset(self::$instance)){
+            self::$instance = new AdminLogin();
+        }
+        return self::$instance;
+    }
+
+    public function LogAdmin($userName, $password){
+        $rows = $this->getAdminLoginInfo($userName, $password);
+        if($rows)
+        {
+            return true;
+        }
+        else
+        {
+            $this->error = "Wrong Data";
+        }
+    }
+}
+
+
 Class Book implements Editable{
 	private $barcode;
 	private $isbn;
