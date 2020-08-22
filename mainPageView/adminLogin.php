@@ -11,6 +11,7 @@ if (isset($_POST['adminLogin'])) {
     $rows = $cont->LogAdmin($userName, $psw);
     if ($rows) {
         session_start();
+        
         $_SESSION['userName'] = $userName;
         header("Location: ../view/admin.view.php");
     } else {

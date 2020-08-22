@@ -51,13 +51,13 @@ error_reporting(0);
 
 	<div class="icon-bar">
   		<a class="active" href="../index.php"><i class="fa fa-home"></i></a>
-  		<a href="#"><i class="fa fa-search"></i></a>
-  		<a href="#"><i class="fa fa-envelope" id="noti_number"></i></a>
+  		<a href="#"><i class="fa fa-search "></i></a>
+  		<a href="#"><i class="fa fa-envelope"  id="noti_number"></i></a>
   		<a href="#"><i class="fa fa-info-circle"></i></a>
   		<a href="#"><i class="fa fa-trash"></i></a>
 	</div>
 
-
+	
 	<script type="text/javascript">
 		function loadDoc() {
 
@@ -77,6 +77,7 @@ error_reporting(0);
 }
 loadDoc();
 	</script>
+
 
 
 	<style>
@@ -121,7 +122,7 @@ loadDoc();
 	<button class="fa fa-check btn btn-sep btn-2"onclick="document.location='../Charitha/checkbox.php'">Newspapers Register</button>
 	<br><br><br><br><br><br><br>
 	<button class="fas fa-handshake-o btn btn-sep btn-1" onclick="document.location='default.asp'">Donations</button>
-	<button class="fa fa-file btn btn-sep btn-2"onclick="document.location='default.asp'">Creations</button>
+	<button class="fa fa-file btn btn-sep btn-2"onclick="document.location='adminCreation.view.php'">Creations</button>
 	<br><br><br><br><br><br><br>
 	<button class="fa fa-user btn btn-sep btn-1" onclick="document.location='../Charitha/staff-member.php'">Staff Information</button>
 	
