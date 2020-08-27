@@ -2,7 +2,6 @@
 session_start();
 include_once('../include/dbconnection.inc.php');
 include_once('../controller/usercontroller.controller.php');
-include_once('../controller/creationController.controller.php');
 $memNo=$_SESSION['memNo'];
 
 
@@ -24,7 +23,7 @@ if (isset($_POST['submit'])){
     $fileExt = explode('.',$fileName );
     $fileActualExt = strtolower(end($fileExt));
 
-    $allowed = array('jpg','jpeg','png','pdf','doc','docx','txt');
+    $allowed = array('jpg','jpeg','png','pdf','doc','txt');
 
     if (in_array($fileActualExt, $allowed)) {
     	if ($fileError===0) {
@@ -32,11 +31,8 @@ if (isset($_POST['submit'])){
     			$fileNameNew = uniqid('',true).".".$fileActualExt;
     			//$fileDestination = '../uploads/'.$fileNameNew;
     			//move_uploaded_file($fileTmpName, $fileDestination);
-                $newObj=new CreationMaker(new UserCreation());
-                $newObj->setInfo($me,$fileName,$fileTmpName)->addCreation();
-                
-                
-                $msg= "Successfully Uploaded!";
+                $obuser->addCreation($me,$fileName,$fileTmpName);
+    			$msg= "Successfully Uploaded!";
 
     			header("Location:../view/creation.view.php? msg=$msg");
     			

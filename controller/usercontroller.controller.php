@@ -188,11 +188,11 @@ class UserController extends User {
         };
     }
 
-    /*public function addCreation($me,$fileName,$fileTmpName)
+    public function addCreation($me,$fileName,$fileTmpName)
     {
     	$str='0';
     	$this->addCreationalInfo($me,$fileName,$fileTmpName,$str);
-    }*/
+    }
 
 }
 ?>

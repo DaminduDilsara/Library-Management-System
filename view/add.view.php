@@ -2,8 +2,8 @@
 	session_start();
 	include "../include/dbconnection.inc.php";
 	include "../controller/adminController.controller.php";
-	if(strlen($_SESSION['memNo'])==0){   
-		header('../index.php');
+	if(strlen($_SESSION['userName'])==NULL){   
+		header('../mainPageView/index.php');
 	}else{
 		$controller=AdminController::getinstance(); 
 		if(isset($_POST['addbook'])){
@@ -13,8 +13,7 @@
 			$subject=$_POST['subject'];
 			$title=$_POST['title'];
 			$sub=$_POST['sub'];
-			$author1=$_POST['author1'];
-			$author2=$_POST['author2'];
+			$author=$_POST['author'];
 			$editor=$_POST['editor'];
 			$publisher=$_POST['publisher'];
 			$section=$_POST['section'];
@@ -27,7 +26,7 @@
 			$categary=$_POST['categary'];
 		
 			
-			$book=Book::getInstance($barcode,$isbn,$subject,$title,$sub,$author1,$author2,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary);
+			$book=Book::getInstance($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary);
 			$msg=$controller->insert($book);
 			$_SESSION['msg']=$msg;
 		}elseif(isset($_POST['addnewspaper'])){ 
@@ -50,6 +49,7 @@
 			
 			unset($_SESSION['msg']); 
 		}
+
 	}	
 
 
@@ -98,11 +98,10 @@ include "../include/header.inc.php";
 			</br></br></br>
 			<input type="number" name="barcode"placeholder="Barcode No" required/>
 			<input type="text" name="isbn"placeholder="ISBN" required/>
-			<input type="text" name="subject"placeholder="Subject" required/>
+			<input type="text" name="subject"placeholder="Subject" />
 			<input type="text" name="title"placeholder="Title"required />
 			<input type="text" name="sub"placeholder="Subtitle" />
-			<input type="text" name="author1"placeholder="Author's First Name" />
-			<input type="text" name="author2"placeholder="Author's Last Name" />
+			<input type="text" name="author"placeholder="Author" required/>
 			<input type="text" name="editor"placeholder="Editor" />
 			<input type="text" name="publisher"placeholder="Publisher"required />
 			<input type="text" name="section"placeholder="Section" required/>
@@ -112,7 +111,7 @@ include "../include/header.inc.php";
 			<input type="number" name="price"placeholder="Price" />
 			<input type="text" name="dim"placeholder="Dimensions" />
 			<input type="number" name="cd"placeholder="CD_Include" />
-			<input type="text" name="categary"placeholder="Categary" />
+			<input type="text" name="categary"placeholder="Categary"required />
 			
 			<button name="addbook"type="submit">Add</button>
 			

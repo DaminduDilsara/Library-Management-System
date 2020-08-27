@@ -12,16 +12,34 @@ Class Admincontroller extends Admin {
         return self::$instance;
     }
 	public function insert($editable){
-		
+	
 		$this->editable=$editable;
-		$adminModel=new Admin();
+		$adminModel=Admin::getInstance();
 		$msg=$this->editable->insertData($adminModel);
 		return($msg);
+	}
+	public function remove($editable){
+		$this->editable=$editable;
+		$adminModel=Admin::getInstance();
+		$msg=$this->editable->removeData($adminModel);
+		return($msg);
+	}
+	public function update($editable){
+		$this->editable=$editable;
+		$adminModel=Admin::getInstance();
+		$msg=$this->editable->updateData($adminModel);
+		return($msg);
+	}
+	public function load($editable){
+		$this->editable=$editable;
+		$adminModel=Admin::getInstance();
+		$this->editable->loadData($adminModel);
 	}
 }
 Interface Editable{
 	
 	public function insertData($adminModel);
+	public function removeData($adminModel);
 }
 
 Class AdminLogin extends Admin{
@@ -57,8 +75,7 @@ Class Book implements Editable{
 	private $subject;
 	private $title;
 	private $sub;
-	private $author1;
-	private $author2;
+	private $author;
 	private $editor;
 	private $publisher;
 	private $section;
@@ -71,15 +88,14 @@ Class Book implements Editable{
 	private $categary;
 	private static $instance;
 	
-	public function Book($barcode,$isbn,$subject,$title,$sub,$author1,$author2,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary){
+	public function Book($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary){
 		
 		$this->barcode=$barcode;
 		$this->isbn=$isbn;
 		$this->subject=$subject;
 		$this->title=$title;
 		$this->sub=$sub;
-		$this->author1=$author1;
-		$this->author2=$author2;
+		$this->author=$author;
 		$this->editor=$editor;
 		$this->publisher=$publisher;
 		$this->section=$section;
@@ -93,10 +109,10 @@ Class Book implements Editable{
 		
 		
 	}
-	public static function getInstance($barcode,$isbn,$subject,$title,$sub,$author1,$author2,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary)
+	public static function getInstance($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary)
     {
         if(!isset(self::$instance)){
-            self::$instance = new Book($barcode,$isbn,$subject,$title,$sub,$author1,$author2,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary);
+            self::$instance = new Book($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary);
         }
         return self::$instance;
     }
@@ -104,12 +120,32 @@ Class Book implements Editable{
 		
 		
 		
-		$success=$adminModel->insertbook($this->barcode,$this->isbn,$this->subject,$this->title,$this->sub,$this->author1,$this->author2,$this->editor,$this->publisher,$this->section,$this->place,$this->date,$this->pages,$this->price,$this->dim,$this->cd,$this->categary);
+		$success=$adminModel->insertBook($this->barcode,$this->isbn,$this->subject,$this->title,$this->sub,$this->author,$this->editor,$this->publisher,$this->section,$this->place,$this->date,$this->pages,$this->price,$this->dim,$this->cd,$this->categary);
 		
 		if($success==1){
 			$msg="Success";
 		}else{
 			$msg="Error";
+		}
+		$success=0;
+		return($msg);
+	}
+	public function removeData($adminModel){
+		$success=$adminModel->removeBook($this->barcode);
+		if($success==1){
+			$msg="Success";
+		}else{
+			$msg="Error";
+		}
+		$success=0;
+		return($msg);
+	}
+	public function updateData($adminModel){
+		$success=$adminModel->updateBook($this->barcode);
+		if($success==1){
+			$msg="Successfully Updated";
+		}else{
+			$msg="Error in Updating";
 		}
 		$success=0;
 		return($msg);
@@ -137,7 +173,7 @@ Class Newspaper implements Editable{
     }
 	public function insertData($adminModel){
 		
-		$success=$adminModel->insertnewspaper($this->id,$this->name,$this->time);
+		$success=$adminModel->insertNewspaper($this->id,$this->name,$this->time);
 		
 		if($success==1){
 			$msg="Success";
@@ -148,21 +184,9 @@ Class Newspaper implements Editable{
 		return($msg);
 		
 	}
-}
-Class Author implements Editable{
-	private $id;
-	private $fname;
-	private $lname;
-
-	public function Author($id,$fname,$lname){
-		$this->id=$id;
-		$this->fname=$fname;
-		$this->lname=$lname;
-	}
-	public function insertData($adminModel){
+	public function removeData($adminModel){
 		
-		$success=$adminModel->insertauthor($this->id,$this->fname,$this->lname);
-		
+		$success=$adminModel->removeNewspaper($this->id);
 		if($success==1){
 			$msg="Success";
 		}else{
@@ -170,153 +194,232 @@ Class Author implements Editable{
 		}
 		$success=0;
 		return($msg);
-		
+	}
+	public function loadData($adminModel){
+		$storeArray=Array();
+		$storeArray=$adminModel->loadNewspaper();
+		return($storeArray);
 		
 	}
-
 }
 Class Member implements Editable{
-	private $membershipNo;
+	private $memNo;
 	private $name;
 	private $address;
 	private $birthday;
 	private $school;
-	private $age;
 	private $tele;
 	private $email;
-	private $memdate;
-	private $deposite;
+	private $expirationDate;
+	private $guarantor;
+	private $receiptNo;
+	private static $instance;
 
-	public function _constructor($membershipNo,$name,$address,$birthday,$school,$age,$tele,$email,$memdate,$deposite){
-		$this->membershipNo=$membershipNo;
+	public function Member($memNo,$name,$address,$birthday,$school,$tele,$email,$expirationDate,$guarantor,$receiptNo){
+		$this->memNo=$memNo;
 		$this->name=$name;
 		$this->address=$address;
 		$this->birthday=$birthday;
 		$this->school=$school;
-		$this->age=$age;
 		$this->tele=$tele;
 		$this->email=$email;
-		$this->memdate=$memdate;
-		$this->deposite=$deposite;
+		$this->expirationDate=$expirationDate;
+		$this->guarantor=$guarantor;
+		$this->receiptNo=$receiptNo;
+	
 	}
+	public static function getInstance($memNo,$name,$address,$birthday,$school,$tele,$email,$expirationDate,$guarantor,$receiptNo)
+    {
+        if(!isset(self::$instance)){
+            self::$instance = new Member($memNo,$name,$address,$birthday,$school,$tele,$email,$expirationDate,$guarantor,$receiptNo);
+        }
+        return self::$instance;
+    }
 	public function insertData($adminModel){
-		$query = $dbh->prepare($sql);
-		$query->bindParam(':membershipNo',$membershipNo,PDO::PARAM_STR);
-		$query->bindParam(':name',$name,PDO::PARAM_STR);
-		$query->bindParam(':address',$address,PDO::PARAM_STR);
-		$query->bindParam(':birthday',$birthday,PDO::PARAM_STR);
-		$query->bindParam(':school',$school,PDO::PARAM_STR);
-		$query->bindParam(':age',$age,PDO::PARAM_STR);
-		$query->bindParam(':tele',$tele,PDO::PARAM_STR);
-		$query->bindParam(':email',$email,PDO::PARAM_STR);
-		$query->bindParam(':memdate',$memdate,PDO::PARAM_STR);
-		$query->bindParam(':deposite',$deposite,PDO::PARAM_STR);
 		
-		$nrows =$pdo->exec("INSERT INTO `members` (`MembershipNo`, `Name`, `Address`,'Birthday','School','Age','Telephone','Email','Membershipdate','ExpirationDate') VALUES ('$membershipNo', '$name', '$address','$birthday','$school','$age','$tele','$email','$memdate','$deposite',$memdate+365*($deposite//1000))");
-		return $nrows;
+		$success=$adminModel->insertMember($this->memNo,$this->name,$this->address,$this->birthday,$this->school,$this->tele,$this->email,$this->expirationDate,$this->guarantor);
+		if($success==1){
+			$msg="Success";
+		}else{
+			$msg="Error";
+		}
+		$success=0;
+		return($msg);
 		
 	}
+	public function removeData($adminModel){
+		$success=$adminModel->removeMember($this->memNo);
+		if($success==1){
+			$msg="Success";
+		}else{
+			$msg="Error";
+		}
+		$success=0;
+		return($msg);
+	}
+	public function updateData($adminModel){
+		$success=$adminModel->updateMember($this->memNo,$this->receiptNo,$this->expirationDate);
+		if($success==1){
+			$msg="Success";
+		}else{
+			$msg="Error";
+		}
+		$success=0;
+		return($msg);
+	}
+	
 }
 Class Staff implements Editable{
-	private $staffID;
+	private $id;
 	private $name;
 	private $post;
 	private $address;
-	private $contactNo;
-	private $userName;
+	private $contNo;
+	private $username;
 	private $password;
+	private static $instance;
 
-	public function _constructor($staffID,$name,$post,$address,$contactNo,$userName,$password){
-		$this->staffID=$staffID;
+	public function Staff($id,$name,$post,$address,$contNo,$username,$password){
+		$this->id=$id;
 		$this->name=$name;
 		$this->post=$post;
 		$this->address=$address;
-		$this->contactNo=$contactNo;
-		$this->userName=$userName;
-		$this->password=$password;
-	}
-	public function insertData($adminModel){
-		$query = "INSERT INTO `staff` (`StaffID`, `Name`, `Post`,'Address','ContactNo','UserName','Password') VALUES ('$staffID', '$name', '$post','$address','$contactNo','$userName','$password')";
-		$nrows =$pdo->exec("INSERT INTO `author` (`FirstName`, `LastName`) VALUES ('$first', '$last')");
-		return $nrows;
+		$this->contNo=$contNo;
+		$this->username=$username;
+		$this->password=md5($password);
 		
+	}
+	public static function getInstance($id,$name,$post,$address,$contNo,$username,$password)
+    {
+        if(!isset(self::$instance)){
+            self::$instance = new Staff($id,$name,$post,$address,$contNo,$username,$password);
+		}
+		
+        return self::$instance;
+    }
+	public function insertData($adminModel){
+		
+		$success=$adminModel->insertStaff($this->id,$this->name,$this->post,$this->address,$this->contNo,$this->username,$this->password);
+		if($success==1){
+			$msg="Success";
+		}else{
+			$msg="Error";
+		}
+		$success=0;
+		
+		return($msg);
+		
+	}
+	public function removeData($adminModel){
+		$success=$adminModel->removeStaff($this->id);
+		if($success==1){
+			$msg="Success";
+		}else{
+			$msg="Error";
+		}
+		$success=0;
+		return($msg);
 	}
 }
 Class Deposite implements editable{
+	private $receiptNo;
+	private $amount;
+	private $description;
+	private $memNo;
 	private $staffID;
-	private $name;
-	private $post;
-	private $address;
-	private $contactNo;
-	private $userName;
-	private $password;
+	private static $instance;
 
-	public function _constructor($staffID,$name,$post,$address,$contactNo,$userName,$password){
+	public function Deposite($receiptNo,$amount,$description,$memNo,$staffID){
+		$this->receiptNo=$receiptNo;
+		$this->amount=$amount;
+		$this->description=$description;
+		$this->memNo=$memNo;
 		$this->staffID=$staffID;
-		$this->name=$name;
-		$this->post=$post;
-		$this->address=$address;
-		$this->contactNo=$contactNo;
-		$this->userName=$userName;
-		$this->password=$password;
-	}
-	public function insertData($adminModel){
-		$query = "INSERT INTO `staff` (`StaffID`, `Name`, `Post`,'Address','ContactNo','UserName','Password') VALUES ('$staffID', '$name', '$post','$address','$contactNo','$userName','$password')";
-		$nrows =$pdo->exec("INSERT INTO `author` (`FirstName`, `LastName`) VALUES ('$first', '$last')");
-		return $nrows;
 		
+	}
+	public static function getInstance($receiptNo,$amount,$description,$memNo,$staffID)
+    {
+        if(!isset(self::$instance)){
+            self::$instance = new Deposite($receiptNo,$amount,$description,$memNo,$staffID);
+        }
+        return self::$instance;
+    }
+	public function insertData($adminModel){
+		
+		$success=$adminModel->insertDeposite($this->receiptNo,$this->amount,$this->description,$this->memNo,$this->staffID);
+		if($success==1){
+			$msg="Success";
+		}else{
+			$msg="Error";
+		}
+		$success=0;
+		return($msg);
+		
+	}
+	public function removeData($adminModel){
+		$success=$adminModel->removeBook($this->barcode);
+		if($success==1){
+			$msg="Success";
+		}else{
+			$msg="Error";
+		}
+		$success=0;
+		return($msg);
 	}
 }
 Class BorrowSession implements editable{
-	private $staffID;
-	private $name;
-	private $post;
-	private $address;
-	private $contactNo;
-	private $userName;
-	private $password;
+	private $barcode;
+	private $memNo;
+	private $expirationDate;
+	private $returnDate;
+	private $staffid;
+	private $receiptNo;
+	private static $instance;
 
-	public function _constructor($staffID,$name,$post,$address,$contactNo,$userName,$password){
-		$this->staffID=$staffID;
-		$this->name=$name;
-		$this->post=$post;
-		$this->address=$address;
-		$this->contactNo=$contactNo;
-		$this->userName=$userName;
-		$this->password=$password;
-	}
-	public function insertData($adminModel){
-		$query = "INSERT INTO `staff` (`StaffID`, `Name`, `Post`,'Address','ContactNo','UserName','Password') VALUES ('$staffID', '$name', '$post','$address','$contactNo','$userName','$password')";
-		$nrows =$pdo->exec("INSERT INTO `author` (`FirstName`, `LastName`) VALUES ('$first', '$last')");
-		return $nrows;
+	public function BorrowSession($id,$barcode,$memNo,$expirationDate,$returnDate,$staffid,$receiptNo){
+		$this->id=$id;
+		$this->barcode=$barcode;
+		$this->memNo=$memNo;
+		$this->expirationDate=$expirationDate;
+		$this->returnDate=$returnDate;
+		$this->staffid=$staffid;
+		$this->receiptNo=$receiptNo;
 		
 	}
-}
-Class Category implements editable{
-	private $staffID;
-	private $name;
-	private $post;
-	private $address;
-	private $contactNo;
-	private $userName;
-	private $password;
-
-	public function _constructor($staffID,$name,$post,$address,$contactNo,$userName,$password){
-		$this->staffID=$staffID;
-		$this->name=$name;
-		$this->post=$post;
-		$this->address=$address;
-		$this->contactNo=$contactNo;
-		$this->userName=$userName;
-		$this->password=$password;
-	}
+	public static function getInstance($id,$barcode,$memNo,$expirationDate,$returnDate,$staffid,$receiptNo)
+    {
+        if(!isset(self::$instance)){
+            self::$instance = new BorrowSession($id,$barcode,$memNo,$expirationDate,$returnDate,$staffid,$receiptNo);
+        }
+        return self::$instance;
+    }
 	public function insertData($adminModel){
-		$query = "INSERT INTO `staff` (`StaffID`, `Name`, `Post`,'Address','ContactNo','UserName','Password') VALUES ('$staffID', '$name', '$post','$address','$contactNo','$userName','$password')";
-		$nrows =$pdo->exec("INSERT INTO `author` (`FirstName`, `LastName`) VALUES ('$first', '$last')");
-		return $nrows;
+		
+		$success=$adminModel->insertBorrowSession($this->id,$this->barcode,$this->memNo,$this->expirationDate,$this->staffid);
+		if($success==1){
+			$msg1="Borrow Session is successful";
+		}else{
+			$msg1="Error in borrow session";
+		}
+		$success=0;
+		return($msg1);
 		
 	}
+	public function removeData($adminModel){
+		return true;
+	}
+	public function updateData($adminModel){
+		$fine=$adminModel->updateBorrowSession($this->id,$this->returnDate,$this->receiptNo);
+		if($fine>=0){
+			$msg1=$fine;
+		}else{
+			$msg1=$fine;
+		}
+		$success=0;
+		return($msg1);
+	}
 }
+
 
 
   

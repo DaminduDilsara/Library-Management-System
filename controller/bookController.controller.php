@@ -63,12 +63,7 @@ class BookController extends BookModel {
 		$result=$obuser->getBorrowInfo();
         
        for($i=0; $i<count($result); $i++){
-          //echo $result[$i]['ReturnedDate'];
-       		if ($result[$i]['ReturnedDate']=='0000-00-00'){
-       			echo 'Not Returned Yet';
-       		}else{
-       			echo $result[$i]['ReturnedDate'];
-       		}
+          echo $result[$i]['ReturnedDate'];
           ?><br><br>
           <?php
         }   
