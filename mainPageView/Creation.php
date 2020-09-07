@@ -1,3 +1,10 @@
+<?php
+include_once('../include/dbconnection.inc.php');
+include_once('../controller/usercontroller.controller.php');
+
+$cont = UserController::getInstance();
+?>
+
 <!DOCTYPE html>
 
 <head>
@@ -19,9 +26,25 @@
 	<div class="row">
 	
 		<div class="leftcolumn">
-			
 			<div class="card2">
 				Creation page
+
+                <?php
+                $res =  $cont->showCreations();
+
+                while($row = mysqli_fetch_array($res))
+                {
+                    echo '  
+                              <tr>  
+                                   <td>  
+                                        <img src="data:image/jpeg;base64,'.base64_encode($row['Creation'] ).'" height="200" width="200" class="img-thumnail" />  
+                                   </td>  
+                              </tr>  
+                         ';
+
+                }
+
+                ?>
 			</div>
 		</div>
 	  
@@ -34,11 +57,11 @@
 				
 				
 			</div>
-			
-			<div class="card3">
-				<p><img src="../images/phone.png" style="width:30px;height:25px;"/><sup> +94 76 549 1495</sup></p>
-				<p><img src="../images/email.png" style="width:30px;height:30px;"/><a href="https://google.com/" target="_blank" style="text-decoration:none"><sup> lib.justinwige@gmail.com</sup></a> </p>
-			</div>
+
+            <div class="card3">
+                <p><img src="../images/phone.png" style="width:30px;height:25px;"/><sup> +94 76 782 3793</sup></p>
+                <p><img src="../images/email.png" style="width:30px;height:30px;"/><a href="https://lib.justinwigewardhana@gmail.com/" target="_blank" style="text-decoration:none"><sup> lib.justinwigewardhana@gmail.com</sup></a> </p>
+            </div>
 			
 			<div class="card">
 				<?php include('slideShowQuotes.php');?>

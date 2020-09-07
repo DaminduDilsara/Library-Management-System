@@ -46,6 +46,12 @@ class User extends dbConnection {
          $result = mysqli_query($this -> connectInDifferentWay(),$query);
          return $result;
      }
+
+    public function getApprovedCreations(){
+        $query = "SELECT * FROM `creation` WHERE `Approved` = 1";
+        $result = mysqli_query($this -> connectInDifferentWay(),$query) or die(mysql_error());
+        return $result;
+    }
 	
 }
 ?>

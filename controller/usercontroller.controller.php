@@ -194,5 +194,9 @@ class UserController extends User {
     	$this->addCreationalInfo($me,$fileName,$fileTmpName,$str);
     }
 
+    public function showCreations(){
+        return $this->getApprovedCreations();
+    }
+
 }
 ?>

@@ -34,11 +34,11 @@
 				
 				
 			</div>
-			
-			<div class="card3">
-				<p><img src="../images/phone.png" style="width:30px;height:25px;"/><sup> +94 76 549 1495</sup></p>
-				<p><img src="../images/email.png" style="width:30px;height:30px;"/><a href="https://google.com/" target="_blank" style="text-decoration:none"><sup> lib.justinwige@gmail.com</sup></a> </p>
-			</div>
+
+            <div class="card3">
+                <p><img src="../images/phone.png" style="width:30px;height:25px;"/><sup> +94 76 782 3793</sup></p>
+                <p><img src="../images/email.png" style="width:30px;height:30px;"/><a href="https://lib.justinwigewardhana@gmail.com/" target="_blank" style="text-decoration:none"><sup> lib.justinwigewardhana@gmail.com</sup></a> </p>
+            </div>
 			
 			<div class="card">
 				<?php include('slideShowQuotes.php');?>

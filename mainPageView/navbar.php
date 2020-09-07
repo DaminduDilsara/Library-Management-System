@@ -52,10 +52,10 @@
 			<i class="fa fa-caret-down"></i>
 		</button>
 		<div class="dropdown-content">
-			<a href="#">E-Books</a>
+			<a href="Ebooks.php">E-Books</a>
 		</div>
     </div>
 	
-	<a href="#news">Contact Us</a>
+	<a href="contactUs.php">Contact Us</a>
 	<a href="Creation.php">Creation Page</a>
 </div>
