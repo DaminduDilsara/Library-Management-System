@@ -68,6 +68,7 @@ $result=$obuser->assignInfo($memNo);
     
     <li><a href='/' class='button'>Reserve book</a></li>
     <li><a href='creation.view.php' class='button'>Add creations</a></li>
+    <li><a href='#' class='button'>E-Books</a></li>
 </ul>
 </div>
        
