@@ -1,12 +1,37 @@
 <?php
-session_start();
-include "../include/dbconnection.inc.php";
-include "../controller/adminController.controller.php";
-if(strlen($_SESSION['userName'])==NULL){   
-	header('../index.php');
-}else{
-	$controller=AdminController::getinstance(); 
-}
+	session_start();
+	include "../include/dbconnection.inc.php";
+	include "../controller/adminController.controller.php";
+	if(strlen($_SESSION['userName'])==NULL){   
+		header('../mainPageView/index.php');
+	}else{
+		$controller=AdminController::getinstance(); 
+		$id=0;
+		$name=NULL;
+		$time=00-00-0000;
+		$newspaper=Newspaper::getInstance($id,$name,$time);
+		$message=$controller->expire($newspaper);
+		
+		$storeArray=$controller->load($newspaper);
+		
+		if(isset($_POST['chk1'])){
+			$checkbox1=$_POST['chk1'];
+			foreach ($checkbox1 as $key => $value){
+				$msg=$controller->updateNewspaper($newspaper,$value);
+				$_SESSION['msg']=$msg;
+			}
+		}
+		if (isset($_SESSION['msg'])){ 
+			$msg=$_SESSION['msg'];
+			echo "<script type='text/javascript'>alert('$msg');</script>";
+		
+			
+			unset($_SESSION['msg']); 
+		}
+			
+			
+		}
+	
 ?>
 <!doctype html>
 
@@ -18,41 +43,31 @@ if(strlen($_SESSION['userName'])==NULL){
 	<title>NewspaperList</title>
 </head>
 <body>
-<header>
+<div class="header">
 
 
 <?php
 include "../include/header.inc.php";
 ?>
-</header>
+</div>
 
 <div>
+<br><br><br><br><br><br>
 <h2> NewspaperList </h2>
-
+<br><br><br>
 
 <form method="post"> 
-	<input type="hidden" name="id"placeholder="ID" />
-	<input type="hidden" name="name"placeholder="Name" />
-	<input type="hidden" name="time"placeholder="Time Period"/>
-	<?php
-		$id=$_POST['id'];
-		$name=$_POST['name'];
-		$time=$_POST['time'];
-		$newspaper=Newspaper::getInstance($id,$name,$time);
-		$storeArray=$controller->load($newspaper);
-		foreach($storeArray as $value){
-			
+<?php
+	foreach ($storeArray as $value){
+		echo("<input type='checkbox' name='chk1[]'value='$value'>$value<br>") ;
+	}
+?>	
+	
+<?php
 
-			
-		}
-		
+?>
+<br />  
 
-	?> 
-<input type="checkbox" name="chkl[ ]" value="Aruna">Aruna<br />  
-<input type="checkbox" name="chkl[ ]" value="Lankadeepa">Lankadeepa<br />  
-<input type="checkbox" name="chkl[ ]" value="Diwatina">Diwatina<br />  
-<input type="checkbox" name="chkl[ ]" value="Mawbima">Mawbima<br />  
-  
 <br>  
 <input type="submit" name="Submit" value="Submit">  
 </form> 
@@ -62,9 +77,26 @@ include "../include/header.inc.php";
 </br></br></br>	 
 
 
-
+<div class="footer">
 	<?php
 	include "../include/footer.inc.php";
 	?>
+</div>
+
 </body>
 </html>
+<style>
+	.footer {
+  		position: fixed;
+   		left: 0;
+   		bottom: 0;
+   		width: 100%;
+	}
+	.header{
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+	}
+	
+</style>

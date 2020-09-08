@@ -136,33 +136,26 @@
 			}
 		}
 		
-		public function expireNewspaper(){
-			$sql="UPDATE `newspaper` SET `Deleted`=1 WHERE ExpireDate<CURRENT_DATE";
-			$query=$this->connectInDifferentWay();
-			$result=mysqli_query($query,$sql) or die(mysqli_error($query));
-				
-			if ($result==true) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-		public function expireMember(){
-			$sql="UPDATE `member` SET `Deleted`=1 WHERE ExpirationDate<CURRENT_DATE";
-			$query=$this->connectInDifferentWay();
-			$result=mysqli_query($query,$sql) or die(mysqli_error($query));
-				
-			if ($result==true) {
-				return true;
-			} else {
-				return false;
-			}
-		}
+		
+		
 
-		public function updateNewspaperStatus($status,$date){
-			$sql="UPDATE `newspaper` SET `Deleted`=0 WHERE ExpireDate<CURRENT_DATE";
+		public function updateNewspaperStatus($value){
+			$sql1="SELECT `TimeDuration`FROM `newspaper` WHERE NewspaperName='$value'";
 			$query=$this->connectInDifferentWay();
-			$result=mysqli_query($query,$sql) or die(mysqli_error($query));
+			$result1=mysqli_query($query,$sql1) or die(mysqli_error($query));
+			if ($result1==true){
+				$row=mysqli_fetch_array($result1);
+				$time=$row[0];
+			
+				if($time=="1"){
+					$sql="UPDATE `newspaper` SET `Availability`=1,`ExpireDate`=DATE_ADD(CURRENT_DATE,INTERVAL 1 DAY) WHERE NewspaperName='$value'";
+					$result=mysqli_query($query,$sql) or die(mysqli_error($query));
+				}elseif ($time=="7"){
+					$sql="UPDATE `newspaper` SET `Availability`=1,`ExpireDate`=DATE_ADD(CURRENT_DATE,INTERVAL 7 DAY) WHERE NewspaperName='$value'";
+					$result=mysqli_query($query,$sql) or die(mysqli_error($query));
+				}
+				
+			}
 				
 			if ($result==true) {
 				return true;
@@ -230,7 +223,7 @@
 
 				}
 				
-				$sql2 ="UPDATE `borrowsession` SET `ReturnDate`='$returndate', `Ended`='1', `Fine`='$fine' WHERE BorrowSessionID='$id'";
+				$sql2 ="UPDATE `borrowsession` SET `ReturnedDate`='$returndate', `Ended`='1', `Fine`='$fine' WHERE BorrowSessionID='$id'";
 				$result2=mysqli_query($query,$sql2) or die(mysqli_error($query));
 				if ($result2==true){
 					return $fine;
@@ -244,7 +237,7 @@
 			}
 		}
 		public function loadNewspaper(){
-			$sql="SELECT NewspaperName FROM newspaper";
+			$sql="SELECT NewspaperName FROM newspaper WHERE Availability='0' AND Deleted='0'";
 			$query=$this->connectInDifferentWay();
 			$result=mysqli_query($query,$sql) or die(mysqli_error($query));
 			$storeArray=Array();
@@ -253,13 +246,52 @@
 
 				while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
 					$storeArray[]=$row['NewspaperName'];
-				
+					
 				}
 				return $storeArray;
 					
 			}
 			
 		}
+		public function expireNewspaper(){
+			$sql1="SELECT `ExpireDate` FROM `newspaper` WHERE 1";
+			
+			$query=$this->connectInDifferentWay();
+			$result1=mysqli_query($query,$sql1) or die(mysqli_error($query));
+			
+			$dateArray=Array();
+			if ($result1==true) {
+				while($row=mysqli_fetch_array($result1,MYSQLI_ASSOC)){
+					$dateArray[]=$row['ExpireDate'];
+					
+				}
+				
+				foreach($dateArray as $key=>$exDate){
+					$expireDate=date_create($exDate);
+					$curdate=date_create(date("Y-m-d"));
+					$diff=date_diff($expireDate,$curdate);
+					
+					
+					if ($diff->format("%R%a")>0){
+						$sql="UPDATE `newspaper` SET `Availability`='0' WHERE ExpireDate='$exDate'";
+						$query=$this->connectInDifferentWay();
+						$result=mysqli_query($query,$sql) or die(mysqli_error($query));
+						
+						if ($result==true) {
+							return true;
+						} else {
+							return false;
+						}
+					}
+				}
+				
+			}	
+					
+					
+					
+			
+		}
+
 
 		public function getAdminInfo($staffID){
 	 		$sql = "SELECT * FROM staff WHERE StaffID= ?";

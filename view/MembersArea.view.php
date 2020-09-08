@@ -67,7 +67,7 @@
 			$receiptNo=$_POST['receiptNo'];
 			$amount=$_POST['amount'];
 			$description=$_POST['description'];
-			$memNo=$_POST['memNo'];
+			$name=$_POST['name'];
 			$staffID=$_POST['staffID'];	
 			
 			$deposite=Deposite::getInstance($receiptNo,$amount,$description,$memNo,$staffID);
@@ -181,7 +181,7 @@
 			<input type="number" name="receiptNo" placeholder="ReceiptNo"required/>
 			<input type="number" name="amount"placeholder="Amount" Required/>
 			<input type="text" name="description"placeholder="Description" />
-			<input type="text" name="memNo"placeholder="Membership No:"required />
+			<input type="text" name="name"placeholder="Name"required />
 			<input type="number" name="staffID"placeholder="StaffID"required />
 			
 			

@@ -2,6 +2,7 @@
 include "../model/adminModel.model.php";
 Class Admincontroller extends Admin {
 	private $editable;
+	private $value;
 	private static $instance;
 
 	public static function getInstance()
@@ -30,10 +31,23 @@ Class Admincontroller extends Admin {
 		$msg=$this->editable->updateData($adminModel);
 		return($msg);
 	}
+	public function updateNewspaper($editable,$value){
+		$this->editable=$editable;
+		$this->value=$value;
+		$adminModel=Admin::getInstance();
+		$msg=$this->editable->updateStatus($adminModel,$value);
+		return($msg);
+	}
 	public function load($editable){
 		$this->editable=$editable;
 		$adminModel=Admin::getInstance();
 		$this->editable->loadData($adminModel);
+	}
+	public function expire($editable){
+		$this->editable=$editable;
+		$adminModel=Admin::getInstance();
+		$msg=$this->editable->expireStatus($adminModel);
+		return($msg);
 	}
 }
 Interface Editable{
@@ -158,6 +172,7 @@ Class Newspaper implements Editable{
 	private $name;
 	private $time;
 	private static $instance;
+	private $value;
 	public function Newspaper($id,$name,$time){
 		$this->id=$id;
 		$this->name=$name;
@@ -200,6 +215,27 @@ Class Newspaper implements Editable{
 		$storeArray=$adminModel->loadNewspaper();
 		return($storeArray);
 		
+	}
+	public function updateStatus($adminModel,$value){
+		$success=$adminModel->updateNewspaperStatus($value);
+		if($success==1){
+			$msg="Successfully Updated!";
+		}else{
+			$msg="Error";
+		}
+		$success=0;
+		return($msg);
+	}
+	public function expireStatus($adminModel){
+		
+		$success=$adminModel->expireNewspaper();
+		if($success==1){
+			$msg="Successfully Updated!";
+		}else{
+			$msg="Error";
+		}
+		$success=0;
+		return($msg);
 	}
 }
 Class Member implements Editable{
