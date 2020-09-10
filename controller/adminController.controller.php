@@ -41,7 +41,8 @@ Class Admincontroller extends Admin {
 	public function load($editable){
 		$this->editable=$editable;
 		$adminModel=Admin::getInstance();
-		$this->editable->loadData($adminModel);
+		$storeArray=$this->editable->loadData($adminModel);
+		return ($storeArray );
 	}
 	public function expire($editable){
 		$this->editable=$editable;
@@ -213,6 +214,7 @@ Class Newspaper implements Editable{
 	public function loadData($adminModel){
 		$storeArray=Array();
 		$storeArray=$adminModel->loadNewspaper();
+		
 		return($storeArray);
 		
 	}

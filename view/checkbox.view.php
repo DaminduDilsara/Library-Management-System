@@ -58,8 +58,10 @@ include "../include/header.inc.php";
 
 <form method="post"> 
 <?php
-	foreach ($storeArray as $value){
-		echo("<input type='checkbox' name='chk1[]'value='$value'>$value<br>") ;
+	if ($storeArray!=NULL){ 
+		foreach ($storeArray as $value){
+			echo("<input type='checkbox' name='chk1[]'value='$value'>$value<br>") ;
+		}
 	}
 ?>	
 	
@@ -93,10 +95,10 @@ include "../include/header.inc.php";
    		width: 100%;
 	}
 	.header{
-		position: fixed;
-		left: 0;
-		top: 0;
-		width: 100%;
-	}
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
 	
 </style>
