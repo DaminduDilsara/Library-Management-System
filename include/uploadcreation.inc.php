@@ -12,10 +12,10 @@ $me=$obuser->getMemNo();
 
 
 if (isset($_POST['submit'])){
-	$file = $_FILES['file'];
+    $file = $_FILES['file'];
 
-	$fileName =  $_FILES['file']['name'];
-	$fileTmpName =  $_FILES['file']['tmp_name'];
+    $fileName =  $_FILES['file']['name'];
+    $fileTmpName =  $_FILES['file']['tmp_name'];
     $fileSize =  $_FILES['file']['size'];
     $fileError =  $_FILES['file']['error'];
     $fileType =  $_FILES['file']['type'];
@@ -24,33 +24,33 @@ if (isset($_POST['submit'])){
     $fileExt = explode('.',$fileName );
     $fileActualExt = strtolower(end($fileExt));
 
-    $allowed = array('jpg','jpeg','png','pdf','doc','docx','txt');
+    $allowed = array('jpg','jpeg','png');
 
     if (in_array($fileActualExt, $allowed)) {
-    	if ($fileError===0) {
-    		if ($fileSize< 10000000) {
-    			$fileNameNew = uniqid('',true).".".$fileActualExt;
-    			//$fileDestination = '../uploads/'.$fileNameNew;
-    			//move_uploaded_file($fileTmpName, $fileDestination);
+        if ($fileError===0) {
+            if ($fileSize< 10000000) {
+                //$fileNameNew = uniqid('',true).".".$fileActualExt;
+                $fileDestination = '../uploads/'.$fileName;
+                move_uploaded_file($fileTmpName, $fileDestination);
                 $newObj=new CreationMaker(new UserCreation());
-                $newObj->setInfo($me,$fileName,$fileTmpName)->addCreation();
+                $newObj->setInfo($me,$fileName,$fileActualExt)->addCreation();
                 
                 
                 $msg= "Successfully Uploaded!";
 
-    			header("Location:../view/creation.view.php? msg=$msg");
-    			
-    		}else{
-    			$msg= "Your file is too big!";
-    			header("Location:../view/creation.view.php? msg=$msg");
-    		}
-    	}else{
-    		$msg= "There was an error uploading your file!";
-    		header("Location:../view/creation.view.php? msg=$msg");
-    	}
+                header("Location:../view/creation.view.php? msg=$msg");
+                
+            }else{
+                $msg= "Your file is too big!";
+                header("Location:../view/creation.view.php? msg=$msg");
+            }
+        }else{
+            $msg= "There was an error uploading your file!";
+            header("Location:../view/creation.view.php? msg=$msg");
+        }
     }else{
-    	$msg= "You cannot upload files of this type!";
-    	header("Location:../view/creation.view.php? msg=$msg");
+        $msg= "You cannot upload this type of files!";
+        header("Location:../view/creation.view.php? msg=$msg");
     }
 
 

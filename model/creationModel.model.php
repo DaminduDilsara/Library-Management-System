@@ -14,10 +14,10 @@ class Creation extends dbconnection{
 		
 	}
 
-	public function addCreationalInfo($me,$fileName,$fileTmpName,$str){
+	public function addCreationalInfo($me,$fileName,$fileActualExt,$str){
         $sql = 'INSERT INTO creation(MembershipNo,Title,Creation,Approved) VALUES (?,?,?,?)';
         $stmt = $this->connect()->prepare($sql);
-        $stmt->execute([$me,$fileName,$fileTmpName,$str]);
+        $stmt->execute([$me,$fileName,$fileActualExt,$str]);
     }
 }
 

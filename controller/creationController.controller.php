@@ -86,13 +86,13 @@ Interface ICreation{
 class AdminCreation implements ICreation{
 	private $me;
 	private $fileName;
-	private $fileTmpName;
+	private $fileActualExt;
 
-	public function setInfo($me,$fileName,$fileTmpName){
+	public function setInfo($me,$fileName,$fileActualExt){
 		
 		$this->me=$me;
 		$this->fileName=$fileName;
-		$this->fileTmpName=$fileTmpName;
+		$this->fileActualExt=$fileActualExt;
 	}
 
 
@@ -100,7 +100,7 @@ class AdminCreation implements ICreation{
     {
     	$o=new Creation();
     	$str='1';
-    	$o->addCreationalInfo($this->me,$this->fileName,$this->fileTmpName,$str);
+    	$o->addCreationalInfo($this->me,$this->fileName,$this->fileActualExt,$str);
     }
 }
 
@@ -109,13 +109,13 @@ class UserCreation implements ICreation{
 
 	private $me;
 	private $fileName;
-	private $fileTmpName;
+	private $fileActualExt;
 
-	public function setInfo($me,$fileName,$fileTmpName){
+	public function setInfo($me,$fileName,$fileActualExt){
 		
 		$this->me=$me;
 		$this->fileName=$fileName;
-		$this->fileTmpName=$fileTmpName;
+		$this->fileActualExt=$fileActualExt;
 
 		
 	}
@@ -125,7 +125,7 @@ class UserCreation implements ICreation{
     	
     	$o=new Creation();
     	$str='0';
-    	$o->addCreationalInfo($this->me,$this->fileName,$this->fileTmpName,$str);
+    	$o->addCreationalInfo($this->me,$this->fileName,$this->fileActualExt,$str);
 
     	
     }
@@ -143,10 +143,10 @@ class CreationMaker{
 	}
 
 
-	public function setInfo($me,$fileName,$fileTmpName){
+	public function setInfo($me,$fileName,$fileActualExt){
 		
 		
-		$this->common->setInfo($me,$fileName,$fileTmpName);
+		$this->common->setInfo($me,$fileName,$fileActualExt);
 		
 
 		return $this;

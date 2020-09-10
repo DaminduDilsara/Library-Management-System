@@ -51,7 +51,7 @@ class BookController extends BookModel {
 		$result=$obuser->getBorrowInfo();
         
        for($i=0; $i<count($result); $i++){
-          echo $result[$i]['Date'];
+          echo $result[$i]['CurDate'];
           ?><br><br>
           <?php
         }   
@@ -63,19 +63,29 @@ class BookController extends BookModel {
 		$result=$obuser->getBorrowInfo();
         
        for($i=0; $i<count($result); $i++){
-          echo $result[$i]['ReturnedDate'];
+          //echo $result[$i]['ReturnedDate'];
+       		if (is_null($result[$i]['ReturnedDate'])){
+       			echo 'Not Returned Yet';
+       		}else{
+       			echo $result[$i]['ReturnedDate'];
+       		}
           ?><br><br>
           <?php
         }   
 
 	}
 
+
 	public function getFine(){
 		$obuser=new BookModel();
 		$result=$obuser->getBorrowInfo();
         
        for($i=0; $i<count($result); $i++){
-          echo $result[$i]['Fine'];
+          if (is_null($result[$i]['Fine'])){
+       			echo '0';
+       		}else{
+       			echo $result[$i]['Fine'];
+       		}
           ?><br><br>
           <?php
         }   

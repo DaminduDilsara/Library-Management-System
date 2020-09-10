@@ -20,16 +20,12 @@ error_reporting(0);
 <?php
     include('../include/header.inc.php');
     include('../include/footer.inc.php');
-
+    include('../include/navbar.inc.php');
   ?>
   
 	
  
-  <div class="navbar">
-  	<a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
-  	<a href="#"><i class="fa fa-fw fa-envelope"></i> Contact Us</a>
-  	<a href="#"> Advanced search</a> 
-  </div>
+  
   <div class="row" >
   
     <div class="card" style="height: 500px; ">
