@@ -14,7 +14,7 @@
 		
 		public function insertBook($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary){ 
 				
-			$sql = "INSERT INTO `book`(`BarcodeNo`, `ISBN`, `Subject`, `Title`, `SubTitle`, `Editor`, `Publisher`, `Section`, `PublishedPlace`, `PublishedDate`, `NumberOfPages`, `Price`, `Dimentions`, `CDIncluded`, `Availale`, `Deleted`, `Author`, `CallNo`) VALUES ('$barcode','$isbn','$subject','$title','$sub','$editor','$publisher','$section','$place','$date','$pages','$price','$dim','$cd','1','0','$author',(SELECT callnumber FROM callnumber WHERE description = '$categary'))";
+			$sql = "INSERT INTO `book`(`BarcodeNo`, `ISBN`, `Subject`, `Title`, `SubTitle`, `Editor`, `Publisher`, `Section`, `PublishedPlace`, `PublishedDate`, `NumberOfPages`, `Price`, `Dimentions`, `CDIncluded`, `Available`, `Deleted`, `Author`, `CallNo`) VALUES ('$barcode','$isbn','$subject','$title','$sub','$editor','$publisher','$section','$place','$date','$pages','$price','$dim','$cd','1','0','$author',(SELECT callnumber FROM callnumber WHERE description = '$categary'))";
 			$query = $this->connectInDifferentWay();
 			$result=mysqli_query($query,$sql) or die(mysqli_error($query)) ;		
 			
@@ -213,7 +213,7 @@
 				$expirationdate=date_create($row[0]);
 				$returnDate=date_create($returndate);
 				if ($expirationdate>$returnDate||$expirationdate==$returnDate){
-					echo("no");
+					
 					$fine=0;
 				}else{
 					

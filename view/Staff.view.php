@@ -16,7 +16,8 @@
 			$username=$_POST['username'];
 			$password=$_POST['pass'];
 			
-			$staff=Staff::getInstance($id,$name,$post,$address,$contactNo,$username,$password);
+			$staff=Staff::getInstance($id);
+			$staff->setStaff($id,$name,$post,$address,$contactNo,$username,$password);
 			$msg=$controller->insert($staff);
 			$_SESSION['msg']=$msg;
 		}elseif(isset($_POST['removeStaff'])){ 
@@ -29,7 +30,8 @@
 			$username=$_POST['username'];
             $password=$_POST['pass'];
             
-			$staff=Staff::getInstance($id,$name,$post,$address,$contactNo,$username,$password);
+			$staff=Staff::getInstance($id);
+			$staff->setStaff($id,$name,$post,$address,$contactNo,$username,$password);
 			$msg=$controller->remove($staff);
 			$_SESSION['msg']=$msg;
 		
@@ -51,7 +53,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../style/remove.charitha.css"type="text/css"/>
 	<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
-	<title>Removing Page</title>
+	<title>Staff Register</title>
 </head>
 <body>
 <header>
@@ -59,6 +61,10 @@
 	include "../include/header.inc.php";
 ?>
 </header>
+<?php
+		include	"../include/adminNavbar.inc.php";
+	?>
+	<br><br>
 <div class="box">
 </br></br></br></br></br></br>
 	<h2>Staff Register</h2>

@@ -26,7 +26,8 @@
 			$categary=$_POST['categary'];
 		
 			
-			$book=Book::getInstance($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary);
+			$book=Book::getInstance($barcode);
+			$book->setBook($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary);
 			$msg=$controller->insert($book);
 			$_SESSION['msg']=$msg;
 		}elseif(isset($_POST['addnewspaper'])){ 
@@ -37,7 +38,8 @@
 			$time=$_POST['time'];
 			
 			
-			$newspaper=Newspaper::getInstance($id,$name,$time);
+			$newspaper=Newspaper::getInstance($id);
+			$newspaper->setNewspaper($id,$name,$time);
 			$msg=$controller->insert($newspaper);
 			$_SESSION['msg']=$msg;
 		
@@ -74,6 +76,10 @@
 include "../include/header.inc.php";
 ?>
 </header>
+<?php
+		include	"../include/adminNavbar.inc.php";
+	?>
+	<br><br>
 <div class="box">
 
 </br></br></br></br></br></br></br></br></br>

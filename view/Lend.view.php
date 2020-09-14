@@ -32,11 +32,13 @@
 			$cd=$_POST['cd'];
 			$categary=$_POST['categary'];
 			
-			$borrow=BorrowSession::getInstance($id,$barcode,$memNo,$expirationdate,$returndate,$staffID,$receiptNo);
+			$borrow=BorrowSession::getInstance($barcode);
+			$borrow->setBorrowSession($id,$barcode,$memNo,$expirationdate,$returndate,$staffID,$receiptNo);
 			$msg1=$controller->insert($borrow);
 			$_SESSION['msg1']=$msg1;
 
-			$book=Book::getInstance($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary);
+			$book=Book::getInstance($barcode);
+			$book->setBook($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary);
 			$msg=$controller->update($book);
 			$_SESSION['msg']=$msg;
 
@@ -68,31 +70,14 @@
 			$categary=$_POST['categary'];
 			
 			
-			$borrow=BorrowSession::getInstance($id,$barcode,$memNo,$expirationdate,$returndate,$staffID,$receiptNo);
+			$borrow=BorrowSession::getInstance();
+			$borrow->setBorrowSession($id,$barcode,$memNo,$expirationdate,$returndate,$staffID,$receiptNo);
 			$msg1=$controller->update($borrow);
 			$_SESSION['msg1']=$msg1;
 
-			$book=Book::getInstance($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary);
+			$book=Book::getInstance($barcode);
+			$book->setBook($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary);
 			$msg=$controller->update($book);
-			$_SESSION['msg']=$msg;
-		
-		}elseif(isset($_POST['renew'])){ 
-
-			
-			$memNo=$_POST['memNo'];
-			$name=$_POST['name'];
-			$address=$_POST['address'];
-			$birthday=$_POST['birthday'];
-			$school=$_POST['school'];
-			$tele=$_POST['tele'];
-			$email=$_POST['email'];
-			$expirationdate=$_POST['expirationdate'];
-			$guarantor=$_POST['guarantor'];
-			$receiptNo=$_POST['receiptNo'];
-			
-			
-			$member=Member::getInstance($memNo,$name,$address,$birthday,$school,$tele,$email,$expirationdate,$guarantor,$receiptNo);
-			$msg=$controller->update($member);
 			$_SESSION['msg']=$msg;
 		
 		}elseif(isset($_POST['paid'])){ 
@@ -104,14 +89,15 @@
 			$memNo=$_POST['memNo'];
 			$staffID=$_POST['staffID'];	
 			
-			$deposite=Deposite::getInstance($receiptNo,$amount,$description,$memNo,$staffID);
+			$deposite=Deposite::getInstance();
+			$deposite->setDeposite($receiptNo,$amount,$description,$memNo,$staffID);
 			$msg=$controller->insert($deposite);
 			$_SESSION['msg']=$msg;
 		
 		}
 		if (isset($_SESSION['msg1'])){ 
 			$msg=$_SESSION['msg1'];
-			echo "<script type='text/javascript'>alert('Your fine charges=$msg1');</script>";
+			echo "<script type='text/javascript'>alert('$msg1');</script>";
 		
 			
 			unset($_SESSION['msg1']); 
@@ -140,6 +126,10 @@
 		<?php
 			include("../include/header.inc.php");
 		?>
+		<?php
+		include	"../include/adminNavbar.inc.php";
+	?>
+	<br><br>
 		<h2>Lending Session</h2>
 	</header>
 	<div class="tab">

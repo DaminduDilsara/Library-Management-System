@@ -50,6 +50,10 @@
 include "../include/header.inc.php";
 ?>
 </div>
+<?php
+		include	"../include/adminNavbar.inc.php";
+	?>
+	<br><br>
 
 <div>
 <br><br><br><br><br><br>

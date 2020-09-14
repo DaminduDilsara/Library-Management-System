@@ -20,7 +20,8 @@
 			$receiptNo=$_POST['receiptNo'];
 				
 			
-			$member=Member::getInstance($memNo,$name,$address,$birthday,$school,$tele,$email,$expirationdate,$guarantor,$receiptNo);
+			$member=Member::getInstance($memNo);
+			$member->setMember($memNo,$name,$address,$birthday,$school,$tele,$email,$expirationdate,$guarantor,$receiptNo);
 			$msg=$controller->insert($member);
 			$_SESSION['msg']=$msg;
 		}elseif(isset($_POST['removeMember'])){ 
@@ -38,7 +39,7 @@
 			$receiptNo=$_POST['receiptNo'];
 			
 			
-			$member=Member::getInstance($memNo,$name,$address,$birthday,$school,$tele,$email,$expirationdate,$guarantor,$receiptNo);
+			$member=Member::getInstance($memNo);
 			$msg=$controller->remove($member);
 			$_SESSION['msg']=$msg;
 		
@@ -57,7 +58,7 @@
 			$receiptNo=$_POST['receiptNo'];
 			
 			
-			$member=Member::getInstance($memNo,$name,$address,$birthday,$school,$tele,$email,$expirationdate,$guarantor,$receiptNo);
+			$member=Member::getInstance($memNo);
 			$msg=$controller->update($member);
 			$_SESSION['msg']=$msg;
 		
@@ -70,7 +71,8 @@
 			$name=$_POST['name'];
 			$staffID=$_POST['staffID'];	
 			
-			$deposite=Deposite::getInstance($receiptNo,$amount,$description,$memNo,$staffID);
+			$deposite=Deposite::getInstance();
+			$deposite->setDeposite($receiptNo,$amount,$description,$memNo,$staffID);
 			$msg=$controller->insert($deposite);
 			$_SESSION['msg']=$msg;
 		
@@ -101,6 +103,10 @@
 	<?php
 	include "../include/header.inc.php";
 	?>
+	<?php
+		include	"../include/adminNavbar.inc.php";
+	?>
+	<br><br>
 
 		<h2>Members Area</h2>
 	</header>

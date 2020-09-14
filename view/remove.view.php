@@ -65,6 +65,10 @@
 	include "../include/header.inc.php";
 ?>
 </header>
+<?php
+		include	"../include/adminNavbar.inc.php";
+	?>
+	<br><br>
 <div class="box">
 </br></br></br></br></br></br>
 	<h2>Removing Page</h2>

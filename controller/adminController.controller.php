@@ -5,13 +5,16 @@ Class Admincontroller extends Admin {
 	private $value;
 	private static $instance;
 
+	private function Admincontroller(){}
 	public static function getInstance()
     {
         if(!isset(self::$instance)){
-            self::$instance = new AdminController();
-        }
+            self::$instance = new Admincontroller();
+		}
+		
         return self::$instance;
     }
+	
 	public function insert($editable){
 	
 		$this->editable=$editable;
@@ -101,9 +104,11 @@ Class Book implements Editable{
 	private $dim;
 	private $cd;
 	private $categary;
-	private static $instance;
+	public static $books = array();
 	
-	public function Book($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary){
+	private function Book(){}
+
+	public function setBook($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary){
 		
 		$this->barcode=$barcode;
 		$this->isbn=$isbn;
@@ -124,12 +129,13 @@ Class Book implements Editable{
 		
 		
 	}
-	public static function getInstance($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary)
+	public static function getInstance($key)
     {
-        if(!isset(self::$instance)){
-            self::$instance = new Book($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary);
+        if(!array_key_exists($key,self::$books)){
+			self::$books[$key] = new self();
+			echo("yes");
         }
-        return self::$instance;
+        return self::$books[$key];
     }
 	public function insertData($adminModel){
 		
@@ -172,20 +178,24 @@ Class Newspaper implements Editable{
 	private $id;
 	private $name;
 	private $time;
-	private static $instance;
+	public static $newspapers=array();
 	private $value;
-	public function Newspaper($id,$name,$time){
+
+	private function Newspaper(){}
+
+	public function setNewspaper($id,$name,$time){
 		$this->id=$id;
 		$this->name=$name;
 		$this->time=$time;
 		
 	}
-	public static function getInstance($id,$name,$time)
+	public static function getInstance($key)
     {
-        if(!isset(self::$instance)){
-            self::$instance = new Newspaper($id,$name,$time);
+        if(!array_key_exists($key,self::$newspapers)){
+			self::$newspapers[$key] = new self();
+			
         }
-        return self::$instance;
+        return self::$newspapers[$key];
     }
 	public function insertData($adminModel){
 		
@@ -251,9 +261,11 @@ Class Member implements Editable{
 	private $expirationDate;
 	private $guarantor;
 	private $receiptNo;
-	private static $instance;
+	public static $members=array();
 
-	public function Member($memNo,$name,$address,$birthday,$school,$tele,$email,$expirationDate,$guarantor,$receiptNo){
+	public function Memeber(){}
+	
+	public function setMember($memNo,$name,$address,$birthday,$school,$tele,$email,$expirationDate,$guarantor,$receiptNo){
 		$this->memNo=$memNo;
 		$this->name=$name;
 		$this->address=$address;
@@ -266,12 +278,13 @@ Class Member implements Editable{
 		$this->receiptNo=$receiptNo;
 	
 	}
-	public static function getInstance($memNo,$name,$address,$birthday,$school,$tele,$email,$expirationDate,$guarantor,$receiptNo)
+	public static function getInstance($key)
     {
-        if(!isset(self::$instance)){
-            self::$instance = new Member($memNo,$name,$address,$birthday,$school,$tele,$email,$expirationDate,$guarantor,$receiptNo);
+        if(!array_key_exists($key,self::$members)){
+			self::$members[$key] = new self();
+			
         }
-        return self::$instance;
+        return self::$members[$key];
     }
 	public function insertData($adminModel){
 		
@@ -315,9 +328,11 @@ Class Staff implements Editable{
 	private $contNo;
 	private $username;
 	private $password;
-	private static $instance;
+	private static $staffMembers=array();
 
-	public function Staff($id,$name,$post,$address,$contNo,$username,$password){
+	private function Staff(){}
+
+	public function setStaff($id,$name,$post,$address,$contNo,$username,$password){
 		$this->id=$id;
 		$this->name=$name;
 		$this->post=$post;
@@ -327,13 +342,13 @@ Class Staff implements Editable{
 		$this->password=md5($password);
 		
 	}
-	public static function getInstance($id,$name,$post,$address,$contNo,$username,$password)
+	public static function getInstance($key)
     {
-        if(!isset(self::$instance)){
-            self::$instance = new Staff($id,$name,$post,$address,$contNo,$username,$password);
-		}
-		
-        return self::$instance;
+        if(!array_key_exists($key,self::$staffMembers)){
+			self::$staffMembers[$key] = new self();
+			
+        }
+        return self::$staffMembers[$key];
     }
 	public function insertData($adminModel){
 		
@@ -367,7 +382,9 @@ Class Deposite implements editable{
 	private $staffID;
 	private static $instance;
 
-	public function Deposite($receiptNo,$amount,$description,$memNo,$staffID){
+	private function Deposite(){}
+
+	public function setDeposite($receiptNo,$amount,$description,$memNo,$staffID){
 		$this->receiptNo=$receiptNo;
 		$this->amount=$amount;
 		$this->description=$description;
@@ -375,10 +392,10 @@ Class Deposite implements editable{
 		$this->staffID=$staffID;
 		
 	}
-	public static function getInstance($receiptNo,$amount,$description,$memNo,$staffID)
+	public static function getInstance()
     {
         if(!isset(self::$instance)){
-            self::$instance = new Deposite($receiptNo,$amount,$description,$memNo,$staffID);
+            self::$instance = new Deposite();
         }
         return self::$instance;
     }
@@ -413,8 +430,10 @@ Class BorrowSession implements editable{
 	private $staffid;
 	private $receiptNo;
 	private static $instance;
+	
+	private function BorrowSession(){}
 
-	public function BorrowSession($id,$barcode,$memNo,$expirationDate,$returnDate,$staffid,$receiptNo){
+	public function setBorrowSession($id,$barcode,$memNo,$expirationDate,$returnDate,$staffid,$receiptNo){
 		$this->id=$id;
 		$this->barcode=$barcode;
 		$this->memNo=$memNo;
@@ -424,13 +443,14 @@ Class BorrowSession implements editable{
 		$this->receiptNo=$receiptNo;
 		
 	}
-	public static function getInstance($id,$barcode,$memNo,$expirationDate,$returnDate,$staffid,$receiptNo)
+	public static function getInstance()
     {
         if(!isset(self::$instance)){
-            self::$instance = new BorrowSession($id,$barcode,$memNo,$expirationDate,$returnDate,$staffid,$receiptNo);
+            self::$instance = new self();
         }
         return self::$instance;
     }
+	
 	public function insertData($adminModel){
 		
 		$success=$adminModel->insertBorrowSession($this->id,$this->barcode,$this->memNo,$this->expirationDate,$this->staffid);
@@ -449,9 +469,9 @@ Class BorrowSession implements editable{
 	public function updateData($adminModel){
 		$fine=$adminModel->updateBorrowSession($this->id,$this->returnDate,$this->receiptNo);
 		if($fine>=0){
-			$msg1=$fine;
+			$msg1="Your fine charges=$fine";
 		}else{
-			$msg1=$fine;
+			$msg1="error";
 		}
 		$success=0;
 		return($msg1);
