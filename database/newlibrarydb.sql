@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 14, 2020 at 03:56 AM
+-- Generation Time: Sep 14, 2020 at 05:45 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -233,8 +233,7 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`MembershipNo`, `RegistrationDate`, `Name`, `Address`, `Birthday`, `School`, `Telephone`, `email`, `DepositeReceiptNo`, `ExpirationDate`, `Guarantor`, `Password`, `Deleted`) VALUES
-('1000000000', '2020-07-19', 'Damindu Dilsara Hettiarachchi', '131/1/1, Lakeside Park,Wewahamanduwa, Matara', '1997-05-01', 'Rahula college Matara', '0765491495', 'hadamindudilsara@gmail.com', 1, '2020-10-08', 'Bandula Hettiarachchi', '81dc9bdb52d04dc20036dbd8313ed055', 1),
-('2000000000', '2020-09-10', 'Dinali Uththama Kumarasiri', 'Vidath, Diamond Park, Warakapitiya, Welipitiya', '2020-08-03', 'Sujatha Vidyalaya', '1234567890', 'dinali@gmail.com', 1, '2020-09-24', 'Damindu Dilsara Hettiarachchi', 'd54d1702ad0f8326224b817c796763c9', 0);
+('1000000000', '2020-07-19', 'Damindu Dilsara Hettiarachchi', '131/1/1, Lakeside Park,Wewahamanduwa, Matara', '1997-05-01', 'Rahula college Matara', '0765491495', 'hadamindudilsara@gmail.com', 1, '2020-10-08', 'Bandula Hettiarachchi', '81dc9bdb52d04dc20036dbd8313ed055', 1);
 
 -- --------------------------------------------------------
 
