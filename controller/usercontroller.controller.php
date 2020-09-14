@@ -170,6 +170,17 @@ class UserController extends User {
         }
     }
 
+    public function checkExpire($memNo){
+        $rows = $this->checkExist($memNo);
+        $today = date("Y-m-d ");
+        $expirationDate = $rows["ExpirationDate"];
+        if ($expirationDate < $today){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public function userRegister($email,$psw,$memNo){
         $rows = $this->checkExist($memNo);
         $exist = $this -> CheckNull($memNo);
@@ -196,6 +207,14 @@ class UserController extends User {
 
     public function showCreations(){
         return $this->getApprovedCreations();
+    }
+
+    public function getUserInfo($memNo){
+        return $this->checkExist($memNo);
+    }
+
+    public function ShowEbooks($collection){
+        return $this->getEbooks($collection);
     }
 
 }

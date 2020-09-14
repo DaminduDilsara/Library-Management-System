@@ -10,9 +10,15 @@ include_once('../controller/usercontroller.controller.php');
 
 		$rows = $cont -> UserLogin($memNo, $psw);
         if($rows){
-			session_start();
-			$_SESSION['memNo'] = $memNo;
-			header("Location: ../view/whole.view.php");
+            if ($cont->checkExpire($memNo)){
+                session_start();
+                $_SESSION['memNo'] = $memNo;
+                header("Location: ExpiredPage.php");
+            }else {
+                session_start();
+                $_SESSION['memNo'] = $memNo;
+                header("Location: ../view/whole.view.php");
+            }
         }else{
 			echo "<div class='login_Messages'><h3>Username/password is incorrect.</h3>Click here to <a href='index.php'>Login Again</a></div>";
 			$run = true;

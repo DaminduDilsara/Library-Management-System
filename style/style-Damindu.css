@@ -121,6 +121,16 @@ a{
     height: 430px;
 }
 
+.cardAuto {
+    opacity: 1;
+    background-color: #F9BDB4 ;
+    padding: 20px;
+    margin: 10px;
+    min-height: 730px;
+    height: auto;
+    text-align: center;
+}
+
 .cardNew {
     opacity: 1;
     background-color: #F9BDB4 ;

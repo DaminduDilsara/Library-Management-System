@@ -8,8 +8,8 @@
 
 
 <div class="navbar">
-    <a class="active" href="../mainPageView/index.php"><i class="fa fa-fw fa-home"></i> Home</a>
-    <a href="../mainPageView/contactUs.php"><i class="fa fa-fw fa-envelope"></i> Contact Us</a>
+    <a  href="../view/whole.view.php"><i class="fa fa-fw fa-home"></i> Home</a>
+    <a href="../mainPageView/ContactUsSecondPage.php"><i class="fa fa-fw fa-envelope"></i> Contact Us</a>
     <a href="#"> Advanced search</a> 
   </div>
 

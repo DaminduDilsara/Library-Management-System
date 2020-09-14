@@ -52,6 +52,12 @@ class User extends dbConnection {
         $result = mysqli_query($this -> connectInDifferentWay(),$query) or die(mysql_error());
         return $result;
     }
+
+    public function getEbooks($collection){
+        $check = "SELECT * FROM `ebooks` WHERE `Collection`='$collection'";
+        $checked = mysqli_query($this -> connectInDifferentWay(),$check) or die(mysql_error());
+        return $checked;
+    }
 	
 }
 ?>
