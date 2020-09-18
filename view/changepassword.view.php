@@ -22,8 +22,16 @@ $result=$obuser->checkPassword($memNo,$psw,$newpassword,$repsw);
   <link rel="stylesheet" type="text/css" href="../css/stylee.css">
   <link rel="stylesheet" type="text/css" href="../css/changepassword.css">
 </head>
+<body>
 
-<div style=" background-color: #8B0000; " >
+  <?php
+    include('../include/header.inc.php');
+    include('../include/footer.inc.php');
+    include('../include/navbar.inc.php');
+
+  ?>
+
+<div style=" background:linear-gradient(to bottom, black 0%, #8B0000 100%) " >
 
 
 

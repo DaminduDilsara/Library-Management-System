@@ -30,7 +30,7 @@ error_reporting(0);
   
     <div class="card" style="height: 500px; ">
       
-      <div class="fakeimg" style="height:400px;">
+      <div class="fakeimg" style="height:100%;">
       	<h3>Managed Issued Books</h3>
       <table id="customers">
   <tr>

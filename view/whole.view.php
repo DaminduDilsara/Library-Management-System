@@ -46,7 +46,7 @@ $result=$obuser->assignInfo($memNo);
     </div>
     
       
-      <div class="fakeimg" style="height:260px;"><div class="medium-text" style="font-size: 22px;" >   Hello, <?php echo ($obuser->getName());?> <br> Welcome to your account</br></div></div> 
+      <div class="fakeimg" style="height:310px;"><div class="medium-text" style="font-size: 22px;" >   Hello, <?php echo ($obuser->getName());?> <br> Welcome to your account</br></div></div> 
     
     
     
@@ -54,9 +54,9 @@ $result=$obuser->assignInfo($memNo);
   <div class="rightcolumn">
     <div class="card" style="height:600px;" >
       
-      <div class="fakeimg" style="height:500px;  ">
-        <img src="../images/1.png" style="height: 100px; width: 100px; margin-left: 50px;">
-         <ul class="vertical-list" style="margin-top: 0px;">
+      <div class="fakeimg" style="height:100%  ">
+        <img src="../images/1.png" style="height: 100px; width: 100px; margin-left: 25%;">
+         <ul class="vertical-list" style="margin-top: 0px; margin-left: -10px; margin-top: 25px;">
     
     <li><a href='issuedbooks.view.php' class='button'>Issued Books</a></li>
     <li><a href='personaldetails.view.php' class='button'>Personal details</a></li>

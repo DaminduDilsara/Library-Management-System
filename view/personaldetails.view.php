@@ -37,7 +37,7 @@ $result=$obuser->assignInfo($memNo);
   <div class="leftcolumn">
     <div class="card" style="height: 1150px;">
       
-      <div class="fakeimg" style="height:1150px;">
+      <div class="fakeimg" style="height:1100px;">
         
        
       <h3>Library</h3>
@@ -64,7 +64,7 @@ $result=$obuser->assignInfo($memNo);
   </div>
 
   <div class="rightcolumn">
-    <div class="card" style="height:1100px;" >
+    <div class="card" style="height:1150px;" >
       
       <div class="fakeimg" style="height:1100px;  ">
        <h3>About Me </h3>
