@@ -4,36 +4,97 @@
 <!-- Add icon library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div class="icon-bar">
-      <a class="active" href="../view/admin.view.php"><i class="fa fa-home"></i></a>
-      <a href="#"><i class="fa fa-search"></i></a>
-      <a href="#"><i class="fa fa-envelope" id="noti_number"></i></a>
-      <a href="../mainPageView/ContactUsSecondPage.php"><i class="fa fa-info-circle"></i></a>
-      <a href="logout.view.php"><i class="fa fa-sign-out">logout</i></a>
+<div class="navbar">
+      <a class="active" href="../view/admin.view.php">Home</a>
+      <a href="search.view.php">Search</a>
+      <div class="dropdown">
+      <button class="dropbtn"> 
+        Notifications
+      </button>
+      <div class="dropdown-content">
+      <a href="creationApprove.view.php">Creation</a>
+      <a href="donationApprove.view.php">Donation</a>
+      </div>
+      </div> 
+      <!--<a href="#"><i class="fa fa-envelope" id="noti_number"></i></a> -->
+      <a href="../mainPageView/ContactUsSecondPage.php">Contact Us</a>
+      <a href="logout.view.php">Logout</a>
 </div>
 <style>
-    .icon-bar {
-	width: 100%; /* Full-width */
-	background-color: #990000; 
-	overflow: auto; /* Overflow due to float */
-  }
   
-  .icon-bar a {
-	float: left; /* Float links side by side */
-	text-align: center; /* Center-align text */
-	width: 20%; /* Equal width (5 icons with 20% width each = 100%) */
-	padding: 12px 0; /* Some top and bottom padding */
-	transition: all 0.3s ease; /* Add transition for hover effects */
-	color: white; /* White text color */
-	font-size: 36px; /* Increased font size */
-  }
-  
-  .icon-bar a:hover {
-	background-color: #000; /* Add a hover color */
-  }
-  
-  .active {
-	background-color: #330000; /* Add an active/current color */
-  }
+
+ .navbar {
+    overflow: hidden;
+    background-color: #8B0000;
+    font-family: Arial;
+    margin: 3px;
+}
+
+/* Links inside the navbar */
+.navbar a {
+
+    float: left;
+    font-size: 26px;
+    color: white;
+    text-align: center;
+    padding: 14px 90px;
+    text-decoration: none;
+}
+
+/* The dropdown container */
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+    font-size: 26px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 90px;
+    background-color: inherit;
+    font-family: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
+}
+
+/* Add a red background color to navbar links on hover */
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #F9BDB4;
+    min-width: 321px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    text-align: center;
+
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    float: none;
+    color: #8B0000;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #8B0000;
+    color: #ffffff;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 </style>
 </html>
