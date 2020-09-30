@@ -10,7 +10,7 @@
 <div class="navbar">
     <a  href="../view/whole.view.php"><i class="fa fa-fw fa-home"></i> Home</a>
     <a href="../mainPageView/ContactUsSecondPage.php"><i class="fa fa-fw fa-envelope"></i> Contact Us</a>
-    <a href="#"> Advanced search</a> 
+    <a href="search.view.php"> Advanced search</a> 
   </div>
 
 </body>
