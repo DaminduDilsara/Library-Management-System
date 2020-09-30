@@ -37,7 +37,7 @@
     font-size: 26px;
     color: white;
     text-align: center;
-    padding: 14px 90px;
+    padding: 1% 6%;
     text-decoration: none;
 }
 
@@ -53,7 +53,7 @@
     border: none;
     outline: none;
     color: white;
-    padding: 14px 90px;
+    padding: 14px 56px;
     background-color: inherit;
     font-family: inherit; /* Important for vertical align on mobile phones */
     margin: 0; /* Important for vertical align on mobile phones */
@@ -69,7 +69,7 @@
     display: none;
     position: absolute;
     background-color: #F9BDB4;
-    min-width: 321px;
+    min-width: 253px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     text-align: center;
