@@ -32,7 +32,7 @@ $result=$obuser->assignInfo($memNo);
 
   ?>
 
-	
+  
   
  <div class="row">
   <div class="leftcolumn">
@@ -59,13 +59,15 @@ $result=$obuser->assignInfo($memNo);
          <ul class="vertical-list" style="margin-top: 0px; margin-left: -10px; margin-top: 25px;">
     
     <li><a href='issuedbooks.view.php' class='button'>Issued Books</a></li>
+    <li><a href='reservedbooks.view.php' class='button'>Reserved Books</a></li>
     <li><a href='personaldetails.view.php' class='button'>Personal details</a></li>
     <li><a href='changepassword.view.php' class='button'>Change password</a></li>
-    <li><a href='logout.view.php' class='button'>Log out</a></li>
+    
     
     <li><a href='search.view.php' class='button'>Reserve book</a></li>
     <li><a href='creation.view.php' class='button'>Add creations</a></li>
     <li><a href='EBookCollection.php' class='button'>E-Books</a></li>
+    <li><a href='logout.view.php' class='button'>Log out</a></li>
 </ul>
 </div>
        
