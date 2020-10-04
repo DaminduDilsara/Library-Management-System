@@ -23,7 +23,7 @@ if(isset($_GET['reserve_id']))
   header("Location: search.view.php");
 }
 
-//$object->expireReservation();
+$object->expireReservation();
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +31,30 @@ if(isset($_GET['reserve_id']))
 <head>
 	<title>Search Item</title>
 	<link rel="stylesheet" type="text/css" href="../css/s.css">
+
+    <style>
+    th, td {
+        padding: 15px;
+        text-align: center;
+        border: 1px solid black;
+        border-color: white;
+      }
+      table {
+        border-collapse: collapse;
+        width: 1000px;
+        font-size: 20px;
+    }
+    th {
+        background-color: #8B0000;
+        color: white;
+    }
+    /**td:nth-child(even){
+      background-color: white;
+    } **/
+
+
+}
+  </style>
 
 </head>
 <body>
@@ -68,10 +92,8 @@ Select a key:
         	$object=new SearchCon($selectOption,$searchValue);
         	$result=$object->searchresults($selectOption,$searchValue);
         	?>
-        	<table align="center" border="1px" style="width:600px; line-height:40px; background-color: white; color: black;">
-                                    <tr>
-                                    <th colspan="4"><h2>Search Results</h2></th>
-                                    </tr>
+        	<table align="center" border="1px" style="width:600px; line-height:40px; color: black;">
+                            
                                     <t>
                                     <th> Title </th>
                                     <th> Author </th>
