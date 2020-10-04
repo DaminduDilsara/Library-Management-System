@@ -13,7 +13,9 @@ if(isset($_POST['submit'])){
 	
 
 	$objct = new Donation($name,$address,$email,$phone,$type,$des); 
-	$objct->insertTo($name,$address,$email,$phone,$type,$des);
+	$res=$objct->insertTo($name,$address,$email,$phone,$type,$des);
+	
+
 
 	
 
@@ -27,10 +29,10 @@ if(isset($_POST['submit'])){
 <html>
 <head>
 	<title>Donation Requests</title>
-	<link href="../css/style.css" rel="stylesheet" />
+	<link href="../Uthpala/css/style.css" rel="stylesheet" />
 </head>
 <body>
-	<?php include('header.php'); ?>
+	<?php include_once('../include/header.inc.php'); ?>
 	
 	<div class="middle">
 		
@@ -61,7 +63,7 @@ if(isset($_POST['submit'])){
 				</div>
 			<?php
 
-    include('footer.php');
+    include_once('../include/footer.inc.php');
 
 
 

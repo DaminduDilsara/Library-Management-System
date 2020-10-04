@@ -1,13 +1,15 @@
 <?php 
 include_once("donreq.con.php");
-include_once("connect.php");
+include_once("../include/dbconnection.inc.php");
 
-class Donreq extends connection {
+class Donreq extends dbconnection {
 	
 	 public function insertDon($name, $address, $email, $phone, $type,$des){ 
-			$sql = "INSERT INTO `donation` (`Name`, `Address`, `Email`, `Telephone`, `DonationType`,`Description`) VALUES ($name, $address, $email, $phone, $type,$des)";
-			$stmt= $this->dbconnect()->prepare($sql);
-			$stmt->execute([$name, $address, $email, $phone, $type,$des]);
+			$sql = "INSERT INTO `donation` (`Name`, `Address`, `email`, `Telephone`, `DonationType`,`Description`,`Approved`) VALUES ('$name', '$address', '$email', '$phone', '$type', '$des','0')";
+			$query = $this->connectInDifferentWay();
+			$result =mysqli_query($query,$sql) or die(mysqli_error($query)) ;
+
+			//return true;
 
 			//return $res;
 

@@ -1,15 +1,29 @@
 <?php
 session_start();
 include_once("../controller/search.con.php");
-
+//error_reporting(0);
+//$memNo=$_SESSION['memNo'];
 $object=new searchCon();
+
 
 if(isset($_GET['reserve_id']))
 {
   $reserve_id=$_GET['reserve_id'];
-  $object->reservebook($reserve_id);
+  $memNo="005";
+  $object->reserveBook($memNo,$reserve_id);
+  //$_SESSION['msg']=$res;
+//if (isset($_SESSION['msg'])){
+  //$msg=$_SESSION['msg'];
+  //echo "<script type='text/javascript'>alert('$msg');</script>";
+
+  //unset($_SESSION['msg']);
+//}
+
+
   header("Location: search.view.php");
 }
+
+//$object->expireReservation();
 ?>
 
 <!DOCTYPE html>
@@ -94,7 +108,8 @@ Select a key:
   function reserveme(reserveid)
  {
  if(confirm("Do you want reserve!")){
- window.location.href='search.view.php?reserve_id=' +reserveid+'';
+
+  window.location.href='search.view.php?reserve_id=' +reserveid+'';
 
  return true;
  }

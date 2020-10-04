@@ -16,13 +16,25 @@ Class SearchCon extends SearchModel{
         return $this->searchingresult($selectOption,$searchValue);
     }
 
-    public function reserveBook($reserve_id){
-    	$this->reserveBooks($reserve_id);
+    public function reserveBook($memNo,$reserve_id){
+    	$this->updateReserve($memNo,$reserve_id);
+        //if($res==1){
+            //$msg="Your reservation is successfull. Reservation wll be cancelled within 2 days!!!";
+        //}else{
+           // $msg="You have alresdy reserved 2 books!!!";
+       // }
+       // return $msg;
+
+    	
+    }
+
+    public function expireReservation(){
+    	$this->expireReserve();
     }
 
 
 
-	
+    
 
 } 
 
