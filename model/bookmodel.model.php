@@ -12,10 +12,18 @@ class BookModel extends dbConnection {
 		return $query;
 	 }
 
-	 public function getBorrowInfo(){
-	 	$sql = "SELECT * FROM borrowsession";
+	 public function getBorrowInfo($memNo){
+	 	$sql = "SELECT * FROM borrowsession WHERE MembershipNo=?";
 		$query = $this->connect()->prepare($sql);
-		$query->execute();
+		$query->execute([$memNo]);
+		$query = $query->fetchAll();
+		return $query;
+	 }
+
+	  public function getBookReservationInfo($memNo){
+	 	$sql = "SELECT * FROM bookReservations WHERE MembershipNo=?";;
+		$query = $this->connect()->prepare($sql);
+		$query->execute([$memNo]);
 		$query = $query->fetchAll();
 		return $query;
 	 }

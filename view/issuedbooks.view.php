@@ -4,6 +4,7 @@ include('../include/dbconnection.inc.php');
 
 include('../controller/bookController.controller.php');
 error_reporting(0);
+$memNo=$_SESSION['memNo'];
 
  $obuser=new BookController();
 ?>
@@ -23,7 +24,7 @@ error_reporting(0);
     include('../include/navbar.inc.php');
   ?>
   
-	
+  
  
   
   <div class="row" >
@@ -31,7 +32,7 @@ error_reporting(0);
     <div class="card" style="height: 500px; ">
       
       <div class="fakeimg" style="height:100%;">
-      	<h3>Managed Issued Books</h3>
+        <h3>Managed Issued Books</h3>
       <table id="customers">
   <tr>
     <th>Book Name</th>
@@ -42,28 +43,30 @@ error_reporting(0);
     <th>Fine in (Rs.)</th>
   </tr>
   <tr>
-  	<td>
-      <?php $obuser->getBookName(); ?> 
-    </td>
-  	<td>
-     <?php $obuser->getISBN(); ?>  
-    </td>
-  	<td>
-      <?php $obuser->getIssuedDate(); ?>
-      
-    </td>
-  	<td>
-     <?php $obuser->getExpirationDate(); ?> 
-    </td>
-  	<td>
-     <?php $obuser->getReturnedDate(); ?> 
+    <td>
+      <?php
+
+       $obuser->getBookName($memNo); ?> 
     </td>
     <td>
-      <?php $obuser->getFine(); ?>
+     <?php $obuser->getISBN($memNo); ?>  
+    </td>
+    <td>
+      <?php $obuser->getIssuedDate($memNo); ?>
+      
+    </td>
+    <td>
+     <?php $obuser->getExpirationDate($memNo); ?> 
+    </td>
+    <td>
+     <?php $obuser->getReturnedDate($memNo); ?> 
+    </td>
+    <td>
+      <?php $obuser->getFine($memNo); ?>
     </td>
   </tr>
       </div>
       </div>
-      </div>	
+      </div>  
 </body>
 </html>

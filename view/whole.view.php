@@ -59,7 +59,7 @@ $result=$obuser->assignInfo($memNo);
          <ul class="vertical-list" style="margin-top: 0px; margin-left: -10px; margin-top: 25px;">
     
     <li><a href='issuedbooks.view.php' class='button'>Issued Books</a></li>
-    <li><a href='reservedbooks.view.php' class='button'>Reserved Books</a></li>
+    <li><a href='bookReservations.view.php' class='button'>Reserved Books</a></li>
     <li><a href='personaldetails.view.php' class='button'>Personal details</a></li>
     <li><a href='changepassword.view.php' class='button'>Change password</a></li>
     
