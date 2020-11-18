@@ -2,6 +2,7 @@
 
 <html lang="en">
 <!-- Add icon library -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="navbar">
@@ -18,6 +19,7 @@
       </div> 
       <!--<a href="#"><i class="fa fa-envelope" id="noti_number"></i></a> -->
       <a href="../mainPageView/ContactUsSecondPage.php">Contact Us</a>
+      <a href="../view/info.view.php">Information</a>
       <a href="logout.view.php">Logout</a>
 </div>
 <style>
@@ -34,10 +36,10 @@
 .navbar a {
 
     float: left;
-    font-size: 26px;
+    font-size: 20px;
     color: white;
     text-align: center;
-    padding: 1% 6%;
+    padding: 20px 60px;
     text-decoration: none;
 }
 
@@ -49,11 +51,11 @@
 
 /* Dropdown button */
 .dropdown .dropbtn {
-    font-size: 26px;
+    font-size: 20px;
     border: none;
     outline: none;
     color: white;
-    padding: 14px 56px;
+    padding: 20px 60px;
     background-color: inherit;
     font-family: inherit; /* Important for vertical align on mobile phones */
     margin: 0; /* Important for vertical align on mobile phones */
@@ -80,7 +82,7 @@
 .dropdown-content a {
     float: none;
     color: #8B0000;
-    padding: 12px 16px;
+    padding: 12px 50px;
     text-decoration: none;
     display: block;
     text-align: left;

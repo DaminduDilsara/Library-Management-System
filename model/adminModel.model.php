@@ -292,6 +292,34 @@
 			
 		}
 
+		public function showBook(){
+			$sql = "SELECT ISBN,Title,SubTitle,Author FROM book";
+			$query=$this -> connectInDifferentWay();
+			$result = mysqli_query($query,$sql) or die(mysqli_error($query));
+			
+			return $result;	
+		}
+		public function showNewspaper(){
+			$sql = "SELECT NewspaperID,NewspaperName FROM newspaper";
+			$query=$this -> connectInDifferentWay();
+			$result = mysqli_query($query,$sql) or die(mysqli_error($query));
+			
+			return $result;	
+		}
+		public function showMember(){
+			$sql = "SELECT MembershipNo,'Name','Address',Telephone,Email FROM member";
+			$query=$this -> connectInDifferentWay();
+			$result = mysqli_query($query,$sql) or die(mysqli_error($query));
+			
+			return $result;	
+		}
+		public function showStaff(){
+			$sql = "SELECT StaffID,'Name',Post,'Address',ContactNo FROM staff";
+			$query=$this -> connectInDifferentWay();
+			$result = mysqli_query($query,$sql) or die(mysqli_error($query));
+			
+			return $result;	
+		}
 
 		public function getAdminInfo($staffID){
 	 		$sql = "SELECT * FROM staff WHERE StaffID= ?";

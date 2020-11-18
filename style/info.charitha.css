@@ -1,0 +1,107 @@
+h1 {
+	font-weight: bold;
+	margin: 0;
+}
+
+h2 {
+	text-align: center;
+}
+.footer-section {
+    padding:0.5%;
+    color:#ffffff;
+    font-size:13px;
+    background-color: #8B0000;
+    border-top:4px solid #C46A15;
+	border-bottom: 2px solid #C46A15;
+	bottom:0;
+}
+
+.footer-section a, .footer-section a:hover {
+	color:#ffffff;
+}
+
+.quote-text{
+	font-size:15px;
+	font-family: 'Shadows Into Light', cursive;
+}
+
+.left-allign {
+	text-align:right;
+}
+
+.header-section {
+    padding:10px 50px 100px 10px;
+    color:Black;
+    font-size:30px;
+    background-color: #8B0000;
+    text-align:left;
+    border-top:5px solid #C46A15;
+	border-bottom: 2px solid #C46A15;
+
+}
+
+
+div.header-1 {
+	position: absolute;
+	left: 40px;
+}
+div.header-2 {
+	position: absolute;
+	left: 180px;
+	top : 35px;
+}
+div.header-3 {
+	position: absolute;
+	right: 40px;
+}
+div.header-4 {
+	position: absolute;
+	right: 170px;
+	top : 30px;
+}
+
+
+.small-text{
+	font-size:15px;
+	font-family: 'Shadows Into Light', cursive;
+}
+.medium-text{
+	font-size:30px;
+	font-family: 'Shadows Into Light', cursive;
+}
+/* Set height of body and the document to 100% to enable "full page tabs" */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial;
+  }
+  
+  /* Style tab links */
+  .tablink {
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+  }
+  
+  .tablink:hover {
+    background-color: #777;
+  }
+  
+  /* Style the tab content (and add height:100% for full page content) */
+  .tabcontent {
+    color: white;
+    display: none;
+    padding: 100px 20px;
+    height: 100%;
+  }
+  
+  #Home {background-color: red;}
+  #News {background-color: green;}
+  #Contact {background-color: blue;}
+  #About {background-color: orange;}

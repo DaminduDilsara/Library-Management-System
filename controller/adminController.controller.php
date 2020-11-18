@@ -53,6 +53,14 @@ Class Admincontroller extends Admin {
 		$msg=$this->editable->expireStatus($adminModel);
 		return($msg);
 	}
+	public function showData($editable){
+		
+		$this->editable=$editable;
+		$adminModel=Admin::getInstance();
+		$data=$this->editable->showData($adminModel);
+		return($data);
+	}
+
 }
 Interface Editable{
 	
@@ -133,7 +141,7 @@ Class Book implements Editable{
     {
         if(!array_key_exists($key,self::$books)){
 			self::$books[$key] = new self();
-			echo("yes");
+		
         }
         return self::$books[$key];
     }
@@ -170,6 +178,11 @@ Class Book implements Editable{
 		}
 		$success=0;
 		return($msg);
+	}
+	public function showData($adminModel){
+		
+		$data=$adminModel->showBook();
+		return ($data);
 	}
 
 	
@@ -249,6 +262,11 @@ Class Newspaper implements Editable{
 		$success=0;
 		return($msg);
 	}
+	public function showData($adminModel){
+		
+		$data=$adminModel->showNewspaper();
+		return ($data);
+	}
 }
 Class Member implements Editable{
 	private $memNo;
@@ -318,6 +336,11 @@ Class Member implements Editable{
 		$success=0;
 		return($msg);
 	}
+	public function showData($adminModel){
+		
+		$data=$adminModel->showMember();
+		return ($data);
+	}
 	
 }
 Class Staff implements Editable{
@@ -372,6 +395,11 @@ Class Staff implements Editable{
 		}
 		$success=0;
 		return($msg);
+	}
+	public function showData($adminModel){
+		
+		$data=$adminModel->showStaff();
+		return ($data);
 	}
 }
 Class Deposite implements editable{
