@@ -75,7 +75,6 @@ class CreationMaker{
 
 }
 
-<<<<<<< HEAD
 class Notification{
 
 	public function notify(){
@@ -88,5 +87,3 @@ class Notification{
 
 $obj=new Notification();
 $obj->notify();
-=======
->>>>>>> f19fbfa3d81575d1ef743fca7123c29d3f865008
