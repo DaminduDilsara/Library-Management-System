@@ -13,7 +13,31 @@
         Notifications
       </button>
       <div class="dropdown-content">
-      <a href="creationApprove.view.php">Creation</a>
+      <a href="creationApprove.view.php" class="notification">
+        <span>Creation</span>
+        <span class="badge"><i class="" id="noti_number"></i></span></a>
+
+      <script type="text/javascript">
+        function loadDoc() {
+
+          setInterval(function(){
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("noti_number").innerHTML = this.responseText;
+        }
+      };
+      xhttp.open("GET", "../controller/creationController.controller.php", true);
+      xhttp.send();
+
+
+      },1000);
+  
+    }
+    loadDoc();
+    </script>
+
+
       <a href="donationApprove.view.php">Donation</a>
       </div>
       </div> 
@@ -98,5 +122,30 @@
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+.notification {
+  
+  color: white;
+  text-decoration: none;
+  padding: 15px 26px;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+.notification:hover {
+  background: red;
+}
+
+.notification .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}
+
 </style>
 </html>

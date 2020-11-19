@@ -28,7 +28,8 @@ if (isset($_POST['submit'])){
                 $fileDestination = '../uploads/'.$fileName;
                 move_uploaded_file($fileTmpName, $fileDestination);
                 $newObj=new CreationMaker(new AdminCreation());
-                $newObj->setInfo($me,$fileName,$fileActualExt)->addCreation();
+                $newObj->setInfo($me,$fileName,$fileActualExt);
+                $newObj->addCreation();
                 
                 
                 $msg= "Successfully Uploaded!";
