@@ -37,8 +37,29 @@
     loadDoc();
     </script>
 
+      <a href="donationApprove.view.php" class="notification">
+        <span>Donation</span>
+        <span class="badge"><i class="" id="donnoti_number"></i></span></a>
 
-      <a href="donationApprove.view.php">Donation</a>
+      <script type="text/javascript">
+        function loadDoc() {
+
+          setInterval(function(){
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("donnoti_number").innerHTML = this.responseText;
+        }
+      };
+      xhttp.open("GET", "../controller/donationController.controller.php", true);
+      xhttp.send();
+
+
+      },1000);
+  
+    }
+    loadDoc();
+    </script>
       </div>
       </div> 
       <!--<a href="#"><i class="fa fa-envelope" id="noti_number"></i></a> -->
