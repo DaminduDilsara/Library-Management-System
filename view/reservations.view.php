@@ -1,5 +1,6 @@
 <?php
 include_once("../include/header.inc.php");
+include('../include/navbar.inc.php');
 ?>
 
 <!DOCTYPE html>
@@ -7,6 +8,7 @@ include_once("../include/header.inc.php");
 <head>
 	<title>My Reservations</title>
 	<link rel="stylesheet" type="text/css" href="s.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<style>
 		th, td {
   			padding: 15px;
