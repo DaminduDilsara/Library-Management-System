@@ -1,6 +1,6 @@
 <?php
 include_once("donreq.model.php");
-include_once("donreq.view.php");
+//include_once("donreq.view.php");
 
 Class Donation extends Donreq{
 	private $name;
