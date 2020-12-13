@@ -160,6 +160,7 @@ function confirmDelete() {
 
 
 <script>
+//slide the panels of the flexbox
 const NewspaperButton = document.getElementById('newspaper');
 const BookButton = document.getElementById('book');
 const container = document.getElementById('container');

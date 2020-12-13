@@ -100,7 +100,7 @@
 			
 			$result=mysqli_query($query,$sql) or die(mysqli_error($query));
 			
-			if ($result==true) {
+			if ($result==true and mysqli_affected_rows($query)>0) {
 				return true;
 			} else {
 				return false;

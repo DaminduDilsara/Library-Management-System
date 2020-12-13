@@ -266,6 +266,7 @@ error_reporting(0);
 	
 	
 	<script>
+	// slideshow
 var slideIndex = 0;
 showSlides();
 

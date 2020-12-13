@@ -209,12 +209,14 @@
 	
 </body>
 <script>
+//popup the confirmation box
 function confirmDelete() {
   return confirm("Are you sure you want to delete?");
 }
 </script>
 
 <script>
+//load the tabs when click on the heading
 document.getElementById("default").click();
 
 function openTab(evt, Name) {

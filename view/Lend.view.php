@@ -228,6 +228,7 @@
 </body>
 
 <script>
+//load the tabs when click on it
 document.getElementById("default").click();
 
 function openTab(evt, Name) {

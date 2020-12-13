@@ -62,6 +62,7 @@ include "../include/header.inc.php";
 
 <form method="post"> 
 <?php
+//display the expired newspapers to tick
 	if ($storeArray!=NULL){ 
 		foreach ($storeArray as $value){
 			echo("<input type='checkbox' name='chk1[]'value='$value'>$value<br>") ;

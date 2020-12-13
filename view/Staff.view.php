@@ -128,6 +128,7 @@
 </br></br></br></br></br></br>
 </div>
 <script>
+//popup the confirmation box
 function confirmDelete() {
   return confirm("Are you sure you want to delete?");
 }
@@ -136,6 +137,7 @@ function confirmDelete() {
 
 
 <script>
+//sliding the panels of the flexbox
 const NewspaperButton = document.getElementById('newspaper');
 const BookButton = document.getElementById('book');
 const container = document.getElementById('container');
