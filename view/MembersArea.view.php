@@ -40,6 +40,7 @@
 			
 			
 			$member=Member::getInstance($memNo);
+			$member->setMember($memNo,$name,$address,$birthday,$school,$tele,$email,$expirationdate,$guarantor,$receiptNo);
 			$msg=$controller->remove($member);
 			$_SESSION['msg']=$msg;
 		
@@ -56,14 +57,20 @@
 			$expirationdate=$_POST['expirationdate'];
 			$guarantor=$_POST['guarantor'];
 			$receiptNo=$_POST['receiptNo'];
-			
+			echo($receiptNo);
 			
 			$member=Member::getInstance($memNo);
+			
+			$member->setMember($memNo,$name,$address,$birthday,$school,$tele,$email,$expirationdate,$guarantor,$receiptNo);
 			$msg=$controller->update($member);
 			$_SESSION['msg']=$msg;
 		
 		}elseif(isset($_POST['paid'])){ 
-
+			if ($_POST['memNo']==NULL){
+				$memNo="Not registered";
+			}else{
+				$memNo=$_POST['memNo'];
+			}
 			
 			$receiptNo=$_POST['receiptNo'];
 			$amount=$_POST['amount'];
@@ -72,7 +79,7 @@
 			$staffID=$_POST['staffID'];	
 			
 			$deposite=Deposite::getInstance();
-			$deposite->setDeposite($receiptNo,$amount,$description,$memNo,$staffID);
+			$deposite->setDeposite($memNo,$receiptNo,$amount,$description,$name,$staffID);
 			$msg=$controller->insert($deposite);
 			$_SESSION['msg']=$msg;
 		
@@ -188,6 +195,7 @@
 			<input type="number" name="amount"placeholder="Amount" Required/>
 			<input type="text" name="description"placeholder="Description" />
 			<input type="text" name="name"placeholder="Name"required />
+			<input type="text" name="memNo"placeholder="MembershipNo(If have)" />
 			<input type="number" name="staffID"placeholder="StaffID"required />
 			
 			
@@ -196,19 +204,19 @@
 			
 		</form>
 	</div>
-</br></br></br>
-<button onclick="document.location='admin.view.php'">Homepage</button>
-</br></br></br>	
+
 	
 	
 </body>
 <script>
+//popup the confirmation box
 function confirmDelete() {
   return confirm("Are you sure you want to delete?");
 }
 </script>
 
 <script>
+//load the tabs when click on the heading
 document.getElementById("default").click();
 
 function openTab(evt, Name) {

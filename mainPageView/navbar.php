@@ -58,4 +58,5 @@
 	
 	<a href="contactUs.php">Contact Us</a>
 	<a href="Creation.php">Creation Page</a>
+	<a href="DonationReq.php">Donate Us</a>
 </div>

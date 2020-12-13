@@ -95,7 +95,7 @@ error_reporting(0);
 	<button class="fa fa-user btn btn-sep btn-1" onclick="document.location='staff.view.php'">Staff Register</button>
 	<button name=checkbox type=submit class="fa fa-check btn btn-sep btn-2"onclick="document.location='checkbox.view.php'">Newspapers Register</button>
 	<br><br><br><br><br><br><br>
-	<button class="fas fa-handshake-o btn btn-sep btn-1" onclick="document.location='default.asp'">Donations</button>
+	<button class="fas fa-handshake-o btn btn-sep btn-1" onclick="document.location='donreq.view.php'">Donations</button>
 	<button class="fa fa-file btn btn-sep btn-2"onclick="document.location='adminCreation.view.php'">Creations</button>
 	
 	
@@ -266,6 +266,7 @@ error_reporting(0);
 	
 	
 	<script>
+	// slideshow
 var slideIndex = 0;
 showSlides();
 

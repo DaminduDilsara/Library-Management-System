@@ -45,11 +45,11 @@
 <body>
 <div class="header">
 
-
 <?php
 include "../include/header.inc.php";
 ?>
 </div>
+<br><br><br><br><br><br><br>
 <?php
 		include	"../include/adminNavbar.inc.php";
 	?>
@@ -62,6 +62,7 @@ include "../include/header.inc.php";
 
 <form method="post"> 
 <?php
+//display the expired newspapers to tick
 	if ($storeArray!=NULL){ 
 		foreach ($storeArray as $value){
 			echo("<input type='checkbox' name='chk1[]'value='$value'>$value<br>") ;
@@ -79,7 +80,7 @@ include "../include/header.inc.php";
 </form> 
 </div>
 </br></br></br>
-<button onclick="document.location='admin.view.php'">Homepage</button>
+
 </br></br></br>	 
 
 

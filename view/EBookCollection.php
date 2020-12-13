@@ -63,9 +63,68 @@ include('../include/navbar.inc.php');
                     ?>
                 </table>
             </div>
-            <br><br><br><br><br>
+            <br><br><br>
+
+            <button type="button" class="collapsible">Sherlock Holmes Book Collection</button>
+            <div class="content">
+                <table align="center" border="1px" style="width:100%;">
+                    <tr>
+                        <th colspan="4"></th>
+                    </tr>
+                    <t>
+                        <th> Book </th>
+                        <th> Name </th>
+                        <th> Download Link </th>
+                    </t>
+                    <?php
+                    $data = $obuser->getEbooks("Sherlock");
+                    while($rows = $data -> fetch_assoc())
+                    {
+                        ?>
+                        <tr>
+                            <td><?php echo '<img src="data:image/jpeg;base64,'.base64_encode($rows['Picture'] ).'" height="100" width="70" class="img-thumnail" />'; ?></td>
+                            <td><?php echo $rows['Name']; ?></td>
+                            <?php $link = $rows['DownloadLink']?>
+                            <td><?php echo "<a href='$link'>Download</a>" ; ?>
+                        </tr>
+                        <?php
+                    }
+                    ?>
+                </table>
+            </div>
+            <br><br><br>
+
+            <button type="button" class="collapsible">Tin Tin Book Collection</button>
+            <div class="content">
+                <table align="center" border="1px" style="width:100%;">
+                    <tr>
+                        <th colspan="4"></th>
+                    </tr>
+                    <t>
+                        <th> Book </th>
+                        <th> Name </th>
+                        <th> Download Link </th>
+                    </t>
+                    <?php
+                    $data = $obuser->getEbooks("Tin");
+                    while($rows = $data -> fetch_assoc())
+                    {
+                        ?>
+                        <tr>
+                            <td><?php echo '<img src="data:image/jpeg;base64,'.base64_encode($rows['Picture'] ).'" height="100" width="70" class="img-thumnail" />'; ?></td>
+                            <td><?php echo $rows['Name']; ?></td>
+                            <?php $link = $rows['DownloadLink']?>
+                            <td><?php echo "<a href='$link'>Download</a>" ; ?>
+                        </tr>
+                        <?php
+                    }
+                    ?>
+                </table>
+            </div>
+            <br><br><br>
 
         </div>
+
 </div>
 
 </body>

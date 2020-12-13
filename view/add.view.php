@@ -149,6 +149,7 @@ include "../include/header.inc.php";
 </div>
 
 <script>
+//slide the panels in the flexbox
 const NewspaperButton = document.getElementById('newspaper');
 const BookButton = document.getElementById('book');
 const container = document.getElementById('container');
@@ -167,6 +168,7 @@ BookButton.addEventListener('click', () => {
 
 
 	<?php
+	//footer
 	include "../include/footer.inc.php";
 	?>
 

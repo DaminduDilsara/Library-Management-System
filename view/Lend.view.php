@@ -88,9 +88,9 @@
 			$description=$_POST['description'];
 			$memNo=$_POST['memNo'];
 			$staffID=$_POST['staffID'];	
-			
+			$name=NULL;
 			$deposite=Deposite::getInstance();
-			$deposite->setDeposite($receiptNo,$amount,$description,$memNo,$staffID);
+			$deposite->setDeposite($memNo,$receiptNo,$amount,$description,$name,$staffID);
 			$msg=$controller->insert($deposite);
 			$_SESSION['msg']=$msg;
 		
@@ -207,11 +207,13 @@
 		<form method=post>
 			</br></br></br>
 			<h1>Pay Fine</h1>
+
 			
 			<input type="number" name="receiptNo" placeholder="ReceiptNo"required/>
 			<input type="number" name="amount"placeholder="Amount" Required/>
 			<input type="text" name="description"placeholder="Description" />
 			<input type="text" name="memNo"placeholder="Membership No:"required />
+			<input type="text" name="name" placeholder="Name"/>
 			<input type="number" name="staffID"placeholder="StaffID"required />
 			
 			<button name=paid type=submit>Paid</button>
@@ -220,12 +222,13 @@
 	</div>
 	
 </br></br></br>
-<button onclick="document.location='admin.view.php'">Homepage</button>
+
 </br></br></br>	
 	
 </body>
 
 <script>
+//load the tabs when click on it
 document.getElementById("default").click();
 
 function openTab(evt, Name) {

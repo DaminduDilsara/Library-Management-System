@@ -50,7 +50,7 @@ if(isset($_GET['del_id']))
 	</style>
 </head>
 <body>
-	<div class="body" style="height: 500px;
+	<div class="body" style="height: auto;
 	background-color: #F9BDB4;
 	margin: 10px;
 	padding: 25px;">
