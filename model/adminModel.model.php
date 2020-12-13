@@ -38,9 +38,9 @@
 			}
 					
 		}
-		public function insertMember($memNo,$name,$address,$birthday,$school,$tele,$email,$expirationDate,$guarantor){
+		public function insertMember($memNo,$name,$address,$birthday,$school,$tele,$email,$depositeNo,$expirationDate,$guarantor){
 		
-			$sql = "INSERT INTO `member`(`MembershipNo`, `RegistrationDate`, `Name`, `Address`, `Birthday`, `School`, `Telephone`, `email`, `DepositeReceiptNo`, `ExpirationDate`, `Guarantor`,  `Deleted`) VALUES ('$memNo',curDate(),'$name','$address','$birthday','$school','$tele','$email',(SELECT ReceiptNo FROM deposit WHERE MembershipNo = '$memNo'),'$expirationDate','$guarantor','0')";
+			$sql = "INSERT INTO `member`(`MembershipNo`, `RegistrationDate`, `Name`, `Address`, `Birthday`, `School`, `Telephone`, `email`, `DepositeReceiptNo`, `ExpirationDate`, `Guarantor`,  `Deleted`) VALUES ('$memNo',curDate(),'$name','$address','$birthday','$school','$tele','$email','$depositeNo','$expirationDate','$guarantor','0')";
 			$query=$this->connectInDifferentWay();
 			$result=mysqli_query($query,$sql) or die(mysqli_error($query));
 				
@@ -79,9 +79,10 @@
 			
 		}
 		
-		public function insertDeposite($receiptNo,$amount,$description,$memNo,$staffID){
+		public function insertDeposite($memNo,$receiptNo,$amount,$description,$name,$staffID){
 			
-			$sql = "INSERT INTO `deposit`(`ReceiptNo`, `Amount`, `Description`, `CurDate`, `MembershipNo`, `Name`, `StaffID`) VALUES ('$receiptNo','$amount','$description',curdate(),'$memNo',(SELECT Name FROM member WHERE MembershipNo='$memNo'),'$staffID')";
+			$sql = "INSERT INTO `deposit`(`ReceiptNo`, `Amount`, `Description`, `CurDate`, `Name`,`MembershipNo`, `StaffID`) VALUES ('$receiptNo','$amount','$description',curdate(),'$name','$memNo','$staffID')";
+			
 			$query=$this->connectInDifferentWay();
 			$result=mysqli_query($query,$sql) or die(mysqli_error($query));
 				
@@ -92,10 +93,13 @@
 			}
 		}
 		public function removeBook($barcode){
+			
 			$sql ="UPDATE `book` SET `Deleted`=1 WHERE BarcodeNo=$barcode";
+			
 			$query=$this->connectInDifferentWay();
+			
 			$result=mysqli_query($query,$sql) or die(mysqli_error($query));
-				
+			
 			if ($result==true) {
 				return true;
 			} else {
@@ -164,8 +168,9 @@
 			}
 		}
 		public function updateMember($memNo,$receiptNo,$expirationdate){
-			$sql="UPDATE `member` SET `DepositeReceiptNo`=(SELECT ReceiptNo FROM deposit WHERE MembershipNo='$memNo'),`ExpirationDate`='$expirationdate',`Deleted`='0'WHERE MembershipNo='$memNo'";
+			$sql="UPDATE `member` SET `DepositeReceiptNo`='$receiptNo',`ExpirationDate`='$expirationdate',`Deleted`='0'WHERE MembershipNo='$memNo'";
 			$query=$this->connectInDifferentWay();
+			echo($receiptNo);
 			$result=mysqli_query($query,$sql) or die(mysqli_error($query));
 
 			if ($result==true) {

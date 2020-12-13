@@ -124,7 +124,7 @@
 </div>
 
 </br></br></br>
-<button onclick="document.location='admin.view.php'">Homepage</button>
+
 </br></br></br></br></br></br>
 </div>
 <script>

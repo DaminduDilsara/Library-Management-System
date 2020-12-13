@@ -20,6 +20,7 @@ Class Admincontroller extends Admin {
 		$this->editable=$editable;
 		$adminModel=Admin::getInstance();
 		$msg=$this->editable->insertData($adminModel);
+		
 		return($msg);
 	}
 	public function remove($editable){
@@ -141,7 +142,7 @@ Class Book implements Editable{
     {
         if(!array_key_exists($key,self::$books)){
 			self::$books[$key] = new self();
-		
+
         }
         return self::$books[$key];
     }
@@ -160,7 +161,9 @@ Class Book implements Editable{
 		return($msg);
 	}
 	public function removeData($adminModel){
+		
 		$success=$adminModel->removeBook($this->barcode);
+
 		if($success==1){
 			$msg="Success";
 		}else{
@@ -306,7 +309,7 @@ Class Member implements Editable{
     }
 	public function insertData($adminModel){
 		
-		$success=$adminModel->insertMember($this->memNo,$this->name,$this->address,$this->birthday,$this->school,$this->tele,$this->email,$this->expirationDate,$this->guarantor);
+		$success=$adminModel->insertMember($this->memNo,$this->name,$this->address,$this->birthday,$this->school,$this->tele,$this->email,$this->receiptNo,$this->expirationDate,$this->guarantor);
 		if($success==1){
 			$msg="Success";
 		}else{
@@ -327,6 +330,7 @@ Class Member implements Editable{
 		return($msg);
 	}
 	public function updateData($adminModel){
+		echo($this->receiptNo);
 		$success=$adminModel->updateMember($this->memNo,$this->receiptNo,$this->expirationDate);
 		if($success==1){
 			$msg="Success";
@@ -403,20 +407,22 @@ Class Staff implements Editable{
 	}
 }
 Class Deposite implements editable{
+	private $memNo;
 	private $receiptNo;
 	private $amount;
 	private $description;
-	private $memNo;
+	private $name;
 	private $staffID;
 	private static $instance;
 
 	private function Deposite(){}
 
-	public function setDeposite($receiptNo,$amount,$description,$memNo,$staffID){
+	public function setDeposite($memNo,$receiptNo,$amount,$description,$name,$staffID){
+		$this->memNo=$memNo;
 		$this->receiptNo=$receiptNo;
 		$this->amount=$amount;
 		$this->description=$description;
-		$this->memNo=$memNo;
+		$this->name=$name;
 		$this->staffID=$staffID;
 		
 	}
@@ -429,7 +435,7 @@ Class Deposite implements editable{
     }
 	public function insertData($adminModel){
 		
-		$success=$adminModel->insertDeposite($this->receiptNo,$this->amount,$this->description,$this->memNo,$this->staffID);
+		$success=$adminModel->insertDeposite($this->memNo,$this->receiptNo,$this->amount,$this->description,$this->name,$this->staffID);
 		if($success==1){
 			$msg="Success";
 		}else{

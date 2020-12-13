@@ -26,7 +26,8 @@
 			$categary=$_POST['categary'];
 		
 			
-			$book=Book::getInstance($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary);
+			$book=Book::getInstance($barcode);
+			$book->setBook($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary);
 			$msg=$controller->remove($book);
 			$_SESSION['msg']=$msg;
 		}elseif(isset($_POST['removeNewspaper'])){ 
@@ -35,7 +36,8 @@
 			$name=$_POST['name'];
 			$time=$_POST['time'];
 			
-			$newspaper=Newspaper::getInstance($id,$name,$time);
+			$newspaper=Newspaper::getInstance($id);
+			$newspaper->setNewspaper($id,$name,$time);
 			$msg=$controller->remove($newspaper);
 			$_SESSION['msg']=$msg;
 		
