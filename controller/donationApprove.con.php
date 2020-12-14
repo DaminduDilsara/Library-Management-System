@@ -8,11 +8,11 @@ class donationController extends Donation{
     }
 
     public function toApproveDonations($appid){
-    	$this->approveCreations($appid);
+    	$this->approveDonations($appid);
     }
 
     public function toDeleteDonations($delid){
-    	$this->approveCreations($delid);
+    	$this->approveDonations($delid);
     }
 }
 ?>
