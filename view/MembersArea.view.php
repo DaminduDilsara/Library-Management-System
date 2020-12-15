@@ -127,16 +127,16 @@
 		<form method="post">
 			</br></br></br>
 			<h1>Add member</h1>
-			<input type="number" name="memNo" placeholder="MembershipNo"required/>
-			<input type="text" name="name"placeholder="Name" required/>
-			<input type="text" name="address"placeholder="Address"required />
-			<input type="text" name="birthday"placeholder="Birthday" required/>
-			<input type="text" name="school"placeholder="School" />
-			<input type="tel" name="tele"placeholder="Telephone" />
-			<input type="email" name="email"placeholder="Email" />
-			<input type="number" name="receiptNo"placeholder="Deposite Receipt No:" />
-			<input type="date" name="expirationdate"placeholder="ExpirationDate" required/>
-			<input type="text" name="guarantor"placeholder="Guarantor"required />
+			<input style=padding-left:25px type="number" name="memNo" placeholder="MembershipNo"required/>
+			<input style=padding-left:25px type="text" name="name"placeholder="Name" required/>
+			<input style=padding-left:25px type="text" name="address"placeholder="Address"required />
+			<input style=padding-left:25px type="text" name="birthday"placeholder="Birthday" required/>
+			<input style=padding-left:25px type="text" name="school"placeholder="School" />
+			<input style=padding-left:25px type="tel" name="tele"placeholder="Telephone" />
+			<input style=padding-left:25px type="email" name="email"placeholder="Email" />
+			<input style=padding-left:25px type="number" name="receiptNo"placeholder="Deposite Receipt No:" />
+			<input style=padding-left:25px type="date" name="expirationdate"placeholder="ExpirationDate" required/>
+			<input style=padding-left:25px type="text" name="guarantor"placeholder="Guarantor"required />
 			<input type="hidden" name="receiptNo"placeholder="ReceiptNo"/>
 			
 			
@@ -149,7 +149,7 @@
 			</br></br></br>
 			<h1>Remove Member</h1>
 			
-			<input type="number" name="memNo" placeholder="MembershipNo"required/>
+			<input style=padding-left:25px type="number" name="memNo" placeholder="MembershipNo"required/>
 			<input type="hidden" name="name"placeholder="Name" />
 			<input type="hidden" name="address"placeholder="Address" />
 			<input type="hidden" name="birthday"placeholder="Birthday" />
@@ -170,15 +170,15 @@
 			</br></br></br>
 			<h1>Renew Membership</h1>
 			
-			<input type="number" name="memNo" placeholder="MembershipNo"required/>
+			<input style=padding-left:25px type="number" name="memNo" placeholder="MembershipNo"required/>
 			<input type="hidden" name="name"placeholder="Name" />
 			<input type="hidden" name="address"placeholder="Address" />
 			<input type="hidden" name="birthday"placeholder="Birthday" />
 			<input type="hidden" name="school"placeholder="School" />
-			<input type="number" name="receiptNo"placeholder="Deposite Receipt No:" required/>
+			<input style=padding-left:25px type="number" name="receiptNo"placeholder="Deposite Receipt No:" required/>
 			<input type="hidden" name="tele"placeholder="Telephone" />
 			<input type="hidden" name="email"placeholder="Email" />
-			<input type="date" name="expirationdate"placeholder="ExpirationDate" required/>
+			<input style=padding-left:25px type="date" name="expirationdate"placeholder="ExpirationDate" required/>
 			<input type="hidden" name="guarantor"placeholder="Guarantor" />
 			<input type="hidden" name="receiptNo"placeholder="ReceiptNo"/>
 			
@@ -191,12 +191,12 @@
 			</br></br></br>
 			<h1>Payments</h1>
 			
-			<input type="number" name="receiptNo" placeholder="ReceiptNo"required/>
-			<input type="number" name="amount"placeholder="Amount" Required/>
-			<input type="text" name="description"placeholder="Description" />
-			<input type="text" name="name"placeholder="Name"required />
-			<input type="text" name="memNo"placeholder="MembershipNo(If have)" />
-			<input type="number" name="staffID"placeholder="StaffID"required />
+			<input style=padding-left:25px type="number" name="receiptNo" placeholder="ReceiptNo"required/>
+			<input style=padding-left:25px type="number" name="amount"placeholder="Amount" Required/>
+			<input style=padding-left:25px type="text" name="description"placeholder="Description" />
+			<input style=padding-left:25px type="text" name="name"placeholder="Name"required />
+			<input style=padding-left:25px type="text" name="memNo"placeholder="MembershipNo(If have)" />
+			<input style=padding-left:25px type="number" name="staffID"placeholder="StaffID"required />
 			
 			
 			

@@ -75,7 +75,7 @@
 			
 			<h1>Remove Staffmember</h1>
 			
-			<input type="number"name='id' placeholder="StaffID"required />
+			<input style=padding-left:25px type="number"name='id' placeholder="StaffID"required />
 			<input type="hidden"name='name' placeholder="Name" />
 			<input type="hidden"name='post' placeholder="Post" />
             <input type="hidden"name='address' placeholder="Address" />
@@ -92,13 +92,13 @@
 		
 			<h1>Register Staffmember</h1>
 			
-			<input type="number"name='id' placeholder="StaffID"required />
-			<input type="text"name='name' placeholder="Name" />
-			<input type="text"name='post' placeholder="Post" />
-            <input type="text"name='address' placeholder="Address" />
-			<input type="text"name='contactNo' placeholder="Contact No:" />
-            <input type="text"name='username' placeholder="Username" />
-			<input type="text"name='pass' placeholder="Password" />
+			<input style=padding-left:25px type="number"name='id' placeholder="StaffID"required />
+			<input style=padding-left:25px type="text"name='name' placeholder="Name" />
+			<input style=padding-left:25px type="text"name='post' placeholder="Post" />
+            <input style=padding-left:25px type="text"name='address' placeholder="Address" />
+			<input style=padding-left:25px type="text"name='contactNo' placeholder="Contact No:" />
+            <input style=padding-left:25px type="text"name='username' placeholder="Username" />
+			<input style=padding-left:25px type="text"name='pass' placeholder="Password" />
 			
 			
 			

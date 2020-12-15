@@ -86,17 +86,17 @@ error_reporting(0);
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 	<br><br><br><br>
-	<button class="fa fa-plus btn btn-sep btn-1" onclick="document.location='add.view.php'" >Adding Area</button>
-	<button class="fa fa-minus btn btn-sep btn-2" onclick="document.location='remove.view.php'">Removing Area</button>
+	<button class="fa fa-plus btn btn-sep btn-1"  style="width:40%" onclick="document.location='add.view.php'" >Adding Area</button>
+	<button class="fa fa-minus btn btn-sep btn-2" style="width:40%" onclick="document.location='remove.view.php'">Removing Area</button>
 	<br><br><br><br><br><br><br>
-	<button class="fa fa-users btn btn-sep btn-1" onclick="document.location='MembersArea.view.php'">Members Area</button>
-	<button class="fa fa-book btn btn-sep btn-2"onclick="document.location='Lend.view.php'">Lending Session</button>
+	<button class="fa fa-users btn btn-sep btn-1" style="width:40%" onclick="document.location='MembersArea.view.php'">Members Area</button>
+	<button class="fa fa-book btn btn-sep btn-2" style="width:40%" onclick="document.location='Lend.view.php'">Lending Session</button>
 	<br><br><br><br><br><br><br>
-	<button class="fa fa-user btn btn-sep btn-1" onclick="document.location='staff.view.php'">Staff Register</button>
-	<button name=checkbox type=submit class="fa fa-check btn btn-sep btn-2"onclick="document.location='checkbox.view.php'">Newspapers Register</button>
+	<button class="fa fa-user btn btn-sep btn-1" style="width:40%" onclick="document.location='staff.view.php'">Staff Register</button>
+	<button name=checkbox type=submit class="fa fa-check btn btn-sep btn-2" style="width:40%" onclick="document.location='checkbox.view.php'">Newspapers Register</button>
 	<br><br><br><br><br><br><br>
-	<button class="fas fa-handshake-o btn btn-sep btn-1" onclick="document.location='donreq.view.php'">Donations</button>
-	<button class="fa fa-file btn btn-sep btn-2"onclick="document.location='adminCreation.view.php'">Creations</button>
+	<button class="fas fa-handshake-o btn btn-sep btn-1" style="width:40%" onclick="document.location='../mainPageView/DonationReqSecondPage.php'">Donations</button>
+	<button class="fa fa-file btn btn-sep btn-2" style="width:40%" onclick="document.location='adminCreation.view.php'">Creations</button>
 	
 	
 </div>

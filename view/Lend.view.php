@@ -142,12 +142,12 @@
 			</br></br></br>
 			<h1>Lend Book</h1>
 			
-			<input type="number" name="id" placeholder="BorrowSessionID" required/>
-			<input type="number" name="barcode" placeholder="Barcode No:" required />
-			<input type="text" name="memNo" placeholder="Membership No:"required />
-			<input type="date" name="expirationdate" placeholder="Expiration Date"required />
+			<input style=padding-left:25px type="number" name="id" placeholder="BorrowSessionID" required/>
+			<input style=padding-left:25px type="number" name="barcode" placeholder="Barcode No:" required />
+			<input style=padding-left:25px type="text" name="memNo" placeholder="Membership No:"required />
+			<input style=padding-left:25px type="date" name="expirationdate" placeholder="Expiration Date"required />
 			<input type="hidden" name="returndate" placeholder="Return Date" />
-			<input type="number" name="staffID" placeholder="Staff ID" required/>
+			<input style=padding-left:25px type="number" name="staffID" placeholder="Staff ID" required/>
 			<input type="hidden" name="receiptNo" placeholder="Receipt NO:" />
 			
 			<input type="hidden" name="isbn"placeholder="ISBN" />
@@ -175,13 +175,13 @@
 			</br></br></br>
 			<h1>Return Book</h1>
 			
-			<input type="number" name="id" placeholder="BorrowSessionID" required/>
+			<input style=padding-left:25px type="number" name="id" placeholder="BorrowSessionID" required/>
 			<input type="hidden" name="barcode" placeholder="Barcode No:" />
 			<input type="hidden" name="memNo" placeholder="Membership No:" />
 			<input type="hidden" name="expirationdate" placeholder="Expiration Date" />
-			<input type="date" name="returndate" placeholder="Return Date"required />
+			<input style=padding-left:25px type="date" name="returndate" placeholder="Return Date"required />
 			<input type="hidden" name="staffID" placeholder="Staff ID" />
-			<input type="number" name="receiptNo" placeholder="Receipt NO:" />
+			<input style=padding-left:25px type="number" name="receiptNo" placeholder="Receipt NO:" />
 			
 			<input type="hidden" name="isbn"placeholder="ISBN" />
 			<input type="hidden" name="subject"placeholder="Subject" />
@@ -209,12 +209,12 @@
 			<h1>Pay Fine</h1>
 
 			
-			<input type="number" name="receiptNo" placeholder="ReceiptNo"required/>
-			<input type="number" name="amount"placeholder="Amount" Required/>
-			<input type="text" name="description"placeholder="Description" />
-			<input type="text" name="memNo"placeholder="Membership No:"required />
-			<input type="text" name="name" placeholder="Name"/>
-			<input type="number" name="staffID"placeholder="StaffID"required />
+			<input style=padding-left:25px type="number" name="receiptNo" placeholder="ReceiptNo"required/>
+			<input style=padding-left:25px type="number" name="amount"placeholder="Amount" Required/>
+			<input style=padding-left:25px type="text" name="description"placeholder="Description" />
+			<input style=padding-left:25px type="text" name="memNo"placeholder="Membership No:"required />
+			<input style=padding-left:25px type="text" name="name" placeholder="Name"/>
+			<input style=padding-left:25px type="number" name="staffID"placeholder="StaffID"required />
 			
 			<button name=paid type=submit>Paid</button>
 			

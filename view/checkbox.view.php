@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	if (isset($_POST['Submit'])){   header("Location: admin.view.php");   }
 	include "../include/dbconnection.inc.php";
 	include "../controller/adminController.controller.php";
 	if(strlen($_SESSION['userName'])==NULL){   
@@ -47,20 +48,17 @@
 
 <?php
 include "../include/header.inc.php";
+include	"../include/adminNavbar.inc.php";
 ?>
 </div>
-<br><br><br><br><br><br><br>
-<?php
-		include	"../include/adminNavbar.inc.php";
-	?>
-	<br><br>
+
 
 <div>
 <br><br><br><br><br><br>
 <h2> NewspaperList </h2>
 <br><br><br>
 
-<form method="post"> 
+<form method="post" > 
 <?php
 //display the expired newspapers to tick
 	if ($storeArray!=NULL){ 
@@ -91,6 +89,8 @@ include "../include/header.inc.php";
 </div>
 
 </body>
+
+
 </html>
 <style>
 	.footer {

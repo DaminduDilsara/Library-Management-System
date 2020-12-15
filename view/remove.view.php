@@ -81,7 +81,7 @@
 			
 			<h1>Remove Newspaper</h1>
 			
-			<input type="text"name='id' placeholder="NewspaperID"required />
+			<input style=padding-left:25px type="text"name='id' placeholder="NewspaperID"required />
 			<input type="hidden"name='name' placeholder="NewspaperName" />
 			<input type="hidden"name='time' placeholder="NewspaperTime" />
 					
@@ -94,7 +94,7 @@
 		
 			<h1>Remove Book</h1>
 			
-			<input name="barcode"type="number" placeholder="BarcodeNo" required />
+			<input style=padding-left:25px name="barcode"type="number" placeholder="BarcodeNo" required />
 			<input type="hidden" name="isbn"placeholder="ISBN" />
 			<input type="hidden" name="subject"placeholder="Subject" />
 			<input type="hidden" name="title"placeholder="Title" />
@@ -148,7 +148,7 @@
   				</form>
 			</div>
 </br></br></br>
-<button onclick="document.location='admin.view.php'">Homepage</button>
+
 </br></br></br></br></br></br>
 </div>
 <script>

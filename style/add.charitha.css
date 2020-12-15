@@ -124,7 +124,7 @@ form {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	padding: 0 50px;
+	padding: 0, 50px;
 	height: 100%;
 	text-align: center;
 }
@@ -132,7 +132,7 @@ form {
 input {
 	background-color: #eee;
 	border: none;
-	padding: 15px 0;
+	padding: 50px;
 	margin: 8px 0;
 	width: 100%;
 }
@@ -162,7 +162,6 @@ input {
 .book-container {
 	left: 0;
 	width: 50%;
-	
 	z-index: 2;
 }
 

@@ -298,28 +298,28 @@
 		}
 
 		public function showBook(){
-			$sql = "SELECT ISBN,Title,SubTitle,Author FROM book";
+			$sql = "SELECT ISBN,Title,SubTitle,Author FROM book WHERE Deleted='0'";
 			$query=$this -> connectInDifferentWay();
 			$result = mysqli_query($query,$sql) or die(mysqli_error($query));
 			
 			return $result;	
 		}
 		public function showNewspaper(){
-			$sql = "SELECT NewspaperID,NewspaperName FROM newspaper";
+			$sql = "SELECT NewspaperID,NewspaperName FROM newspaper WHERE Deleted='0'";
 			$query=$this -> connectInDifferentWay();
 			$result = mysqli_query($query,$sql) or die(mysqli_error($query));
 			
 			return $result;	
 		}
 		public function showMember(){
-			$sql = "SELECT MembershipNo,'Name','Address',Telephone,Email FROM member";
+			$sql = "SELECT MembershipNo,Name,Address,Telephone,Email FROM member WHERE Deleted='0'";
 			$query=$this -> connectInDifferentWay();
 			$result = mysqli_query($query,$sql) or die(mysqli_error($query));
 			
 			return $result;	
 		}
 		public function showStaff(){
-			$sql = "SELECT StaffID,'Name',Post,'Address',ContactNo FROM staff";
+			$sql = "SELECT StaffID,Name,Post,Address,ContactNo FROM staff WHERE Deleted='0'";
 			$query=$this -> connectInDifferentWay();
 			$result = mysqli_query($query,$sql) or die(mysqli_error($query));
 			

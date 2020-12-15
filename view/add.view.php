@@ -90,9 +90,9 @@ include "../include/header.inc.php";
 			</br></br></br>
 			<h1>Add Newspaper</h1>
 			</br></br></br>
-			<input type="text" name="id"placeholder="ID"required />
-			<input type="text" name="name"placeholder="Name" required/>
-			<input type="day" name="time"placeholder="Time Period"required />
+			<input style=padding-left:25px type="text" name="id"placeholder="ID"required />
+			<input style=padding-left:25px type="text" name="name"placeholder="Name" required/>
+			<input style=padding-left:25px type="day" name="time"placeholder="Time Period"required />
 			<button name="addnewspaper" type="submit">Add</button>
 			
 		</form>
@@ -102,22 +102,22 @@ include "../include/header.inc.php";
 			</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
 			<h1>Add Book</h1>
 			</br></br></br>
-			<input type="number" name="barcode"placeholder="Barcode No" required/>
-			<input type="text" name="isbn"placeholder="ISBN" required/>
-			<input type="text" name="subject"placeholder="Subject" />
-			<input type="text" name="title"placeholder="Title"required />
-			<input type="text" name="sub"placeholder="Subtitle" />
-			<input type="text" name="author"placeholder="Author" required/>
-			<input type="text" name="editor"placeholder="Editor" />
-			<input type="text" name="publisher"placeholder="Publisher"required />
-			<input type="text" name="section"placeholder="Section" required/>
-			<input type="text" name="place"placeholder="Published Place" />
-			<input type="date" name="date" />
-			<input type="number" name="pages"placeholder="Number of Pages" />
-			<input type="number" name="price"placeholder="Price" />
-			<input type="text" name="dim"placeholder="Dimensions" />
-			<input type="number" name="cd"placeholder="CD_Include" />
-			<input type="text" name="categary"placeholder="Categary"required />
+			<input style=padding-left:25px type="number" name="barcode"placeholder="Barcode No" required/>
+			<input style=padding-left:25px type="text" name="isbn"placeholder="ISBN" required/>
+			<input style=padding-left:25px type="text" name="subject"placeholder="Subject" />
+			<input style=padding-left:25px type="text" name="title"placeholder="Title"required />
+			<input style=padding-left:25px type="text" name="sub"placeholder="Subtitle" />
+			<input style=padding-left:25px type="text" name="author"placeholder="Author" required/>
+			<input style=padding-left:25px type="text" name="editor"placeholder="Editor" />
+			<input style=padding-left:25px type="text" name="publisher"placeholder="Publisher"required />
+			<input style=padding-left:25px type="text" name="section"placeholder="Section" required/>
+			<input style=padding-left:25px type="text" name="place"placeholder="Published Place" />
+			<input style=padding-left:25px type="date" name="date" />
+			<input style=padding-left:25px type="number" name="pages"placeholder="Number of Pages" />
+			<input style=padding-left:25px type="number" name="price"placeholder="Price" />
+			<input style=padding-left:25px type="text" name="dim"placeholder="Dimensions" />
+			<input style=padding-left:25px type="number" name="cd"placeholder="CD_Include" />
+			<input style=padding-left:25px type="text" name="categary"placeholder="Categary"required />
 			
 			<button name="addbook"type="submit">Add</button>
 			
@@ -144,7 +144,7 @@ include "../include/header.inc.php";
 	</div>
 </div>
 <br><br><br>
-<button onclick="document.location='admin.view.php'">Homepage</button>
+
 </br></br></br></br></br></br>
 </div>
 
