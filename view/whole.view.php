@@ -39,7 +39,7 @@ $result=$obuser->assignInfo($memNo);
     <div class="card">
       
       <div class="fakeimg" style="height:250px;">
-        <img src="../images/heyy.jpg" style="height: 200px; width: 100%;">
+        <img src="../images/user.png" style="height: 200px; width: 100%;">
         
       </div>
       
