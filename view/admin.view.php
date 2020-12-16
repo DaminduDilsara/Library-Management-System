@@ -13,7 +13,7 @@ error_reporting(0);
 	
 	
 </head>
-<body>
+<body >
 	<header>
 		
 		<?php
@@ -104,13 +104,14 @@ error_reporting(0);
 </div>
 </div>
 <style>
+	
 	.column.buttons{
 		background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ3LnKVot9O4jdIpKxjFrPWq50cuxB4G8CFRQ&usqp=CAU");
-  		background-size: cover;
-  		width: 1000px;
+		background-size: cover;  
+  		width: 1400px;
   		height: 750px;
   		display: inline-block;
-  		position: relative;
+  		position: center;
 	}
 	.btn{
 	border: none;

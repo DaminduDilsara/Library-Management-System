@@ -74,12 +74,13 @@ body, html {
     height: 100%;
     margin: 0;
     font-family: Arial;
+    
   }
   
   /* Style tab links */
   .tablink {
     background-color: #555;
-    color: white;
+    color: #F9BDB4;
     float: left;
     border: none;
     outline: none;
@@ -87,6 +88,8 @@ body, html {
     padding: 14px 16px;
     font-size: 17px;
     width: 25%;
+    overflow:hidden;
+   
   }
   
   .tablink:hover {
@@ -95,13 +98,14 @@ body, html {
   
   /* Style the tab content (and add height:100% for full page content) */
   .tabcontent {
-    color: white;
+    color:#F9BDB4;
     display: none;
     padding: 100px 20px;
-    height: 100%;
-  }
+    height: 200%;
+  }  
+   
   
-  #Home {background-color: red;}
-  #News {background-color: green;}
-  #Contact {background-color: blue;}
-  #About {background-color: orange;}
+  #Book {background-color: red;}
+  #Newspaper {background-color: green;}
+  #Member {background-color: blue;}
+  #StaffMember {background-color: orange;}

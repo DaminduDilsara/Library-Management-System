@@ -39,8 +39,8 @@
 					
 		}
 		public function insertMember($memNo,$name,$address,$birthday,$school,$tele,$email,$depositeNo,$expirationDate,$guarantor){
-		
-			$sql = "INSERT INTO `member`(`MembershipNo`, `RegistrationDate`, `Name`, `Address`, `Birthday`, `School`, `Telephone`, `email`, `DepositeReceiptNo`, `ExpirationDate`, `Guarantor`,  `Deleted`) VALUES ('$memNo',curDate(),'$name','$address','$birthday','$school','$tele','$email','$depositeNo','$expirationDate','$guarantor','0')";
+			
+			$sql = "INSERT INTO `member`(`MembershipNo`, `RegistrationDate`, `Name`, `Address`, `Birthday`, `School`, `Telephone`, `email`, `DepositeReceiptNo`, `ExpirationDate`, `Guarantor`,  `Deleted`) VALUES ('$memNo',curDate(),'$name','$address', '$birthday' ,'$school',$tele,'$email','$depositeNo','$expirationDate','$guarantor',0)";
 			$query=$this->connectInDifferentWay();
 			$result=mysqli_query($query,$sql) or die(mysqli_error($query));
 				
@@ -94,7 +94,7 @@
 		}
 		public function removeBook($barcode){
 			
-			$sql ="UPDATE `book` SET `Deleted`=1 WHERE BarcodeNo=$barcode";
+			$sql ="UPDATE `book` SET `Deleted`=1 WHERE BarcodeNo=$barcode AND Deleted=0";
 			
 			$query=$this->connectInDifferentWay();
 			
@@ -107,33 +107,33 @@
 			}
 		}
 		public function removeNewspaper($id){
-			$sql ="UPDATE `newspaper` SET `Deleted`=1 WHERE NewspaperID=$id";
+			$sql ="UPDATE `newspaper` SET `Deleted`=1 WHERE NewspaperID=$id AND Deleted=0";
 			$query=$this->connectInDifferentWay();
 			$result=mysqli_query($query,$sql) or die(mysqli_error($query));
 				
-			if ($result==true) {
+			if ($result==true and mysqli_affected_rows($query)>0) {
 				return true;
 			} else {
 				return false;
 			}
 		}
 		public function removeMember($memNo){
-			$sql ="UPDATE `member` SET `Deleted`=1 WHERE MembershipNo=$memNo";
+			$sql ="UPDATE `member` SET `Deleted`=1 WHERE MembershipNo=$memNo AND Deleted=0";
 			$query=$this->connectInDifferentWay();
 			$result=mysqli_query($query,$sql) or die(mysqli_error($query));
 				
-			if ($result==true) {
+			if ($result==true and mysqli_affected_rows($query)>0) {
 				return true;
 			} else {
 				return false;
 			}
 		}
 		public function removeStaff($id){
-			$sql ="UPDATE `staff` SET `Deleted`=1 WHERE StaffID=$id";
+			$sql ="UPDATE `staff` SET `Deleted`=1 WHERE StaffID=$id AND Deleted=0";
 			$query=$this->connectInDifferentWay();
 			$result=mysqli_query($query,$sql) or die(mysqli_error($query));
 				
-			if ($result==true) {
+			if ($result==true and mysqli_affected_rows($query)>0) {
 				return true;
 			} else {
 				return false;
@@ -298,28 +298,28 @@
 		}
 
 		public function showBook(){
-			$sql = "SELECT ISBN,Title,SubTitle,Author FROM book WHERE Deleted='0'";
+			$sql = "SELECT ISBN,Title,SubTitle,Author,Deleted FROM book";
 			$query=$this -> connectInDifferentWay();
 			$result = mysqli_query($query,$sql) or die(mysqli_error($query));
 			
 			return $result;	
 		}
 		public function showNewspaper(){
-			$sql = "SELECT NewspaperID,NewspaperName FROM newspaper WHERE Deleted='0'";
+			$sql = "SELECT NewspaperID,NewspaperName,TimeDuration,Deleted FROM newspaper ";
 			$query=$this -> connectInDifferentWay();
 			$result = mysqli_query($query,$sql) or die(mysqli_error($query));
 			
 			return $result;	
 		}
 		public function showMember(){
-			$sql = "SELECT MembershipNo,Name,Address,Telephone,Email FROM member WHERE Deleted='0'";
+			$sql = "SELECT MembershipNo,Name,Address,Telephone,Email,Deleted,ExpirationDate FROM member ";
 			$query=$this -> connectInDifferentWay();
 			$result = mysqli_query($query,$sql) or die(mysqli_error($query));
 			
 			return $result;	
 		}
 		public function showStaff(){
-			$sql = "SELECT StaffID,Name,Post,Address,ContactNo FROM staff WHERE Deleted='0'";
+			$sql = "SELECT StaffID,Name,Post,Address,ContactNo,Deleted FROM staff ";
 			$query=$this -> connectInDifferentWay();
 			$result = mysqli_query($query,$sql) or die(mysqli_error($query));
 			

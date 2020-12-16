@@ -2,6 +2,7 @@
 	session_start();
 	include "../include/dbconnection.inc.php";
 	include "../controller/adminController.controller.php";
+	$emailErr="";
 	if(strlen($_SESSION['userName'])==NULL){   
 		header('../mainPageView/index.php');
 	}else{
@@ -11,14 +12,23 @@
 			$memNo=$_POST['memNo'];
 			$name=$_POST['name'];
 			$address=$_POST['address'];
-			$birthday=$_POST['birthday'];
+			$date1=date_create($_POST['birthday']);
+			$birthday=date_format($date1,"Y/m/d H:i:s");
 			$school=$_POST['school'];
 			$tele=$_POST['tele'];
-			$email=$_POST['email'];
-			$expirationdate=$_POST['expirationdate'];
+			$email = $_POST["email"];
+			// check if e-mail address is well-formed
+			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+				$emailErr = "Invalid email format";
+			}
+			$date2= date_create($_POST['expirationdate']);
+			$expirationdate=date_format($date2,"Y/m/d H:i:s");
 			$guarantor=$_POST['guarantor'];
 			$receiptNo=$_POST['receiptNo'];
-				
+			
+			
+			
+			  
 			
 			$member=Member::getInstance($memNo);
 			$member->setMember($memNo,$name,$address,$birthday,$school,$tele,$email,$expirationdate,$guarantor,$receiptNo);
@@ -57,7 +67,7 @@
 			$expirationdate=$_POST['expirationdate'];
 			$guarantor=$_POST['guarantor'];
 			$receiptNo=$_POST['receiptNo'];
-			echo($receiptNo);
+			
 			
 			$member=Member::getInstance($memNo);
 			
@@ -91,6 +101,7 @@
 			
 			unset($_SESSION['msg']); 
 		}
+		
 	}	
 
 
@@ -130,14 +141,14 @@
 			<input style=padding-left:25px type="number" name="memNo" placeholder="MembershipNo"required/>
 			<input style=padding-left:25px type="text" name="name"placeholder="Name" required/>
 			<input style=padding-left:25px type="text" name="address"placeholder="Address"required />
-			<input style=padding-left:25px type="text" name="birthday"placeholder="Birthday" required/>
+			<input style=padding-left:25px type="text" name="birthday" placeholder="Birthday(YYYY-MM-DD)" required/>
 			<input style=padding-left:25px type="text" name="school"placeholder="School" />
 			<input style=padding-left:25px type="tel" name="tele"placeholder="Telephone" />
-			<input style=padding-left:25px type="email" name="email"placeholder="Email" />
+			<input style=padding-left:25px type="email" name="email"placeholder="Email" /><span class="error" style= color:#FF0000><?php echo $emailErr;?></span>
 			<input style=padding-left:25px type="number" name="receiptNo"placeholder="Deposite Receipt No:" />
-			<input style=padding-left:25px type="date" name="expirationdate"placeholder="ExpirationDate" required/>
+			<input style=padding-left:25px type="text" name="expirationdate"placeholder="ExpirationDate(YYYY-MM-DD)" required/>
 			<input style=padding-left:25px type="text" name="guarantor"placeholder="Guarantor"required />
-			<input type="hidden" name="receiptNo"placeholder="ReceiptNo"/>
+			
 			
 			
 			<button name=addMember type="submit">Add</button>
@@ -159,7 +170,7 @@
 			<input type="hidden" name="email"placeholder="Email" />
 			<input type="hidden" name="expirationdate"placeholder="ExpirationDate" />
 			<input type="hidden" name="guarantor"placeholder="Guarantor" />
-			<input type="hidden" name="receiptNo"placeholder="ReceiptNo"/>
+			
 			
 			<button name=removeMember type="submit" onclick="return confirmDelete()">Remove</button>
 			
@@ -180,7 +191,7 @@
 			<input type="hidden" name="email"placeholder="Email" />
 			<input style=padding-left:25px type="date" name="expirationdate"placeholder="ExpirationDate" required/>
 			<input type="hidden" name="guarantor"placeholder="Guarantor" />
-			<input type="hidden" name="receiptNo"placeholder="ReceiptNo"/>
+			
 			
 			<button name=renew type=submit>Renew</button>
 			

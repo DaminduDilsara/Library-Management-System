@@ -44,13 +44,14 @@
 
     <div id="Book" class="tabcontent">
         
-		<table align="center" border="1px" style="width:600px; line-height:40px; color: black;">
+		<table align="center" border="1px" style="width:600px; line-height:40px; color: black; background-color:#F9BDB4">
                             
                                     <t>
                                     <th> ISBN </th>
                                     <th> Title </th>
 									<th> Sub Title </th>
                                     <th> Author </th>
+									<th> Status </th>
                                     
                                     
                                     </t>
@@ -64,6 +65,7 @@
  <td><?php echo $row['Title']; ?></td>
  <td><?php echo $row['SubTitle']; ?></td>
  <td><?php echo $row['Author']; ?></td>
+ <td><?php if ($row['Deleted']==0){echo "Available";}else{echo "Deleted";}?></td>
  </tr>
  <?php
 					   }
@@ -73,11 +75,13 @@
 
     <div id="Newspaper" class="tabcontent">
         
-        <table align="center" border="1px" style="width:600px; line-height:40px; color: black;">
+        <table align="center" border="1px" style="width:600px; line-height:40px; color: black;background-color:#F9BDB4">
                             
                                     <t>
                                     <th> NewspaperID </th>
                                     <th> NewspaperName</th>
+									<th> Time Duration(Days)</th>
+									<th> Status</th>
 									                              
                                     
                                     </t>
@@ -89,7 +93,8 @@
                         <tr>
  <td><?php echo $row['NewspaperID']; ?></td>
  <td><?php echo $row['NewspaperName']; ?></td>
- 
+ <td><?php echo $row['TimeDuration']; ?></td>
+ <td><?php if ($row['Deleted']==0){echo "Available";}else{echo "Deleted";}?></td>
  </tr>
  <?php
 					   }
@@ -99,7 +104,7 @@
 
     <div id="Member" class="tabcontent">
         
-	<table align="center" border="1px" style="width:600px; line-height:40px; color: black;">
+	<table align="center" border="1px" style="width:600px; line-height:40px; color: black;background-color:#F9BDB4 ">
                             
 							<t>
 							<th> MembershipNo </th>
@@ -107,7 +112,8 @@
 							<th> Address </th>
 							<th> Telephone </th>
 							<th> Email </th>
-							
+							<th> ExpirationDate </th>
+							<th> Status </th>
 							
 							</t>
 	
@@ -121,6 +127,8 @@
 <td><?php echo $row['Address']; ?></td>
 <td><?php echo $row['Telephone']; ?></td>
 <td><?php echo $row['Email']; ?></td>
+<td><?php echo $row['ExpirationDate']; ?></td>
+<td><?php if ($row['Deleted']==0){echo "Available";}else{echo "Deleted";}?></td>
 </tr>
 <?php
 			   }
@@ -130,7 +138,7 @@
 
     <div id="Staff" class="tabcontent">
         
-	<table align="center" border="1px" style="width:600px; line-height:40px; color: black;">
+	<table align="center" border="1px" style="width:600px; line-height:40px; color: black;background-color:#F9BDB4">
                             
 							<t>
 							<th> StaffID </th>
@@ -138,6 +146,7 @@
 							<th> Post </th>
 							<th> Address </th>
 							<th> ContactNo </th>
+							<th> Status </th>
 							
 							
 							</t>
@@ -152,16 +161,53 @@
 <td><?php echo $row['Post']; ?></td>
 <td><?php echo $row['Address']; ?></td>
 <td><?php echo $row['ContactNo']; ?></td>
+<td><?php if ($row['Deleted']==0){echo "Available";}else{echo "Unavailable";}?></td>
 </tr>
 <?php
 			   }
 ?>
 </table>
-    </div>
-</body>
-<style>
+	</div>
+<br><br><br><br>
 
+</body>
+<footer>
+	<?php
+		include("../include/footer.inc.php");
+	?>
+</footer>
+<style>
+	.tablink {
+    background-color: #555;
+    color: White;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+    overflow:hidden;
+   
+  }
+  
+  .tablink:hover {
+    background-color: #777;
+  }
+  
+  /* Style the tab content (and add height:100% for full page content) */
+  .tabcontent {
+	
+    color:#F9BDB4;
+    display: none;
+    padding: 100px 20px;
+    height: 200%;
+  }
+  .table{
+	background-color:#F9BDB4;
+  }  
 </style>
+
 <script>
 function openPage(pageName, elmnt, color) {
   // Hide all elements with class="tabcontent" by default */
@@ -187,8 +233,3 @@ function openPage(pageName, elmnt, color) {
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
 </script>
-<footer>
-	<?php
-		include("../include/footer.inc.php");
-	?>
-</footer>

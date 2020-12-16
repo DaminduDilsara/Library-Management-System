@@ -308,6 +308,7 @@ Class Member implements Editable{
         return self::$members[$key];
     }
 	public function insertData($adminModel){
+	
 		
 		$success=$adminModel->insertMember($this->memNo,$this->name,$this->address,$this->birthday,$this->school,$this->tele,$this->email,$this->receiptNo,$this->expirationDate,$this->guarantor);
 		if($success==1){
