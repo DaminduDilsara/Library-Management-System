@@ -4,7 +4,7 @@ include_once("../controller/creationApprove.con.php");
 
 class Creation extends dbconnection {
 	public function getNotApprovedCreations(){
-        $query = "SELECT * FROM `creation` WHERE `Approved` = 0";
+        $query = "SELECT * FROM `creation` WHERE `Approved` = 0 and 'Deleted'=0";
         $result = mysqli_query($this -> connectInDifferentWay(),$query) or die(mysql_error());
         return $result;
     }
@@ -16,7 +16,7 @@ class Creation extends dbconnection {
 
     public function deleteCreations($delid){
     	$select = "DELETE from creation where CreationID=".$_GET['del_id'];
-    	$query = mysqli_query($this -> connectInDifferentWay(),$query) or die(mysql_error());
+    	$query = mysqli_query($this -> connectInDifferentWay(),$select) or die(mysql_error());
     }
 
 

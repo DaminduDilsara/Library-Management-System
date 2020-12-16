@@ -15,7 +15,7 @@ if(isset($_GET['app_id']))
 if(isset($_GET['del_id']))
 {
 	$del_id=$_GET['del_id'];
-	$object->toApproveCreations($del_id);
+	$object->toDeleteCreations($del_id);
 	header("Location: creationApprove.view.php");
 }
 ?>
@@ -204,11 +204,10 @@ else
  function deleteme(delid)
  {
  if(confirm("Do you want Delete!")){
- window.location.href='delete.php?del_id=' +delid+'';
+ window.location.href='creationApprove.view.php?del_id=' +delid+'';
  return true;
  }
  }
-
  function approveme(appid)
  {
  if(confirm("Do you want Approve!")){

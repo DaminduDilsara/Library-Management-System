@@ -12,7 +12,7 @@ class creationController extends Creation{
     }
 
     public function toDeleteCreations($delid){
-    	$this->approveCreations($delid);
+    	$this->deleteCreations($delid);
     }
 
 }

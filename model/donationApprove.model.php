@@ -16,7 +16,7 @@ class Donation extends dbConnection {
 
     public function deleteDonations($delid){
     	$select = "DELETE from donation where DonationID=".$_GET['del_id'];
-    	$query = mysqli_query($this -> connectInDifferentWay(),$query) or die(mysql_error());
+    	$query = mysqli_query($this -> connectInDifferentWay(),$select) or die(mysql_error());
     }
 
 	    }

@@ -15,7 +15,7 @@ if(isset($_GET['app_id']))
 if(isset($_GET['del_id']))
 {
 	$del_id=$_GET['del_id'];
-	$object->toApproveDonations($del_id);
+	$object->toDeleteDonations($del_id);
 	header("Location: donationApprove.view.php");
 }
 ?>

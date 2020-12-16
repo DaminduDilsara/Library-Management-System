@@ -12,7 +12,7 @@ class donationController extends Donation{
     }
 
     public function toDeleteDonations($delid){
-    	$this->approveDonations($delid);
+    	$this->deleteDonations($delid);
     }
 }
 ?>
