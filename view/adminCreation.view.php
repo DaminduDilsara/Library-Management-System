@@ -18,7 +18,7 @@ error_reporting(0);
 <?php
     include('../include/header.inc.php');
     include('../include/footer.inc.php');
-    include('../include/navbar.inc.php');
+    include('../include/staffCreationNavbar.inc.php');
   ?>
   
  

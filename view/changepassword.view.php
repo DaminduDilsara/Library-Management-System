@@ -46,7 +46,7 @@ $result=$obuser->checkPassword($memNo,$psw,$newpassword,$repsw);
       if($result==2){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo 'Your current password is wrong'; ?> </div><?php } 
         else if($result==0){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo'Your Password is  Successfully Changed'; ?> </div><?php }
 
-        else if($result==1){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo"New Password and Confirm Password Field do not match  !!"; ?> </div><?php }}?>
+        else if($result==1){?><div class="succWrap"><strong>ERROR</strong>:<?php echo"New Password and Confirm Password Field do not match  !!"; ?> </div><?php }}?>
 
         <form role="form" action="" method="post" onSubmit="return valid();" name="chngpwd"> 
       <hr>
