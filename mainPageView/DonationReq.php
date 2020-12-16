@@ -42,6 +42,13 @@ if (isset($_POST['submit'])) {
         <div class="cardNewContact">
 
             <div class="visionMissionTextMedium">Spread wisdom with your donations</div><br>
+            <?php 
+      if(isset($_POST['submit']))
+         {
+
+      if($res==true){?><div class="succwrap"><strong>SUCCESS</strong>:<?php echo 'Thank You For Joining with us!!! We will contact you soon...'; ?> </div><?php } 
+        else{?><div class="errwrap"><strong>ERROR</strong>:<?php echo'Somthing wrong'; ?> </div><?php }}?>
+
 
             <form action="" method="post">
 

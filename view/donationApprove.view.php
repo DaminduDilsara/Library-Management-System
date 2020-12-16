@@ -50,6 +50,9 @@ if(isset($_GET['del_id']))
 	</style>
 </head>
 <body>
+	<?php
+		include	"../include/adminNavbar.inc.php";
+	?>
 	<div class="body" style="height: auto;
 	background-color: #F9BDB4;
 	margin: 10px;
