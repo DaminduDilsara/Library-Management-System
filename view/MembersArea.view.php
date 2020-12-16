@@ -141,12 +141,12 @@
 			<input style=padding-left:25px type="number" name="memNo" placeholder="MembershipNo"required/>
 			<input style=padding-left:25px type="text" name="name"placeholder="Name" required/>
 			<input style=padding-left:25px type="text" name="address"placeholder="Address"required />
-			<input style=padding-left:25px type="text" name="birthday" placeholder="Birthday(YYYY-MM-DD)" required/>
+			<input style=padding-left:25px type="text" onfocus="(this.type='date')" name="birthday" onblur="(this.type='text')" placeholder="Birthday(YYYY-MM-DD)" required/>
 			<input style=padding-left:25px type="text" name="school"placeholder="School" />
 			<input style=padding-left:25px type="tel" name="tele"placeholder="Telephone" />
 			<input style=padding-left:25px type="email" name="email"placeholder="Email" /><span class="error" style= color:#FF0000><?php echo $emailErr;?></span>
 			<input style=padding-left:25px type="number" name="receiptNo"placeholder="Deposite Receipt No:" />
-			<input style=padding-left:25px type="text" name="expirationdate"placeholder="ExpirationDate(YYYY-MM-DD)" required/>
+			<input style=padding-left:25px type="text" onfocus="(this.type='date')" name="expirationdate" onblur="(this.type='text')" placeholder="ExpirationDate(YYYY-MM-DD)" required/>
 			<input style=padding-left:25px type="text" name="guarantor"placeholder="Guarantor"required />
 			
 			
