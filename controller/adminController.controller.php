@@ -35,6 +35,13 @@ Class Admincontroller extends Admin {
 		$msg=$this->editable->updateData($adminModel);
 		return($msg);
 	}
+	public function updateFine($editable){
+		$this->editable=$editable;
+		$adminModel=Admin::getInstance();
+		$msg=$this->editable->updatePay($adminModel);
+		return($msg);
+	}
+	
 	public function updateNewspaper($editable,$value){
 		$this->editable=$editable;
 		$this->value=$value;
@@ -331,7 +338,7 @@ Class Member implements Editable{
 		return($msg);
 	}
 	public function updateData($adminModel){
-		echo($this->receiptNo);
+		
 		$success=$adminModel->updateMember($this->memNo,$this->receiptNo,$this->expirationDate);
 		if($success==1){
 			$msg="Success";
@@ -502,7 +509,7 @@ Class BorrowSession implements editable{
 		return true;
 	}
 	public function updateData($adminModel){
-		$fine=$adminModel->updateBorrowSession($this->id,$this->returnDate,$this->receiptNo);
+		$fine=$adminModel->updateBorrowSession($this->id,$this->returnDate);
 		if($fine>=0){
 			$msg1="Your fine charges=$fine";
 		}else{
@@ -510,6 +517,16 @@ Class BorrowSession implements editable{
 		}
 		$success=0;
 		return($msg1);
+	}
+	public function updatePay($adminModel){
+		$success=$adminModel->updatePayment($this->receiptNo,$this->id);
+		if($success==1){
+			$msg="Success";
+		}else{
+			$msg="Error";
+		}
+		$success=0;
+		return($msg);
 	}
 }
 

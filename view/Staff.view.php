@@ -89,7 +89,7 @@
 	
 	<div class="form-container book-container">
 		<form method="post">
-		
+			</br></br></br>
 			<h1>Register Staffmember</h1>
 			
 			<input style=padding-left:25px type="number"name='id' placeholder="StaffID"required />

@@ -29,6 +29,7 @@
 				$erros[] =$bdErr;
 			}
 			// $birthday=date_format($date1,"Y/m/d H:i:s");
+			
 			$school=$_POST['school'];
 			$tele=$_POST['tele'];
 			$teleCount = strlen((string) $tele);
@@ -47,7 +48,8 @@
 				$expErr = "Expiration Date can not be a past date";
 				$erros[] = $expErr;
 			}
-			// $expirationdate=date_format($date2,"Y/m/d H:i:s");
+			
+			
 			$guarantor=$_POST['guarantor'];
 			$receiptNo=$_POST['receiptNo'];
 						
@@ -89,7 +91,8 @@
 			$school=$_POST['school'];
 			$tele=$_POST['tele'];
 			$email=$_POST['email'];
-			$expirationdate=$_POST['expirationdate'];
+			$date=date_create($_POST['expirationdate']);
+			$expirationdate=date_format($date,"Y/m/d ");
 			$guarantor=$_POST['guarantor'];
 			$receiptNo=$_POST['receiptNo'];
 			
@@ -225,7 +228,7 @@
 			<input style=padding-left:25px type="number" name="receiptNo"placeholder="Deposite Receipt No:" required/>
 			<input type="hidden" name="tele"placeholder="Telephone" />
 			<input type="hidden" name="email"placeholder="Email" />
-			<input style=padding-left:25px type="date" name="expirationdate"placeholder="ExpirationDate" required/>
+			<input style=padding-left:25px type="text" name="expirationdate"placeholder="ExpirationDate(YYYY-MM-DD)" required/>
 			<input type="hidden" name="guarantor"placeholder="Guarantor" />
 			
 			

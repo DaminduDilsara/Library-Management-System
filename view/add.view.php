@@ -18,7 +18,8 @@
 			$publisher=$_POST['publisher'];
 			$section=$_POST['section'];
 			$place=$_POST['place'];
-			$date=$_POST['date'];
+			$date=date_create($_POST['date']);
+			$date=date_format($date,"Y/m/d H:i:s");
 			$pages=$_POST['pages'];
 			$price=$_POST['price'];
 			$dim=$_POST['dim'];
@@ -65,7 +66,7 @@
 <html lang="en">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="../style/add.charitha.css"type="text/css"/>
+	<link rel="stylesheet" href="../style/remove.charitha.css"type="text/css"/>
 	<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
 	<title>Adding Page</title>
 </head>
@@ -92,7 +93,7 @@ include "../include/header.inc.php";
 			</br></br></br>
 			<input style=padding-left:25px type="text" name="id"placeholder="ID"required />
 			<input style=padding-left:25px type="text" name="name"placeholder="Name" required/>
-			<input style=padding-left:25px type="day" name="time"placeholder="Time Period"required />
+			<input style=padding-left:25px type="day" name="time"placeholder="Time Period(No: of days)"required />
 			<button name="addnewspaper" type="submit">Add</button>
 			
 		</form>
@@ -112,7 +113,7 @@ include "../include/header.inc.php";
 			<input style=padding-left:25px type="text" name="publisher"placeholder="Publisher"required />
 			<input style=padding-left:25px type="text" name="section"placeholder="Section" required/>
 			<input style=padding-left:25px type="text" name="place"placeholder="Published Place" />
-			<input style=padding-left:25px type="date" name="date" />
+			<input style=padding-left:25px type="text" name="date" placeholder="Published Date(YYYY-MM-DD)" />
 			<input style=padding-left:25px type="number" name="pages"placeholder="Number of Pages" />
 			<input style=padding-left:25px type="number" name="price"placeholder="Price" />
 			<input style=padding-left:25px type="text" name="dim"placeholder="Dimensions" />
@@ -120,6 +121,7 @@ include "../include/header.inc.php";
 			<input style=padding-left:25px type="text" name="categary"placeholder="Categary"required />
 			
 			<button name="addbook"type="submit">Add</button>
+			<br><br><br>
 			
 		</form>
 	

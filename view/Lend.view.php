@@ -11,7 +11,8 @@
 			$id=$_POST['id'];
 			$barcode=$_POST['barcode'];
 			$memNo=$_POST['memNo'];
-			$expirationdate=$_POST['expirationdate'];
+			$date=date_create($_POST['expirationdate']);
+			$expirationdate=date_format($date,"Y/m/d");
 			$returndate=$_POST['returndate'];
 			$staffID=$_POST['staffID'];
 			$receiptNo=$_POST['receiptNo'];
@@ -81,17 +82,24 @@
 			$_SESSION['msg']=$msg;
 		
 		}elseif(isset($_POST['paid'])){ 
-
+			$barcode=0;
 			
 			$receiptNo=$_POST['receiptNo'];
 			$amount=$_POST['amount'];
 			$description=$_POST['description'];
 			$memNo=$_POST['memNo'];
 			$staffID=$_POST['staffID'];	
-			$name=NULL;
+			$name=$_POST['name'];
+			$id=$_POST['id'];
+			$expirationdate=$_POST['expirationdate'];
+			$returndate=$_POST['returndate'];
+
 			$deposite=Deposite::getInstance();
 			$deposite->setDeposite($memNo,$receiptNo,$amount,$description,$name,$staffID);
 			$msg=$controller->insert($deposite);
+			$borrowSession=BorrowSession::getInstance();
+			$borrowSession->setBorrowSession($id,$barcode,$memNo,$expirationdate,$returndate,$staffID,$receiptNo);
+			$msg2=$controller->updateFine($borrowSession);
 			$_SESSION['msg']=$msg;
 		
 		}
@@ -145,7 +153,7 @@
 			<input style=padding-left:25px type="number" name="id" placeholder="BorrowSessionID" required/>
 			<input style=padding-left:25px type="number" name="barcode" placeholder="Barcode No:" required />
 			<input style=padding-left:25px type="text" name="memNo" placeholder="Membership No:"required />
-			<input style=padding-left:25px type="date" name="expirationdate" placeholder="Expiration Date"required />
+			<input style=padding-left:25px type="text" name="expirationdate" placeholder="Expiration Date(YYYY-MM-DD)"required />
 			<input type="hidden" name="returndate" placeholder="Return Date" />
 			<input style=padding-left:25px type="number" name="staffID" placeholder="Staff ID" required/>
 			<input type="hidden" name="receiptNo" placeholder="Receipt NO:" />
@@ -179,9 +187,9 @@
 			<input type="hidden" name="barcode" placeholder="Barcode No:" />
 			<input type="hidden" name="memNo" placeholder="Membership No:" />
 			<input type="hidden" name="expirationdate" placeholder="Expiration Date" />
-			<input style=padding-left:25px type="date" name="returndate" placeholder="Return Date"required />
+			<input style=padding-left:25px type="text" name="returndate" placeholder="Return Date(YYYY-MM-DD)"/>
 			<input type="hidden" name="staffID" placeholder="Staff ID" />
-			<input style=padding-left:25px type="number" name="receiptNo" placeholder="Receipt NO:" />
+			<input  type="hidden" name="receiptNo" placeholder="Receipt NO:" />
 			
 			<input type="hidden" name="isbn"placeholder="ISBN" />
 			<input type="hidden" name="subject"placeholder="Subject" />
@@ -214,7 +222,10 @@
 			<input style=padding-left:25px type="text" name="description"placeholder="Description" />
 			<input style=padding-left:25px type="text" name="memNo"placeholder="Membership No:"required />
 			<input style=padding-left:25px type="text" name="name" placeholder="Name"/>
+			<input style=padding-left:25px type="number" name="id"placeholder="BorrowSessionID"required />
 			<input style=padding-left:25px type="number" name="staffID"placeholder="StaffID"required />
+			<input type="hidden" name="expirationdate" placeholder="Expiration Date" />
+			<input type="hidden" name="returndate" placeholder="Return Date(YYYY-MM-DD)"/>
 			
 			<button name=paid type=submit>Paid</button>
 			

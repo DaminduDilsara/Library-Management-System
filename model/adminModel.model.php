@@ -40,15 +40,16 @@
 		}
 		public function insertMember($memNo,$name,$address,$birthday,$school,$tele,$email,$depositeNo,$expirationDate,$guarantor){
 			
-			$sql = "INSERT INTO `member`(`MembershipNo`, `RegistrationDate`, `Name`, `Address`, `Birthday`, `School`, `Telephone`, `email`, `DepositeReceiptNo`, `ExpirationDate`, `Guarantor`,  `Deleted`) VALUES ('$memNo',curDate(),'$name','$address', '$birthday' ,'$school',$tele,'$email','$depositeNo','$expirationDate','$guarantor',0)";
-			$query=$this->connectInDifferentWay();
-			$result=mysqli_query($query,$sql) or die(mysqli_error($query));
+				$sql = "INSERT INTO `member`(`MembershipNo`, `RegistrationDate`, `Name`, `Address`, `Birthday`, `School`, `Telephone`, `email`, `DepositeReceiptNo`, `ExpirationDate`, `Guarantor`,  `Deleted`) VALUES ('$memNo',curDate(),'$name','$address', '$birthday' ,'$school',$tele,'$email','$depositeNo','$expirationDate','$guarantor','0')";
+				$query=$this->connectInDifferentWay();
+				$result=mysqli_query($query,$sql) or die(mysqli_error($query));
 				
-			if ($result==true) {
-				return true;
-			} else {
-				return false;
-			}
+				if ($result==true) {
+					return true;
+				} else {
+					return false;
+				}
+			
 					
 		}
 		public function insertStaff($id,$name,$post,$address,$contNo,$username,$password){
@@ -66,15 +67,15 @@
 		}
 		public function insertBorrowSession($id,$barcode,$memNo,$expirationDate,$staffid){
 				 
-			$sql = "INSERT INTO `borrowsession`(`BorrowSessionID`, `BarcodeNo`, `MembershipNo`, `CurDate`, `ExpirationDate`, `StaffID`) VALUES  ('$id','$barcode','$memNo',curdate(),'$expirationDate','$staffid')";
-			$query=$this->connectInDifferentWay();
-			$result=mysqli_query($query,$sql) or die(mysqli_error($query));
+				$sql = "INSERT INTO `borrowsession`(`BorrowSessionID`, `BarcodeNo`, `MembershipNo`, `CurDate`, `ExpirationDate`, `StaffID`) VALUES  ('$id','$barcode','$memNo',curdate(),'$expirationDate','$staffid')";
+				$query=$this->connectInDifferentWay();
+				$result=mysqli_query($query,$sql) or die(mysqli_error($query));
 				
-			if ($result==true) {
-				return true;
-			} else {
-				return false;
-			}
+				if ($result==true) {
+					return true;
+				} else {
+					return false;
+				}
 			
 			
 		}
@@ -140,7 +141,18 @@
 			}
 		}
 		
-		
+		public function updatePayment($receiptNo,$id){
+			$sql="UPDATE `borrowsession` SET `ReceiptNo`='$receiptNo',`Fine`='0'WHERE BorrowSessionID='$id'";
+			$query=$this->connectInDifferentWay();
+			
+			$result=mysqli_query($query,$sql) or die(mysqli_error($query));
+
+			if ($result==true) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 		
 
 		public function updateNewspaperStatus($value){
@@ -170,7 +182,7 @@
 		public function updateMember($memNo,$receiptNo,$expirationdate){
 			$sql="UPDATE `member` SET `DepositeReceiptNo`='$receiptNo',`ExpirationDate`='$expirationdate',`Deleted`='0'WHERE MembershipNo='$memNo'";
 			$query=$this->connectInDifferentWay();
-			echo($receiptNo);
+			
 			$result=mysqli_query($query,$sql) or die(mysqli_error($query));
 
 			if ($result==true) {
@@ -208,7 +220,17 @@
 				}
 			}
 		}
-		public function updateBorrowSession($id,$returndate,$receiptNo){
+		public function updateBorrowSession($id,$returndate){
+			$returnDate=date_create($returndate);
+			$returndate=date_format($returnDate,"Y/m/d");
+			
+			date_default_timezone_set('Asia/Colombo');
+			if ($returndate!=date_format(new DateTime(),"Y/m/d")){
+				
+				
+
+				return false;
+			}
 			$sql1="SELECT `ExpirationDate` FROM `borrowsession` WHERE BorrowSessionID='$id'";
 			
 			$query=$this->connectInDifferentWay();
@@ -216,7 +238,7 @@
 			if ($result1==true) {
 				$row=mysqli_fetch_array($result1);
 				$expirationdate=date_create($row[0]);
-				$returnDate=date_create($returndate);
+				
 				if ($expirationdate>$returnDate||$expirationdate==$returnDate){
 					
 					$fine=0;
@@ -224,6 +246,7 @@
 					
 					$diff=date_diff($returnDate,$expirationdate,true);
 					$days=(int)($diff->format("%a"));
+					
 					$fine=$days*2;
 
 				}
