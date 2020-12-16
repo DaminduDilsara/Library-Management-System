@@ -17,13 +17,13 @@ Class SearchCon extends SearchModel{
     }
 
     public function reserveBook($memNo,$reserve_id){
-    	$this->updateReserve($memNo,$reserve_id);
-        //if($res==1){
-            //$msg="Your reservation is successfull. Reservation wll be cancelled within 2 days!!!";
-        //}else{
-           // $msg="You have alresdy reserved 2 books!!!";
-       // }
-       // return $msg;
+    	$res=$this->updateReserve($memNo,$reserve_id);
+        if($res==1){
+            $msg="Your reservation is successfull. Reservation wll be cancelled within 2 days!!!";
+        }else{
+           $msg="You have alresdy reserved 2 books!!!";
+        }
+       return $msg;
 
     	
     }

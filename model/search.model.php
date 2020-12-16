@@ -22,22 +22,14 @@ class SearchModel extends dbconnection{
 					$query = $this->connectInDifferentWay();
 					$result2 =mysqli_query($query,$sql2) or die(mysqli_error($query)) ;
 
-					//return true;
 
-					
-				//}else{
-					//return false;
+
+				return true;
+
+				}else{
+					return false;
 				}
 
-		}else{
-			$sql1 = "UPDATE book SET available=0 where BarcodeNo='".$_GET['reserve_id']."'";
-			$result1 = mysqli_query($this -> connectInDifferentWay(),$sql1) or die(mysql_error());
-
-			$sql2 = "INSERT INTO `bookreservations`(`MembershipNo`, `BarcodeNo`, `Status`,`ExpirationDate`) VALUES ('$memNo','$reserve_id','1',DATE_ADD(CURRENT_DATE,Interval 2 day))";
-			$query = $this->connectInDifferentWay();
-			$result2 =mysqli_query($query,$sql2) or die(mysqli_error($query)) ;
-
-			//return true;
 		}
 
 
