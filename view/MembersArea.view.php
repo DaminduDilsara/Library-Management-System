@@ -3,6 +3,11 @@
 	include "../include/dbconnection.inc.php";
 	include "../controller/adminController.controller.php";
 	$emailErr="";
+	$memErr = "";
+	$bdErr = "";
+	$expErr = "";
+	$telErr = "";
+	$erros =[];
 	if(strlen($_SESSION['userName'])==NULL){   
 		header('../mainPageView/index.php');
 	}else{
@@ -10,30 +15,50 @@
 		if(isset($_POST['addMember'])){
 			
 			$memNo=$_POST['memNo'];
+			$memcount = strlen((string) $memNo);
+			if($memcount != 6){
+				$memErr = "Membership number should be in between 6";
+				$erros[] =$memErr;
+			}
 			$name=$_POST['name'];
 			$address=$_POST['address'];
-			$date1=date_create($_POST['birthday']);
-			$birthday=date_format($date1,"Y/m/d H:i:s");
+			$birthday=$_POST['birthday'];
+			$today = date("Y-m-d");
+			if($birthday > $today){
+				$bdErr = "Birthday should be a past date";
+				$erros[] =$bdErr;
+			}
+			// $birthday=date_format($date1,"Y/m/d H:i:s");
 			$school=$_POST['school'];
 			$tele=$_POST['tele'];
+			$teleCount = strlen((string) $tele);
+			// if($teleCount != 10 or is_int($tele)){
+			// 	$telErr = "Mobile number should be a valid number";
+			// 	$erros[] =$telErr;
+			// }
 			$email = $_POST["email"];
 			// check if e-mail address is well-formed
 			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 				$emailErr = "Invalid email format";
+				$erros[] =$emailErr;
 			}
-			$date2= date_create($_POST['expirationdate']);
-			$expirationdate=date_format($date2,"Y/m/d H:i:s");
+			$expirationdate= $_POST['expirationdate'];
+			if($expirationdate <= $today){
+				$expErr = "Expiration Date can not be a past date";
+				$erros[] = $expErr;
+			}
+			// $expirationdate=date_format($date2,"Y/m/d H:i:s");
 			$guarantor=$_POST['guarantor'];
 			$receiptNo=$_POST['receiptNo'];
-			
-			
+						
 			
 			  
-			
-			$member=Member::getInstance($memNo);
-			$member->setMember($memNo,$name,$address,$birthday,$school,$tele,$email,$expirationdate,$guarantor,$receiptNo);
-			$msg=$controller->insert($member);
-			$_SESSION['msg']=$msg;
+			if (count($erros) == 0){
+				$member=Member::getInstance($memNo);
+				$member->setMember($memNo,$name,$address,$birthday,$school,$tele,$email,$expirationdate,$guarantor,$receiptNo);
+				$msg=$controller->insert($member);
+				$_SESSION['msg']=$msg;
+			}
 		}elseif(isset($_POST['removeMember'])){ 
 
 			
@@ -138,15 +163,26 @@
 		<form method="post">
 			</br></br></br>
 			<h1>Add member</h1>
-			<input style=padding-left:25px type="number" name="memNo" placeholder="MembershipNo"required/>
+			<input style=padding-left:25px type="number" name="memNo" placeholder="MembershipNo" required/>
+			<span class="error" style= color:#FF0000><?php echo $memErr;?></span>
+
 			<input style=padding-left:25px type="text" name="name"placeholder="Name" required/>
 			<input style=padding-left:25px type="text" name="address"placeholder="Address"required />
 			<input style=padding-left:25px type="text" onfocus="(this.type='date')" name="birthday" onblur="(this.type='text')" placeholder="Birthday(YYYY-MM-DD)" required/>
+			<span class="error" style= color:#FF0000><?php echo $bdErr;?></span>
+
 			<input style=padding-left:25px type="text" name="school"placeholder="School" />
-			<input style=padding-left:25px type="tel" name="tele"placeholder="Telephone" />
-			<input style=padding-left:25px type="email" name="email"placeholder="Email" /><span class="error" style= color:#FF0000><?php echo $emailErr;?></span>
+			<input style=padding-left:25px type="tel" pattern="[0-9]{10}" name="tele"placeholder="Telephone" />
+			<span class="error" style= color:#FF0000><?php echo $telErr;?></span>
+
+			<input style=padding-left:25px type="email" name="email"placeholder="Email" />
+			<span class="error" style= color:#FF0000><?php echo $emailErr;?></span>
+
 			<input style=padding-left:25px type="number" name="receiptNo"placeholder="Deposite Receipt No:" />
+
 			<input style=padding-left:25px type="text" onfocus="(this.type='date')" name="expirationdate" onblur="(this.type='text')" placeholder="ExpirationDate(YYYY-MM-DD)" required/>
+			<span class="error" style= color:#FF0000><?php echo $expErr;?></span>
+
 			<input style=padding-left:25px type="text" name="guarantor"placeholder="Guarantor"required />
 			
 			
