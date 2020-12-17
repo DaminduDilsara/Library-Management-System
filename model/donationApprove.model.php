@@ -4,7 +4,7 @@ include_once("../controller/donationApprove.con.php");
 
 class Donation extends dbConnection {
 	public function getNotApprovedDonations(){
-        $query = "SELECT * FROM `donation` WHERE `Approved` = 0";
+        $query = "SELECT * FROM donation WHERE Approved = 0 and Deleted=0";
         $result = mysqli_query($this -> connectInDifferentWay(),$query) or die(mysql_error());
         return $result;
     }
@@ -15,8 +15,8 @@ class Donation extends dbConnection {
     }
 
     public function deleteDonations($delid){
-    	$select = "DELETE from donation where DonationID=".$_GET['del_id'];
-    	$query = mysqli_query($this -> connectInDifferentWay(),$select) or die(mysql_error());
+    	$select = "UPDATE donation SET Deleted=1 where DonationID=".$_GET['del_id'];
+        $query = mysqli_query($this -> connectInDifferentWay(),$select) or die(mysql_error());
     }
 
 	    }

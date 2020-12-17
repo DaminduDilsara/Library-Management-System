@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
     <link href="../style/style-Damindu.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <style >
-        input[type=email]{
+        input[type=email],input[type=tel]{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -69,7 +69,7 @@ if (isset($_POST['submit'])) {
             <div class="donationTextSmall">Email:</div>
             <input type="email" name="email" placeholder="Your Email..." required/><br>
             <div class="donationTextSmall">Telephone:</div>
-            <input type="text" name="phone" placeholder="Contact Number..." required/><br>
+            <input type="tel" pattern="[0-9]{10}" name="phone" placeholder="Contact Number(0711234567)" required/><br>
             <div class="donationTextSmall">Donation Type:</div>
             <input type="text" name="type" placeholder="Money / Books" required/><br>
             <div class="donationTextSmall">Description:</div>

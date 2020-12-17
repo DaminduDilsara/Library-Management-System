@@ -7,7 +7,7 @@ class Creation extends dbconnection{
 
 	public function getCreationalInfo(){
         
-		$sql = "SELECT * FROM creation WHERE Approved='0'" ;
+		$sql = "SELECT * FROM creation WHERE Approved='0' and Deleted='0'" ;
 		$result = $this->connect()->prepare($sql);
 		$result->execute();
 		return $result;

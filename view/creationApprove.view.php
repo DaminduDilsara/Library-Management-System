@@ -16,7 +16,10 @@ if(isset($_GET['del_id']))
 {
 	$del_id=$_GET['del_id'];
 	$object->toDeleteCreations($del_id);
-	header("Location: creationApprove.view.php");
+echo '<script type="text/javascript">'; 
+//echo 'alert("' . $msg . '");';
+echo 'window.location.href = "creationApprove.view.php";';
+echo '</script>';
 }
 ?>
 

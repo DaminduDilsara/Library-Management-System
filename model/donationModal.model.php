@@ -7,7 +7,7 @@ class Donation extends dbconnection{
 
 	public function getDonationInfo(){
         
-		$sql = "SELECT * FROM donation WHERE Approved='0'" ;
+		$sql = "SELECT * FROM donation WHERE Approved='0' and Deleted=0" ;
 		$result = $this->connect()->prepare($sql);
 		$result->execute();
 		return $result;
