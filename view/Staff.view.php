@@ -2,6 +2,8 @@
 	session_start();
 	include "../include/dbconnection.inc.php";
 	include "../controller/adminController.controller.php";
+	$telErr = "";
+	$erros =[];
 	if(strlen($_SESSION['userName'])==NULL){   
 		header('../mainPageView/index.php');
 	}else{
@@ -13,13 +15,16 @@
 			$post=$_POST['post'];
 			$address=$_POST['address'];
 			$contactNo=$_POST['contactNo'];
+			$teleCount = strlen((string) $contactNo);
+			
 			$username=$_POST['username'];
 			$password=$_POST['pass'];
-			
-			$staff=Staff::getInstance($id);
-			$staff->setStaff($id,$name,$post,$address,$contactNo,$username,$password);
-			$msg=$controller->insert($staff);
-			$_SESSION['msg']=$msg;
+			if (count($erros) == 0){
+				$staff=Staff::getInstance($id);
+				$staff->setStaff($id,$name,$post,$address,$contactNo,$username,$password);
+				$msg=$controller->insert($staff);
+				$_SESSION['msg']=$msg;
+			}
 		}elseif(isset($_POST['removeStaff'])){ 
 			
 			$id=$_POST['id'];
@@ -96,9 +101,9 @@
 			<input style=padding-left:25px type="text"name='name' placeholder="Name" />
 			<input style=padding-left:25px type="text"name='post' placeholder="Post" />
             <input style=padding-left:25px type="text"name='address' placeholder="Address" />
-			<input style=padding-left:25px type="text"name='contactNo' placeholder="Contact No:" />
+			<input style=padding-left:25px type="tel"pattern="[0-9]{10}" name='contactNo' placeholder="Contact No:" /><span class="error" style= color:#FF0000><?php echo $telErr;?></span>
             <input style=padding-left:25px type="text"name='username' placeholder="Username" />
-			<input style=padding-left:25px type="text"name='pass' placeholder="Password" />
+			<input style=padding-left:25px type="password"name='pass' pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Password" required/>
 			
 			
 			
