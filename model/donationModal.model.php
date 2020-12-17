@@ -14,10 +14,15 @@ class Donation extends dbconnection{
 		
 	}
 
-	public function addDonationInfo($name, $address, $email, $phone, $type,$des,$str){
+	public function addDonationalInfo($name, $address, $email, $phone, $type,$des,$str){
         $sql = "INSERT INTO `donation` (`Name`, `Address`, `email`, `Telephone`, `DonationType`,`Description`,`Approved`) VALUES ('$name', '$address', '$email', '$phone', '$type', '$des','$str')";
         $query = $this->connectInDifferentWay();
 		$result =mysqli_query($query,$sql) or die(mysqli_error($query)) ;
+		if($result){
+			return True;
+		}else{
+			return False;
+		}
 
     }
 }

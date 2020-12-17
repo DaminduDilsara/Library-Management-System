@@ -7,13 +7,13 @@
 
 <div class="navbar">
       <a class="active" href="../view/admin.view.php">Home</a>
-      <a href="search.view.php">Search</a>
+      <a href="../view/adminSearch.view.php">Search</a>
       <div class="dropdown">
       <button class="dropbtn"> 
         Notifications
       </button>
       <div class="dropdown-content">
-      <a href="creationApprove.view.php" class="notification">
+      <a href="../view/creationApprove.view.php" class="notification">
         <span>Creation</span>
         <span class="badge"><i class="" id="noti_number"></i></span></a>
 
@@ -37,7 +37,7 @@
     loadDoc();
     </script>
 
-      <a href="donationApprove.view.php" class="notification">
+      <a href="../view/donationApprove.view.php" class="notification">
         <span>Donation</span>
         <span class="badge"><i class="" id="donnoti_number"></i></span></a>
 

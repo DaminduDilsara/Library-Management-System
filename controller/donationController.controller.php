@@ -30,9 +30,14 @@ class AdminDonation extends IDonation{
 	
 	public function addDonation(){
     
-    	$o=new Creation();
+    	$o=new Donation();
     	$str='1';
-		$o->addCreationalInfo($this->name,$this->address,$this->email,$this->phone,$this->type,$this->des,$str);
+		$out=$o->addDonationalInfo($this->name,$this->address,$this->email,$this->phone,$this->type,$this->des,$str);
+		if($out){
+			return true;
+		}else{
+			return False;
+		}
     }
 }
 
@@ -47,9 +52,13 @@ class UserDonation extends IDonation{
     
     	$o=new Donation();
     	$str='0';
-    	$o->addCreationalInfo($this->name,$this->address,$this->email,$this->phone,$this->type,$this->des,$str);
+    	$out=$o->addDonationalInfo($this->name,$this->address,$this->email,$this->phone,$this->type,$this->des,$str);
 
-    	
+    	if($out){
+			return true;
+		}else{
+			return False;
+		}
     }
 }
 

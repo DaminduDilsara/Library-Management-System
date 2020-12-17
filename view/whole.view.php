@@ -64,7 +64,7 @@ $result=$obuser->assignInfo($memNo);
     <li><a href='changepassword.view.php' class='button'>Change password</a></li>
     
     
-    <li><a href='search.view.php' class='button'>Reserve book</a></li>
+    <li><a href='memberSearch.view.php' class='button'>Reserve book</a></li>
     <li><a href='creation.view.php' class='button'>Add creations</a></li>
     <li><a href='EBookCollection.php' class='button'>E-Books</a></li>
     <li><a href='logout.view.php' class='button'>Log out</a></li>

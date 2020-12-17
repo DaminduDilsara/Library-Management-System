@@ -1,5 +1,5 @@
 <?php
-include_once("../view/search.view.php");
+include_once("../view/memberSearch.view.php");
 include_once("../model/search.model.php");
 
 Class SearchCon extends SearchModel{
