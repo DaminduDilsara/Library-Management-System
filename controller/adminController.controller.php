@@ -510,9 +510,8 @@ Class BorrowSession implements editable{
 	}
 	public function updateData($adminModel){
 		$fine=$adminModel->updateBorrowSession($this->id,$this->returnDate);
-		if ($fine=="Error"){
-			$msg1=$fine;
-		}elseif($fine>=0){
+		
+		if($fine>=0){
 			$msg1="Your fine charges=$fine";
 		}else{
 			$msg1="error";

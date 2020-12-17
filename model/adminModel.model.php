@@ -201,6 +201,7 @@
 			if ($result1==true) {
 				
 				$row=mysqli_fetch_array($result1);
+			
 				if ($row[0]=='0'){
 					$result2=mysqli_query($query,$sql3) or die(mysqli_error($query));
 					if ($result2==true){
@@ -224,8 +225,8 @@
 			$returnDate=date_create($returndate);
 			$returndate=date_format($returnDate,"Y/m/d");
 			
-			date_default_timezone_set('Asia/Colombo');
-			if ($returndate==date_format(new DateTime(),"Y/m/d")){
+			
+			
 				
 				$sql1="SELECT `ExpirationDate` FROM `borrowsession` WHERE BorrowSessionID='$id'";
 			
@@ -259,9 +260,7 @@
 					$fine=-1;
 					return $fine;
 				}
-			}else{
-				return("Error");
-			}
+			
 		}
 		public function loadNewspaper(){
 			$sql="SELECT NewspaperName FROM newspaper WHERE Availability='0' AND Deleted='0'";

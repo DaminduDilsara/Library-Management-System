@@ -2,6 +2,8 @@
 	session_start();
 	include "../include/dbconnection.inc.php";
 	include "../controller/adminController.controller.php";
+	$returnErr = "";
+	$erros =[];
 	if(strlen($_SESSION['userName'])==NULL){   
 		header('../index.php');
 	}else{
@@ -44,13 +46,19 @@
 			$_SESSION['msg']=$msg;
 
 		}elseif(isset($_POST['return'])){ 
-
+			date_default_timezone_set('Asia/Colombo');
+			$today=date("Y-m-d");
 			
 			$id=$_POST['id'];
 			$barcode=$_POST['barcode'];
 			$memNo=$_POST['memNo'];
 			$expirationdate=$_POST['expirationdate'];
 			$returndate=$_POST['returndate'];
+			
+			if ($returndate!=$today){
+				$returnErr="*You should be insert the today's date";
+				$erros[] =$returnErr;
+			}
 			$staffID=$_POST['staffID'];
 			$receiptNo=$_POST['receiptNo'];
 			
@@ -70,16 +78,16 @@
 			$cd=$_POST['cd'];
 			$categary=$_POST['categary'];
 			
-			
-			$borrow=BorrowSession::getInstance();
-			$borrow->setBorrowSession($id,$barcode,$memNo,$expirationdate,$returndate,$staffID,$receiptNo);
-			$msg1=$controller->update($borrow);
-			$_SESSION['msg1']=$msg1;
+			if (count($erros) == 0){
+				$borrow=BorrowSession::getInstance();
+				$borrow->setBorrowSession($id,$barcode,$memNo,$expirationdate,$returndate,$staffID,$receiptNo);
+				$msg1=$controller->update($borrow);
+				$_SESSION['msg1']=$msg1;
 
-			$book=Book::getInstance($barcode);
-			$book->setBook($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary);
-			$msg=$controller->update($book);
-			
+				$book=Book::getInstance($barcode);
+				$book->setBook($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary);
+				$msg=$controller->update($book);
+			}
 		
 		}elseif(isset($_POST['paid'])){ 
 			$barcode=0;
@@ -141,8 +149,8 @@
 		<h2>Lending Session</h2>
 	</header>
 	<div class="tab">
-		<button class="button" onclick="openTab(event,'Lend')"id="default">Lend</button>
-		<button class="button" onclick="openTab(event,'Return')">Return</button>
+		<button class="button" onclick="openTab(event,'Lend')">Lend</button>
+		<button class="button" onclick="openTab(event,'Return')"id="default">Return</button>
 		<button class="button" onclick="openTab(event,'Fine')">Pay Fine</button>
 	</div>
 	<div id="Lend" class="content">
@@ -187,7 +195,8 @@
 			<input type="hidden" name="barcode" placeholder="Barcode No:" />
 			<input type="hidden" name="memNo" placeholder="Membership No:" />
 			<input type="hidden" name="expirationdate" placeholder="Expiration Date" />
-			<input style=padding-left:25px type="text" name="returndate" placeholder="Return Date(YYYY-MM-DD)"/>
+			<input style=padding-left:25px type="text" name="returndate"onfocus="(this.type='date')"  onblur="(this.type='text')" placeholder="Return Date" required/>
+				<span class="error" style= color:#FF0000><?php echo $returnErr;?></span> 
 			<input type="hidden" name="staffID" placeholder="Staff ID" />
 			<input  type="hidden" name="receiptNo" placeholder="Receipt NO:" />
 			
