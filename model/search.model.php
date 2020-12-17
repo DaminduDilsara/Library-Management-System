@@ -71,7 +71,7 @@ class SearchModel extends dbconnection{
 		}
 
 		public function getReservations($memNo){
-        $query = "SELECT * FROM `bookreservations` WHERE Status='1' and MembershipNo='$memNo'";
+        $query = "SELECT Title,ExpirationDate FROM book inner join bookreservations WHERE Status='1' and MembershipNo='$memNo'";
         $result = mysqli_query($this -> connectInDifferentWay(),$query) or die(mysql_error());
         return $result;
     }

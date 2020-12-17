@@ -73,7 +73,7 @@ if($result->num_rows > 0){
  while($row = $result->fetch_assoc()){
  ?>
  <tr>
- <td><?php echo $row['MembershipNo']; ?></td>
+ <td><?php echo $row['Title']; ?></td>
  <td><?php echo $row['ExpirationDate']; ?></td>
 
  <td><input type="button" onClick="cancelme(<?php echo $row['ReserveID']; ?>)" name="Cancel" value="Cancel"></td>
