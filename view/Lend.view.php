@@ -79,7 +79,7 @@
 			$book=Book::getInstance($barcode);
 			$book->setBook($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary);
 			$msg=$controller->update($book);
-			$_SESSION['msg']=$msg;
+			
 		
 		}elseif(isset($_POST['paid'])){ 
 			$barcode=0;

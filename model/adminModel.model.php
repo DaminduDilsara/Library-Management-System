@@ -225,43 +225,42 @@
 			$returndate=date_format($returnDate,"Y/m/d");
 			
 			date_default_timezone_set('Asia/Colombo');
-			if ($returndate!=date_format(new DateTime(),"Y/m/d")){
+			if ($returndate==date_format(new DateTime(),"Y/m/d")){
 				
-				
-
-				return false;
-			}
-			$sql1="SELECT `ExpirationDate` FROM `borrowsession` WHERE BorrowSessionID='$id'";
+				$sql1="SELECT `ExpirationDate` FROM `borrowsession` WHERE BorrowSessionID='$id'";
 			
-			$query=$this->connectInDifferentWay();
-			$result1=mysqli_query($query,$sql1) or die(mysqli_error($query));
-			if ($result1==true) {
-				$row=mysqli_fetch_array($result1);
-				$expirationdate=date_create($row[0]);
+				$query=$this->connectInDifferentWay();
+				$result1=mysqli_query($query,$sql1) or die(mysqli_error($query));
+				if ($result1==true) {
+					$row=mysqli_fetch_array($result1);
+					$expirationdate=date_create($row[0]);
 				
-				if ($expirationdate>$returnDate||$expirationdate==$returnDate){
+					if ($expirationdate>$returnDate||$expirationdate==$returnDate){
 					
-					$fine=0;
-				}else{
+						$fine=0;
+					}else{
 					
-					$diff=date_diff($returnDate,$expirationdate,true);
-					$days=(int)($diff->format("%a"));
+						$diff=date_diff($returnDate,$expirationdate,true);
+						$days=(int)($diff->format("%a"));
 					
-					$fine=$days*2;
+						$fine=$days*2;
 
-				}
+					}
 				
-				$sql2 ="UPDATE `borrowsession` SET `ReturnedDate`='$returndate', `Ended`='1', `Fine`='$fine' WHERE BorrowSessionID='$id'";
-				$result2=mysqli_query($query,$sql2) or die(mysqli_error($query));
-				if ($result2==true){
-					return $fine;
-				}else{
+					$sql2 ="UPDATE `borrowsession` SET `ReturnedDate`='$returndate', `Ended`='1', `Fine`='$fine' WHERE BorrowSessionID='$id'";
+					$result2=mysqli_query($query,$sql2) or die(mysqli_error($query));
+					if ($result2==true){
+						return $fine;
+					}else{
+						$fine=-1;
+						return $fine;
+					}
+				} else {
 					$fine=-1;
 					return $fine;
 				}
-			} else {
-				$fine=-1;
-				return $fine;
+			}else{
+				return("Error");
 			}
 		}
 		public function loadNewspaper(){
@@ -321,7 +320,7 @@
 		}
 
 		public function showBook(){
-			$sql = "SELECT ISBN,Title,SubTitle,Author,Deleted FROM book";
+			$sql = "SELECT ISBN,Title,SubTitle,Author,Deleted,Available FROM book";
 			$query=$this -> connectInDifferentWay();
 			$result = mysqli_query($query,$sql) or die(mysqli_error($query));
 			

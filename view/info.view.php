@@ -37,14 +37,14 @@
 		include	"../include/adminNavbar.inc.php";
 	?>
 	</header>
-    <button class="tablink" onclick="openPage('Book', this, 'red')"id="defaultOpen">Books</button>
-    <button class="tablink" onclick="openPage('Newspaper', this, 'green')" >Newspapers</button>
-    <button class="tablink" onclick="openPage('Member', this, 'blue')">Members</button>
-    <button class="tablink" onclick="openPage('Staff', this, 'orange')">Staff</button>
+    <button class="tablink" onclick="openPage('Book', this, '#c47569')"id="defaultOpen">Books</button>
+    <button class="tablink" onclick="openPage('Newspaper', this, '#c47569')" >Newspapers</button>
+    <button class="tablink" onclick="openPage('Member', this, '#c47569')">Members</button>
+    <button class="tablink" onclick="openPage('Staff', this, '#c47569')">Staff</button>
 
     <div id="Book" class="tabcontent">
         
-		<table align="center" border="1px" style="width:600px; line-height:40px; color: black; background-color:#F9BDB4">
+		<table align="center" border="1px" style="width:600px; line-height:40px; color: black; background-color:#F9BDB4 ">
                             
                                     <t>
                                     <th> ISBN </th>
@@ -65,7 +65,7 @@
  <td><?php echo $row['Title']; ?></td>
  <td><?php echo $row['SubTitle']; ?></td>
  <td><?php echo $row['Author']; ?></td>
- <td><?php if ($row['Deleted']==0){echo "Available";}else{echo "Deleted";}?></td>
+ <td><?php if (($row['Deleted']==0 )and ($row['Available']==1)){echo "Available";}elseif(($row['Deleted']==1 )) {echo "Deleted";}else{echo "Received";}?></td>
  </tr>
  <?php
 					   }
