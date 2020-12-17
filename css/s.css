@@ -30,6 +30,23 @@ div.header-4 {
 }
 
 
+body, html {
+
+	/* The image used */
+	background-image: url("../images/background.jpg");
+
+	/* Full height *
+
+    /* Center and scale the image nicely */
+	background-position: center;
+	min-height: 100%
+}
+
+.bg {
+
+}
+
+
 .small-text{
 	font-size:15px;
 	font-family: 'Shadows Into Light', cursive;
