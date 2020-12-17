@@ -79,6 +79,8 @@ class SearchModel extends dbconnection{
     public function cancelReservations($cancelid){
     	$select = "UPDATE bookreservations SET Status=0 where ReserveID='$cancelid'";
     	$query = mysqli_query($this -> connectInDifferentWay(),$select) or die(mysql_error());
+    	$select1="UPDATE book SET Available=1 where BarcodeNo=(select BarcodeNo from bookreservations where ReserveID='$cancelid')";
+    	$query1 = mysqli_query($this -> connectInDifferentWay(),$select1) or die(mysql_error());
     	if($query){
     		return true;
     	}else{

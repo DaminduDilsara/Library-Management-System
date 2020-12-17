@@ -25,6 +25,16 @@ if (isset($_POST['submit'])) {
     <!-- CUSTOM STYLE  -->
     <link href="../style/style-Damindu.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <style >
+        input[type=email]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+    </style>
 
 
 </head>
