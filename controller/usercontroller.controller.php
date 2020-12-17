@@ -187,6 +187,12 @@ class UserController extends User {
         if (!$exist){
             return "noSuch";
         }
+        if (strlen($psw) < 8 || strlen($psw) > 12){
+            return "notGood";
+        }
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return "wrongMail";
+        }
         while ($rows){
             $notRegistered = $rows["Password"];
             if($notRegistered!=''){

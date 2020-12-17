@@ -20,6 +20,10 @@ include_once('../controller/usercontroller.controller.php');
             }
             else if ($reg == "noSuch"){
                 echo "<div class='login_Messages'><h3>No such Membership number exist!.</h3>Click here to <a href='index.php'>Continue</a></div>";
+            } else if ($reg == "notGood"){
+                echo "<div class='login_Messages'><h3>Password must be between 8 to 12 characters!.</h3>Click here to <a href='index.php'>Register again</a></div>";
+            } else if ($reg == "wrongMail"){
+                echo "<div class='login_Messages'><h3>Wrong E-mail Format!</h3>Click here to <a href='index.php'>Register again</a></div>";
             }
         }
 		else{
