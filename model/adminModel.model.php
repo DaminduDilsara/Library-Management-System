@@ -202,7 +202,7 @@
 				
 				$row=mysqli_fetch_array($result1);
 			
-				if ($row[0]=='0'){
+				if (isset($row[0])=='0'){
 					$result2=mysqli_query($query,$sql3) or die(mysqli_error($query));
 					if ($result2==true){
 						return true;

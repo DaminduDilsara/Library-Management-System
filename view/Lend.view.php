@@ -3,6 +3,7 @@
 	include "../include/dbconnection.inc.php";
 	include "../controller/adminController.controller.php";
 	$returnErr = "";
+	$expErr="";
 	$erros =[];
 	if(strlen($_SESSION['userName'])==NULL){   
 		header('../index.php');
@@ -10,11 +11,17 @@
 		$controller=AdminController::getinstance(); 
 		if(isset($_POST['lend'])){
 			
+			date_default_timezone_set('Asia/Colombo');
+			$today=date("Y-m-d");
 			$id=$_POST['id'];
 			$barcode=$_POST['barcode'];
 			$memNo=$_POST['memNo'];
-			$date=date_create($_POST['expirationdate']);
-			$expirationdate=date_format($date,"Y/m/d");
+			$expirationdate= $_POST['expirationdate'];
+			if($expirationdate <= $today){
+				$expErr = "Expiration Date can not be a past date";
+				$erros[] = $expErr;
+			}
+			
 			$returndate=$_POST['returndate'];
 			$staffID=$_POST['staffID'];
 			$receiptNo=$_POST['receiptNo'];
@@ -34,17 +41,18 @@
 			$dim=$_POST['dim'];
 			$cd=$_POST['cd'];
 			$categary=$_POST['categary'];
-			
-			$borrow=BorrowSession::getInstance($barcode);
-			$borrow->setBorrowSession($id,$barcode,$memNo,$expirationdate,$returndate,$staffID,$receiptNo);
-			$msg1=$controller->insert($borrow);
-			$_SESSION['msg1']=$msg1;
 
-			$book=Book::getInstance($barcode);
-			$book->setBook($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary);
-			$msg=$controller->update($book);
-			$_SESSION['msg']=$msg;
+			if (count($erros) == 0){
+				$borrow=BorrowSession::getInstance($barcode);
+				$borrow->setBorrowSession($id,$barcode,$memNo,$expirationdate,$returndate,$staffID,$receiptNo);
+				$msg1=$controller->insert($borrow);
+				$_SESSION['msg1']=$msg1;
 
+				$book=Book::getInstance($barcode);
+				$book->setBook($barcode,$isbn,$subject,$title,$sub,$author,$editor,$publisher,$section,$place,$date,$pages,$price,$dim,$cd,$categary);
+				$msg=$controller->update($book);
+				$_SESSION['msg']=$msg;
+			}
 		}elseif(isset($_POST['return'])){ 
 			date_default_timezone_set('Asia/Colombo');
 			$today=date("Y-m-d");
@@ -149,8 +157,8 @@
 		<h2>Lending Session</h2>
 	</header>
 	<div class="tab">
-		<button class="button" onclick="openTab(event,'Lend')">Lend</button>
-		<button class="button" onclick="openTab(event,'Return')"id="default">Return</button>
+		<button class="button" onclick="openTab(event,'Lend')"id="default">Lend</button>
+		<button class="button" onclick="openTab(event,'Return')">Return</button>
 		<button class="button" onclick="openTab(event,'Fine')">Pay Fine</button>
 	</div>
 	<div id="Lend" class="content">
@@ -161,7 +169,8 @@
 			<input style=padding-left:25px type="number" name="id" placeholder="BorrowSessionID" required/>
 			<input style=padding-left:25px type="number" name="barcode" placeholder="Barcode No:" required />
 			<input style=padding-left:25px type="text" name="memNo" placeholder="Membership No:"required />
-			<input style=padding-left:25px type="text" name="expirationdate" placeholder="Expiration Date(YYYY-MM-DD)"required />
+			<input style=padding-left:25px type="text" onfocus="(this.type='date')" name="expirationdate" onblur="(this.type='text')" placeholder="ExpirationDate" required/>
+			<span class="error" style= color:#FF0000><?php echo $expErr;?></span>
 			<input type="hidden" name="returndate" placeholder="Return Date" />
 			<input style=padding-left:25px type="number" name="staffID" placeholder="Staff ID" required/>
 			<input type="hidden" name="receiptNo" placeholder="Receipt NO:" />

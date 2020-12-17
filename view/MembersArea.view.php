@@ -183,7 +183,7 @@
 
 			<input style=padding-left:25px type="number" name="receiptNo"placeholder="Deposite Receipt No:" />
 
-			<input style=padding-left:25px type="text" onfocus="(this.type='date')" name="expirationdate" onblur="(this.type='text')" placeholder="ExpirationDate(YYYY-MM-DD)" required/>
+			<input style=padding-left:25px type="text" onfocus="(this.type='date')" name="expirationdate" onblur="(this.type='text')" placeholder="ExpirationDate" required/>
 			<span class="error" style= color:#FF0000><?php echo $expErr;?></span>
 
 			<input style=padding-left:25px type="text" name="guarantor"placeholder="Guarantor"required />
