@@ -1,4 +1,24 @@
 <?php
+include_once("../controller/search.con.php");
+session_start();
+$memNo=$_SESSION['memNo'];
+
+$object=new SearchCon();
+$result=$object->showReservations($memNo);
+
+if(isset($_GET['cancel_id']))
+{
+	$cancel_id=$_GET['cancel_id'];
+	$msg=$object->toCancelReservations($cancel_id);
+	echo '<script type="text/javascript">'; 
+echo 'alert("' . $msg . '");';
+echo 'window.location.href = "reservations.view.php";';
+echo '</script>';
+}
+
+?>
+
+<?php
 include_once("../include/header.inc.php");
 include('../include/navbar.inc.php');
 ?>
@@ -42,18 +62,53 @@ include('../include/navbar.inc.php');
 <table align="center" style="line-height:50px;">
 <tr>
 <th>Title</th>
-<th>Reserved Date</th>
 <th>Expire Date</th>
+<th>Do you want cancel?</th>
 
 </tr>
 
+ <?php
+//Fetch Data form database
+if($result->num_rows > 0){
+ while($row = $result->fetch_assoc()){
+ ?>
  <tr>
- <td colspan="3">No Reservations Found!!!</th>
+ <td><?php echo $row['MembershipNo']; ?></td>
+ <td><?php echo $row['ExpirationDate']; ?></td>
+
+ <td><input type="button" onClick="cancelme(<?php echo $row['ReserveID']; ?>)" name="Cancel" value="Cancel"></td>
  </tr>
 
+ 
+ <?php
+ }
+}
+else
+{
+ ?>
+ <tr>
+ <td colspan="4">No Reserved Books!!!</th>
+ </tr>
+ <?php
+
+}
+
+
+?>
 </table>
 </div>
 
+<script language="javascript">
+ 
+  function cancelme(cancelid)
+ {
+ if(confirm("Do you want cancel your reservation!")){
+ window.location.href='reservations.view.php?cancel_id=' +cancelid+'';
+
+ return true;
+ }
+ }
+ </script>
 
 
 <?php include_once("../include/footer.inc.php");?>

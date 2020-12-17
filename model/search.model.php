@@ -70,8 +70,23 @@ class SearchModel extends dbconnection{
 			
 		}
 
+		public function getReservations($memNo){
+        $query = "SELECT * FROM `bookreservations` WHERE Status='1' and MembershipNo='$memNo'";
+        $result = mysqli_query($this -> connectInDifferentWay(),$query) or die(mysql_error());
+        return $result;
+    }
 
+    public function cancelReservations($cancelid){
+    	$select = "UPDATE bookreservations SET Status=0 where ReserveID='$cancelid'";
+    	$query = mysqli_query($this -> connectInDifferentWay(),$select) or die(mysql_error());
+    	if($query){
+    		return true;
+    	}else{
+    		return false;
+    	}
+    }
 	}
+
 
 
 ?>

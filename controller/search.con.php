@@ -31,6 +31,20 @@ Class SearchCon extends SearchModel{
     	$this->expireReserve();
     }
 
+    public function showReservations($memNo){
+        return $this->getReservations($memNo);
+    }
+
+    public function toCancelReservations($cancelid){
+        $out=$this->cancelReservations($cancelid);
+        if($out){
+            $msg="Your cancel reservation is successfull!!!";
+        }else{
+            $msg="Somthing went wrong";
+        }
+        return $msg;
+        $msg=0;
+    }
 
 
     
