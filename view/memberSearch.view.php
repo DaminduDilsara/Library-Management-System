@@ -13,7 +13,7 @@ if(isset($_GET['reserve_id']))
   
 echo '<script type="text/javascript">'; 
 echo 'alert("' . $msg . '");';
-echo 'window.location.href = "search.view.php";';
+echo 'window.location.href = "memberSearch.view.php";';
 echo '</script>';
 }
 
@@ -126,7 +126,7 @@ Select a key:
  {
  if(confirm("Do you want reserve!")){
 
-  window.location.href='search.view.php?reserve_id=' +reserveid+'';
+  window.location.href='memberSearch.view.php?reserve_id=' +reserveid+'';
 
  return true;
  }

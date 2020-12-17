@@ -1,10 +1,7 @@
 <?php
 include_once("../controller/search.con.php");
-
 $memNo='01';
 $object=new searchCon();
-
-
 if(isset($_GET['reserve_id']))
 {
   $reserve_id=$_GET['reserve_id'];
@@ -12,7 +9,7 @@ if(isset($_GET['reserve_id']))
   
 echo '<script type="text/javascript">'; 
 echo 'alert("' . $msg . '");';
-echo 'window.location.href = "search.view.php";';
+echo 'window.location.href = "adminSearch.view.php";';
 echo '</script>';
 }
 
@@ -125,7 +122,7 @@ Select a key:
  {
  if(confirm("Do you want reserve!")){
 
-  window.location.href='search.view.php?reserve_id=' +reserveid+'';
+  window.location.href='adminSearch.view.php?reserve_id=' +reserveid+'';
 
  return true;
  }
