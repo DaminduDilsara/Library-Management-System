@@ -53,8 +53,10 @@ $object->expireReservation();
 		<div class="s-middle">
 			<div class="s-left">
                 <div class="up">
+
                     
                     <form action="" method="post" style="padding-top: 4%;">
+                      
 Select a key:
 <select name="options" style="width: 100px; height: 40px; border-radius: 1px; border-color: #8B0000; border-width: 3px;">
 <option value="Title" selected>Title</option>
@@ -95,7 +97,9 @@ Select a key:
 
                
                       <?php 
-                       while ($row = mysqli_fetch_array($result)) {?>
+                       if($result->num_rows > 0){
+ while($row = $result->fetch_assoc()){
+ ?>
                         <tr>
  <td><?php echo $row['Title']; ?></td>
  <td><?php echo $row['Author']; ?></td>
@@ -110,10 +114,20 @@ Select a key:
                 }
               
               }
-            }
-          
+              else
+{
+ ?>
+ <tr>
+ <td colspan="5">No Match for your search!!!</th>
+ </tr>
+            <?php
 
-                ?>
+}
+}
+}
+
+
+?>
             </table>
 
 <script type="text/javascript">

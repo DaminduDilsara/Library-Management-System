@@ -10,7 +10,7 @@
 <div class="navbar">
     <a  href="../view/whole.view.php"><i class="fa fa-fw fa-home"></i> Home</a>
     <a href="../mainPageView/ContactUsSecondPage.php"><i class="fa fa-fw fa-envelope"></i> Contact Us</a>
-    <a href="../view/search.view.php"> <i class="fa fa-fw fa-search"></i>Advanced search</a> 
+    <a href="../view/memberSearch.view.php"> <i class="fa fa-fw fa-search"></i>Advanced search</a> 
     <a href='logout.view.php' style="margin-left: 60%;"><i class="fa fa-fw fa-sign-out"></i>Log out</a>
   </div>
 

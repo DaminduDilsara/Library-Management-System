@@ -99,7 +99,9 @@ Select a key:
 
                
                       <?php 
-                       while ($row = mysqli_fetch_array($result)) {?>
+                       if($result->num_rows > 0){
+ while($row = $result->fetch_assoc()){
+ ?>
                         <tr>
  <td><?php echo $row['Title']; ?></td>
  <td><?php echo $row['Author']; ?></td>
@@ -114,10 +116,20 @@ Select a key:
                 }
               
               }
-            }
-          
+              else
+{
+ ?>
+ <tr>
+ <td colspan="5">No Match for your search!!!</th>
+ </tr>
+            <?php
 
-                ?>
+}
+}
+}
+
+
+?>
             </table>
 
 <script type="text/javascript">

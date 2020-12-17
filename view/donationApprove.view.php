@@ -53,7 +53,7 @@ if(isset($_GET['del_id']))
 	<?php
 		include	"../include/adminNavbar.inc.php";
 	?>
-	<div class="body" style="height: auto;
+	<div class="body" style="height: 500px;
 	background-color: #F9BDB4;
 	margin: 10px;
 	padding: 25px;">
