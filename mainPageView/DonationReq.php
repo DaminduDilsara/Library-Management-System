@@ -1,7 +1,7 @@
 <?php
 
 //include_once('../includes/connect.php');
-include_once("../controller/donationController.controller.php");
+    include_once("../view/donreq.con.php");
 if (isset($_POST['submit'])) {
 
     $name = $_POST['name'];
@@ -12,8 +12,8 @@ if (isset($_POST['submit'])) {
     $des = $_POST['des'];
 
 
-    $objct = new UserDonation($name, $address, $email, $phone, $type, $des);
-    $res = $objct->addDonation($name, $address, $email, $phone, $type, $des);
+    $objct = new Donation($name, $address, $email, $phone, $type, $des);
+    $res = $objct->insertTo($name, $address, $email, $phone, $type, $des);
 }
 ?>
 

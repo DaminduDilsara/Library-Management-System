@@ -23,7 +23,12 @@ Class Donation extends Donreq{
 
 	public function insertTo($name,$address,$email,$phone,$type,$des){
 		$d=new Donreq();
-		$d->insertDon($name,$address,$email,$phone,$type,$des);
+		$out=$d->insertDon($name,$address,$email,$phone,$type,$des);
+		if($out){
+			return true;
+		}else{
+			return False;
+		}
 		
 	}
 }

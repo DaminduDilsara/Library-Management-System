@@ -9,10 +9,11 @@ class Donreq extends dbconnection {
 			$query = $this->connectInDifferentWay();
 			$result =mysqli_query($query,$sql) or die(mysqli_error($query)) ;
 
-			//return true;
-
-			//return $res;
-
+			if($result){
+			return True;
+		}else{
+			return False;
+		}
 			
 		}
 	}

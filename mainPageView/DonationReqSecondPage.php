@@ -1,7 +1,7 @@
 <?php
 
 //include_once('../includes/connect.php');
-include_once("../controller/donationController.controller.php");
+    include_once("../view/donreq.con.php");
 if (isset($_POST['submit'])) {
 
     $name = $_POST['name'];
@@ -12,8 +12,8 @@ if (isset($_POST['submit'])) {
     $des = $_POST['des'];
 
 
-    $objct = new AdminDonation($name, $address, $email, $phone, $type, $des);
-    $res = $objct->addDonation($name, $address, $email, $phone, $type, $des);
+    $objct = new Donation($name, $address, $email, $phone, $type, $des);
+    $res = $objct->insertTo($name, $address, $email, $phone, $type, $des);
 }
 ?>
 
@@ -61,22 +61,22 @@ if (isset($_POST['submit'])) {
 
         <form action="" method="post">
 
-            <div class="donationTextSmall">Full Name:</div>
+                <div class="donationTextSmall">Full Name:</div>
             <input type="text" name="name" placeholder="Your Name..." required/> <br>
             <div class="donationTextSmall">Address:</div>
             <input type="text" name="address" placeholder="Your Address..." required/><br>
             <div class="donationTextSmall">Email:</div>
             <input type="email" name="email" placeholder="Your Email..." required/><br>
             <div class="donationTextSmall">Telephone:</div>
-            <input type="text" name="phone" placeholder="Contact Number..." required/><br>
+            <input type="tel" pattern="[0-9]{10}" name="phone" placeholder="Contact Number(0711234567)" required/><br>
             <div class="donationTextSmall">Donation Type:</div>
             <input type="text" name="type" placeholder="Money / Books" required/><br>
             <div class="donationTextSmall">Description:</div>
             <input type="text" name="des" placeholder="Say something about donation..." style="height: 150px;" required/><br>
-            <button type="submit" name="submit">Submit</button>
+                <button type="submit" name="submit">Submit</button>
 
-        </form>
-    </div>
+            </form>
+        </div>
 
 
 
